@@ -1,12 +1,13 @@
-import { ChevronDown } from 'lucide-react'
+
 
 const SECTION_EMOJIS = {
   Radius: '📍',
   'Search Radius': '📍',
   'Area & Configuration': '🏠',
   'Land Area': '🏘️',
-  'Plot Size': '📏',
-  'Budget Range': '💰',
+  'Plot Size': '📍',
+  'Investment Range': '💰',
+  'Monthly Rent / Lease': '💰',
   'Project Classification': '🏗️',
   'Availability & Property Age': '🗓️',
   'Investment Benefits': '🎁',
@@ -14,12 +15,13 @@ const SECTION_EMOJIS = {
   'Plot Type & Sale': '🧾',
   'Speciality Projects': '🌱',
   // Commercial
-  'Property Category': '🏢',
-  'Size & Area': '📐',
+  'Property Type': '🏢',
+  'Size & Area': '📏',
   'Additional Options': '⚙️',
   'Sale Type': '🛒',
   'Business Opportunities': '💼',
   'Business Category': '🗂️',
+
 }
 
 export default function AccordionSection({
@@ -39,12 +41,12 @@ export default function AccordionSection({
 
   return (
     <section
-      className={`group rounded-[8px] mb-1 border transition-all duration-300 ${
+      className={`group rounded-[5px] mb-1 transition-all duration-300 ${
         highlight
-          ? 'border-[#C89B3C]/30 bg-[#C89B3C]/5' // Swapped highlight to Orange tint
+          ? 'bg-[#1C2A44]/5'
           : isOpen
-          ? 'border-white/10 bg-[#1C2A44] shadow-sm'
-          : 'border-white/5 bg-[#1C2A44] hover:border-white/15 hover:bg-[#1C2A44]'
+          ? 'bg-[#F5F7FA]'
+          : 'bg-white hover:bg-[#F9FAFB]'
       } ${sectionClassName}`}
     >
       {collapsible ? (
@@ -55,47 +57,45 @@ export default function AccordionSection({
         >
           <div className="flex items-center gap-2">
             {Icon && (
-              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] transition-all duration-300 ${
+              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[5px] transition-all duration-300 ${
                 highlight
-                  ? 'bg-[#C89B3C]/10'
+                  ? 'bg-[#1C2A44]/10'
                   : isOpen
-                  ? 'bg-[#C89B3C]/10'
-                  : 'bg-[#C89B3C]/5 group-hover:bg-[#C89B3C]/10'
+                  ? 'bg-[#1C2A44]/10'
+                  : 'bg-[#1C2A44]/5 group-hover:bg-[#1C2A44]/10'
               }`}>
                 <span className="text-[14px] leading-none" role="img" aria-hidden="true">
                   {sectionEmoji}
                 </span>
               </div>
             )}
-            <span className="text-[13px] font-semibold tracking-wide text-white">
+            <span className="text-[13px] font-semibold tracking-wide text-[#1C2A44]">
               {title}
             </span>
           </div>
-          <ChevronDown
-            size={14}
-            strokeWidth={2}
-            className={`shrink-0 transition-transform duration-300 ${
-              isOpen ? 'rotate-180 text-[#C89B3C]' : 'text-white/40 group-hover:text-white'
+          <span
+            className={`shrink-0 text-[12px] leading-none inline-block transition-transform duration-300 ${
+              isOpen ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35 group-hover:text-[#1C2A44]'
             }`}
-          />
+          >▾</span>
         </button>
       ) : (
         <div className={`flex w-full items-center justify-between p-2 text-left outline-none transition-all ${headerClassName}`}>
           <div className="flex items-center gap-2">
             {Icon && (
-              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] transition-all duration-300 ${
+              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[5px] transition-all duration-300 ${
                 highlight
-                  ? 'bg-[#C89B3C]/10'
+                  ? 'bg-[#1C2A44]/10'
                   : isOpen
-                  ? 'bg-[#C89B3C]/10'
-                  : 'bg-[#C89B3C]/5'
+                  ? 'bg-[#1C2A44]/10'
+                  : 'bg-[#1C2A44]/5'
               }`}>
                 <span className="text-[14px] leading-none" role="img" aria-hidden="true">
                   {sectionEmoji}
                 </span>
               </div>
             )}
-            <span className="text-[13px] font-semibold tracking-wide text-white">
+            <span className="text-[13px] font-semibold tracking-wide text-[#1C2A44]">
               {title}
             </span>
           </div>
@@ -109,7 +109,7 @@ export default function AccordionSection({
       >
         <div className="overflow-hidden">
           <div
-            className={`m-2 mt-0 border-t border-white/5 pt-2 text-[13px] text-white ${contentClassName}`}
+            className={`m-2 mt-0 border-t border-[#1C2A44]/6 pt-2 text-[13px] text-[#1C2A44] ${contentClassName}`}
           >
             {children}
           </div>

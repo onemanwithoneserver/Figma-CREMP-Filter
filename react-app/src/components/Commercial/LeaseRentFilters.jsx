@@ -1,4 +1,3 @@
-import { Building, IndianRupee, LandPlot, MapPin, Scale, ToggleRight } from 'lucide-react'
 import AccordionSection from '../common/AccordionSection'
 import BudgetFilter from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
@@ -28,7 +27,7 @@ export default function LeaseRentFilters({
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
-            icon={MapPin}
+            icon={true}
             collapsible={!isMobile}
             open={isOpen('radius')}
             onToggle={() => onToggleSection('radius')}
@@ -38,22 +37,21 @@ export default function LeaseRentFilters({
         )}
 
         <AccordionSection
-          title="Property Category"
-          icon={Building}
+          title="Property Type"
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('propertyType')}
           onToggle={() => onToggleSection('propertyType')}
         >
           <PropertyTypeFilter
             selected={filterState.propertyTypes}
-            onToggle={(value) => onUpdate('propertyTypes', value, true)}
-            isDesktopView={isDesktopView}
+            onChange={(newTypes) => onUpdate('propertyTypes', newTypes)}
           />
         </AccordionSection>
 
         <AccordionSection
           title="Size & Area"
-          icon={Scale}
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
@@ -67,6 +65,7 @@ export default function LeaseRentFilters({
             buaMax={filterState.buaMax}
             onBuaMinChange={(value) => onUpdate('buaMin', value)}
             onBuaMaxChange={(value) => onUpdate('buaMax', value)}
+            selectedTypes={filterState.propertyTypes}
             isMobile={isMobile}
             isDesktopView={isDesktopView}
           />
@@ -76,8 +75,8 @@ export default function LeaseRentFilters({
       {/* Right Column */}
       <div className="flex flex-col">
         <AccordionSection
-          title="Budget Range"
-          icon={IndianRupee}
+          title="Monthly Rent / Lease"
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
@@ -96,18 +95,12 @@ export default function LeaseRentFilters({
           />
         </AccordionSection>
 
-        <AccordionSection
-          title="Additional Options"
-          icon={ToggleRight}
-          collapsible={!isMobile}
-          open={isOpen('sublease')}
-          onToggle={() => onToggleSection('sublease')}
-        >
+        <div className="px-1 pt-1 pb-0.5">
           <SubleaseToggle
-            enabled={filterState.includeSublease}
-            onToggle={() => onUpdate('includeSublease', !filterState.includeSublease)}
+            value={filterState.includeSublease}
+            onChange={(value) => onUpdate('includeSublease', value)}
           />
-        </AccordionSection>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,3 @@
-import { Briefcase, IndianRupee, LayoutGrid, MapPin } from 'lucide-react'
 import AccordionSection from '../common/AccordionSection'
 import RadiusSlider from '../common/RadiusSlider'
 import { BUSINESS_INVEST_OPTIONS } from '../common/filterOptions'
@@ -22,7 +21,7 @@ export default function BusinessFilters({
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
-            icon={MapPin}
+            icon={true}
             collapsible={!isMobile}
             open={isOpen('radius')}
             onToggle={() => onToggleSection('radius')}
@@ -33,7 +32,7 @@ export default function BusinessFilters({
 
         <AccordionSection
           title="Business Opportunities"
-          icon={Briefcase}
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('opportunity')}
           onToggle={() => onToggleSection('opportunity')}
@@ -45,21 +44,18 @@ export default function BusinessFilters({
         </AccordionSection>
 
         <AccordionSection
-          title="Budget Range"
-          icon={IndianRupee}
+          title="Investment Range"
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >
-          <div className="pt-1">
-            <div className="mb-2">
-              <span className="text-[10px] font-semibold tracking-wide text-white">Investment Range</span>
-            </div>
+          <div className="">
             <div className="grid grid-cols-2 gap-1.5">
               <select
                 value={filterState.budgetMin}
                 onChange={(e) => onUpdate('budgetMin', e.target.value)}
-                className="rounded-[8px] border border-white/10 bg-[#1C2A44] px-2 py-1.5 text-[11px] text-white outline-none transition-all focus:border-[#C89B3C]/35"
+                className="rounded-[5px] border border-[#1C2A44]/10 bg-white px-2 py-1.5 text-[11px] text-[#1C2A44] outline-none transition-all focus:border-[#1C2A44]/40"
               >
                 <option value="">Min Investment</option>
                 {BUSINESS_INVEST_OPTIONS.map((opt) => (
@@ -69,7 +65,7 @@ export default function BusinessFilters({
               <select
                 value={filterState.budgetMax}
                 onChange={(e) => onUpdate('budgetMax', e.target.value)}
-                className="rounded-[8px] border border-white/10 bg-[#1C2A44] px-2 py-1.5 text-[11px] text-white outline-none transition-all focus:border-[#C89B3C]/35"
+                className="rounded-[5px] border border-[#1C2A44]/10 bg-white px-2 py-1.5 text-[11px] text-[#1C2A44] outline-none transition-all focus:border-[#1C2A44]/40"
               >
                 <option value="">Max Investment</option>
                 {BUSINESS_INVEST_OPTIONS.map((opt) => (
@@ -85,7 +81,7 @@ export default function BusinessFilters({
       <div className="flex flex-col">
         <AccordionSection
           title="Business Category"
-          icon={LayoutGrid}
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('category')}
           onToggle={() => onToggleSection('category')}

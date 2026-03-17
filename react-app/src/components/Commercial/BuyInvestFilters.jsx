@@ -1,4 +1,3 @@
-import { Building, IndianRupee, MapPin, Scale, ShoppingCart } from 'lucide-react'
 import AccordionSection from '../common/AccordionSection'
 import BudgetFilter from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
@@ -28,7 +27,7 @@ export default function BuyInvestFilters({
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
-            icon={MapPin}
+            icon={true}
             collapsible={!isMobile}
             open={isOpen('radius')}
             onToggle={() => onToggleSection('radius')}
@@ -38,22 +37,21 @@ export default function BuyInvestFilters({
         )}
 
         <AccordionSection
-          title="Property Category"
-          icon={Building}
+          title="Property Type"
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('propertyType')}
           onToggle={() => onToggleSection('propertyType')}
         >
           <PropertyTypeFilter
             selected={filterState.propertyTypes}
-            onToggle={(value) => onUpdate('propertyTypes', value, true)}
-            isDesktopView={isDesktopView}
+            onChange={(newTypes) => onUpdate('propertyTypes', newTypes)}
           />
         </AccordionSection>
 
         <AccordionSection
           title="Sale Type"
-          icon={ShoppingCart}
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('saleType')}
           onToggle={() => onToggleSection('saleType')}
@@ -69,7 +67,7 @@ export default function BuyInvestFilters({
       <div className="flex flex-col">
         <AccordionSection
           title="Size & Area"
-          icon={Scale}
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
@@ -83,14 +81,15 @@ export default function BuyInvestFilters({
             buaMax={filterState.buaMax}
             onBuaMinChange={(value) => onUpdate('buaMin', value)}
             onBuaMaxChange={(value) => onUpdate('buaMax', value)}
+            selectedTypes={filterState.propertyTypes}
             isMobile={isMobile}
             isDesktopView={isDesktopView}
           />
         </AccordionSection>
 
         <AccordionSection
-          title="Budget Range"
-          icon={IndianRupee}
+          title="Investment Range"
+          icon={true}
           collapsible={!isMobile}
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
