@@ -11,10 +11,10 @@ export default function SpecialOffers({ selected, onToggle }) {
  key={offer}
  type="button"
  onClick={() => onToggle(offer)}
- className={`rounded-[5px] border px-2 py-[3px] text-[10.5px] font-medium tracking-[-0.01em] transition-all duration-150 ${
+ className={`rounded-[8px] border px-2 py-[3px] text-[10.5px] font-medium tracking-[-0.01em] transition-all duration-150 ${
  isSelected
- ? 'border-[#F59E0B] bg-[#F59E0B] text-white'
- : 'border-[#1E1E1E]/8 bg-[#FFFFFF] text-[#1E1E1E] hover:border-[#F59E0B]/35 hover:bg-[#F59E0B]/6 hover:text-[#F59E0B]'
+ ? 'border-[#C89B3C] bg-[#C89B3C] text-[#0F1B2E]'
+ : 'border-white/8 bg-[#1C2A44] text-white hover:border-[#C89B3C]/35 hover:bg-[#C89B3C]/6 hover:text-[#C89B3C]'
  }`}
  >
  {offer}

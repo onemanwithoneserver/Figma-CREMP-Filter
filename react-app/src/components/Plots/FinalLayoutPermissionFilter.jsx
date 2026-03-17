@@ -5,7 +5,7 @@ import { PLOT_FINAL_PERMISSION_OPTIONS } from '../common/filterOptions'
 export default function FinalLayoutPermissionFilter({ selected, onToggle }) {
  return (
  <div>
- <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[var(--dark)]">
+ <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[#D1D5DB]">
  <FileBadge size={10} />
  Layout Permission
  </div>

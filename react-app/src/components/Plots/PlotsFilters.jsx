@@ -113,7 +113,7 @@ export default function PlotsFilters({
  selected={filterState.approvals}
  onToggle={(value) => onUpdate('approvals', value, true)}
  />
- {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#1E1E1E]/12" />}
+ {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#C89B3C]/12" />}
  <FinalLayoutPermissionFilter
  selected={filterState.finalPermissions}
  onToggle={(value) => onUpdate('finalPermissions', value, true)}

@@ -4,10 +4,10 @@ export default function TagButton({ label, selected = false, onClick, disabled =
  type="button"
  onClick={onClick}
  disabled={disabled}
- className={`chip-token rounded-[5px] px-2 py-0.75 text-[10.5px] font-medium tracking-[-0.01em] transition-all duration-150 ${
+ className={`chip-token rounded-[8px] px-2 py-0.75 text-[10.5px] font-medium tracking-[-0.01em] transition-all duration-150 ${
  selected
- ? 'border-[#FF6A00] bg-[#FFE6D5] text-[#7A2E0E]'
- : 'border-[#ECECEC] bg-[#FFFFFF] text-[#4B4B4B] hover:border-[#FF6A00] hover:bg-[#FFF3EB]'
+ ? 'border-[#C89B3C] bg-[#C89B3C] text-[#0F1B2E]'
+ : 'border-white/8 bg-[#1C2A44] text-[#D1D5DB] hover:border-[#C89B3C] hover:bg-[#C89B3C]/10'
  }`}
  data-selected={selected}
  >

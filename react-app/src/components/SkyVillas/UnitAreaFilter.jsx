@@ -21,7 +21,7 @@ export default function UnitAreaFilter({
  return (
  <div className={layoutClass}>
  <div>
- <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[var(--dark)]">
+ <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[#D1D5DB]">
  <Ruler size={10} />
  Unit Configuration
  </div>
@@ -37,13 +37,13 @@ export default function UnitAreaFilter({
  </div>
  </div>
 
- {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#1E1E1E]/12" />}
+ {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#C89B3C]/12" />}
  {!isDesktopView && (
- <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[var(--dark)] lg:block'}>–</span>
+ <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[#D1D5DB] lg:block'}>–</span>
  )}
 
  <div>
- <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[var(--dark)]">
+ <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[#D1D5DB]">
  <Scale size={10} />
  Built-up Area (sq ft)
  </div>
@@ -52,13 +52,13 @@ export default function UnitAreaFilter({
  value={areaMin}
  onChange={(event) => onAreaMinChange(event.target.value)}
  placeholder="Min Sft"
- className="rounded-[5px] border border-[var(--dark)]/8 bg-white px-2 py-[5px] text-[10.5px] text-[var(--dark)] outline-none placeholder:text-[var(--dark)] transition-all focus:border-[#FF6A00]/35"
+ className="rounded-[8px] border border-white/8 bg-[#1C2A44] px-2 py-[5px] text-[10.5px] text-[#D1D5DB] outline-none placeholder:text-[#D1D5DB] transition-all focus:border-[#C89B3C]/35"
  />
  <input
  value={areaMax}
  onChange={(event) => onAreaMaxChange(event.target.value)}
  placeholder="Max Sft"
- className="rounded-[5px] border border-[var(--dark)]/8 bg-white px-2 py-[5px] text-[10.5px] text-[var(--dark)] outline-none placeholder:text-[var(--dark)] transition-all focus:border-[#FF6A00]/35"
+ className="rounded-[8px] border border-white/8 bg-[#1C2A44] px-2 py-[5px] text-[10.5px] text-[#D1D5DB] outline-none placeholder:text-[#D1D5DB] transition-all focus:border-[#C89B3C]/35"
  />
  </div>
  </div>

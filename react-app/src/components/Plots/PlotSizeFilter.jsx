@@ -62,17 +62,17 @@ function OrrDistanceSelect({ value, onChange }) {
  ref={triggerRef}
  type="button"
  onClick={() => setOpen((previous) => !previous)}
- className={`group flex w-full items-center justify-between rounded-[5px] border bg-[#FFFFFF] px-2 py-[5px] pr-7 text-[10.5px] font-medium outline-none transition-all duration-150 focus:ring-2 focus:ring-[#FF6A00]/8 ${
+ className={`group flex w-full items-center justify-between rounded-[8px] border bg-[#1C2A44] px-2 py-[5px] pr-7 text-[10.5px] font-medium outline-none transition-all duration-150 focus:ring-2 focus:ring-[#C89B3C]/8 ${
  open
- ? 'border-[#FF6A00]/35'
- : 'border-[var(--dark)]/8 hover:border-[var(--dark)]/8'
+ ? 'border-[#C89B3C]/35'
+ : 'border-white/8 hover:border-white/8'
  }`}
  >
- <span className={value ? 'text-[var(--dark)]' : 'text-[var(--dark)]'}>{selectedLabel}</span>
+ <span className={value ? 'text-[#D1D5DB]' : 'text-[#D1D5DB]'}>{selectedLabel}</span>
  <ChevronDown
  size={12}
  className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transition-all duration-150 ${
- open ? 'rotate-180 text-[#FF6A00]/60' : 'text-[var(--dark)]'
+ open ? 'rotate-180 text-[#C89B3C]/60' : 'text-[#D1D5DB]'
  }`}
  />
  </button>
@@ -86,7 +86,7 @@ function OrrDistanceSelect({ value, onChange }) {
  left: pos.left,
  width: pos.width,
  }}
- className={`z-[9999] origin-top overflow-hidden rounded-[5px] border border-[var(--dark)]/8 bg-[#FFFFFF] transition-all duration-150 ${
+ className={`z-[9999] origin-top overflow-hidden rounded-[8px] border border-white/8 bg-[#1C2A44] transition-all duration-150 ${
  open ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'
  }`}
  >
@@ -97,8 +97,8 @@ function OrrDistanceSelect({ value, onChange }) {
  onClick={() => handleSelect('')}
  className={`flex w-full items-center gap-2 px-2.5 py-[5px] text-left text-[10.5px] transition-colors duration-100 ${
  !value
- ? 'bg-[#FF6A00]/[0.04] font-semibold text-[#FF6A00]'
- : 'text-[var(--dark)] hover:bg-[#F7F7F7]/70'
+ ? 'bg-[#C89B3C]/[0.04] font-semibold text-[#C89B3C]'
+ : 'text-[#D1D5DB] hover:bg-[#0F1B2E]/70'
  }`}
  >
  <Check size={11} className={`shrink-0 ${!value ? 'opacity-100' : 'opacity-0'}`} />
@@ -116,11 +116,11 @@ function OrrDistanceSelect({ value, onChange }) {
  onClick={() => handleSelect(option)}
  className={`flex w-full items-center gap-2 px-2.5 py-[5px] text-left text-[10.5px] transition-colors duration-100 ${
  isActive
- ? 'bg-[#FF6A00]/[0.05] font-semibold text-[#FF6A00]'
- : 'text-[var(--dark)] hover:bg-[#F7F7F7]/70'
+ ? 'bg-[#C89B3C]/[0.05] font-semibold text-[#C89B3C]'
+ : 'text-[#D1D5DB] hover:bg-[#0F1B2E]/70'
  }`}
  >
- <Check size={11} className={`shrink-0 ${isActive ? 'opacity-100 text-[#FF6A00]' : 'opacity-0'}`} />
+ <Check size={11} className={`shrink-0 ${isActive ? 'opacity-100 text-[#C89B3C]' : 'opacity-0'}`} />
  {option}
  </button>
  </li>
@@ -153,7 +153,7 @@ export default function PlotSizeFilter({
  return (
  <div className={layoutClass}>
  <div>
- <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[var(--dark)]">
+ <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[#D1D5DB]">
  <LandPlot size={10} />
  Plot Size (Sq.Yd)
  </div>
@@ -161,13 +161,13 @@ export default function PlotSizeFilter({
  value={plotMin}
  onChange={(event) => onPlotMinChange(event.target.value)}
  placeholder="Min"
- className="w-full rounded-[5px] border border-[var(--dark)]/8 bg-white px-2 py-[5px] text-[10.5px] text-[var(--dark)] outline-none placeholder:text-[var(--dark)] transition-all focus:border-[#FF6A00]/35"
+ className="w-full rounded-[8px] border border-white/8 bg-[#1C2A44] px-2 py-[5px] text-[10.5px] text-[#D1D5DB] outline-none placeholder:text-[#D1D5DB] transition-all focus:border-[#C89B3C]/35"
  />
  </div>
 
- {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#1E1E1E]/12" />}
+ {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#C89B3C]/12" />}
  {!isDesktopView && (
- <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[var(--dark)] lg:block'}>–</span>
+ <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[#D1D5DB] lg:block'}>–</span>
  )}
 
  <div>
@@ -176,17 +176,17 @@ export default function PlotSizeFilter({
  value={plotMax}
  onChange={(event) => onPlotMaxChange(event.target.value)}
  placeholder="Max"
- className="w-full rounded-[5px] border border-[var(--dark)]/8 bg-white px-2 py-[5px] text-[10.5px] text-[var(--dark)] outline-none placeholder:text-[var(--dark)] transition-all focus:border-[#FF6A00]/35"
+ className="w-full rounded-[8px] border border-white/8 bg-[#1C2A44] px-2 py-[5px] text-[10.5px] text-[#D1D5DB] outline-none placeholder:text-[#D1D5DB] transition-all focus:border-[#C89B3C]/35"
  />
  </div>
 
- {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#1E1E1E]/12" />}
+ {isDesktopView && <div className="mt-0.5 h-full w-px bg-[#C89B3C]/12" />}
  {!isDesktopView && (
- <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[var(--dark)] lg:block'}>–</span>
+ <span className={isMobile ? 'hidden' : 'hidden text-[10px] text-[#D1D5DB] lg:block'}>–</span>
  )}
 
  <div className={isMobile ? 'col-span-2' : ''}>
- <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[var(--dark)]">
+ <div className="mb-1 flex items-center gap-1 text-[10px] font-semibold tracking-wide text-[#D1D5DB]">
  <Route size={10} />
  Distance from ORR
  </div>

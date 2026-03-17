@@ -1,66 +1,63 @@
-/* ─── Premium Design System ─── */
+﻿/* --- CREMP Premium Dark Design System --- */
 :root {
-  /* Primary brand scale */
-  --primary-900: #7A2E0E;
-  --primary-700: #A5431C;
-  --primary-500: #FF6A00;
-  --primary-300: #FFA366;
-  --primary-100: #FFE6D5;
-  --primary-hover: #E85F00;
-  --primary-pressed: #C94F00;
+  /* Primary backgrounds */
+  --bg-primary: #0F1B2E;
+  --bg-secondary: #1C2A44;
+  --bg-card: #1C2A44;
 
-  /* Neutral scale */
-  --neutral-900: #1E1E1E;
-  --neutral-700: #4B4B4B;
-  --neutral-500: #8C8C8C;
-  --neutral-300: #D9D9D9;
-  --neutral-200: #ECECEC;
-  --neutral-100: #F7F7F7;
-  --neutral-0: #FFFFFF;
+  /* Gold accent scale */
+  --accent-gold: #C89B3C;
+  --accent-gold-highlight: #E6C36A;
+  --accent-gold-dim: rgba(200, 155, 60, 0.15);
+  --accent-gold-glow: rgba(200, 155, 60, 0.25);
 
-  /* Semantic accents */
-  --success: #16A34A;
-  --warning: #F59E0B;
-  --error: #DC2626;
-  --info: #2563EB;
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D5DB;
+  --text-muted: rgba(255, 255, 255, 0.5);
 
-  /* Legacy aliases kept for compatibility in existing components */
-  --primary: var(--primary-500);
-  --dark: var(--neutral-900);
-  --bg: var(--neutral-100);
-  --bg-warm: var(--neutral-200);
-  --white: var(--neutral-0);
-  --accent: var(--primary-500);
-  --accent-light: var(--primary-300);
-  --accent-hover: var(--primary-hover);
-  --accent-glow: rgba(255, 106, 0, 0.1);
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-input: rgba(255, 255, 255, 0.15);
 
-  /* Legacy gray aliases kept for compatibility */
-  --gray-50: var(--neutral-100);
-  --gray-100: var(--neutral-100);
-  --gray-200: var(--neutral-200);
-  --gray-300: var(--neutral-300);
-  --gray-400: var(--neutral-500);
-  --gray-500: var(--neutral-500);
-  --gray-600: var(--neutral-700);
-  --gray-700: var(--neutral-900);
+  /* Legacy aliases for compatibility */
+  --primary: var(--accent-gold);
+  --dark: var(--text-primary);
+  --bg: var(--bg-primary);
+  --bg-warm: var(--bg-secondary);
+  --white: var(--text-primary);
+  --accent: var(--accent-gold);
+  --accent-light: var(--accent-gold-highlight);
+  --accent-hover: var(--accent-gold-highlight);
+  --accent-glow: var(--accent-gold-dim);
 
-  /* Shadows — layered for depth */
-  --shadow-xs: 0 1px 2px rgba(30, 30, 30, 0.08);
-  --shadow-sm: 0 1px 3px rgba(30, 30, 30, 0.1), 0 1px 2px rgba(30, 30, 30, 0.06);
-  --shadow-md: 0 4px 8px -2px rgba(30, 30, 30, 0.15), 0 2px 4px -2px rgba(30, 30, 30, 0.1);
-  --shadow-lg: 0 12px 24px -4px rgba(30, 30, 30, 0.18), 0 4px 8px -4px rgba(30, 30, 30, 0.14);
-  --shadow-xl: 0 20px 40px -8px rgba(30, 30, 30, 0.2), 0 8px 16px -6px rgba(30, 30, 30, 0.16);
-  --shadow-dropdown: 0 8px 24px -4px rgba(30, 30, 30, 0.18), 0 4px 8px rgba(30, 30, 30, 0.12);
-  --shadow-accent: 0 2px 8px rgba(255, 106, 0, 0.18), 0 1px 3px rgba(255, 106, 0, 0.10);
-  --shadow-accent-lg: 0 4px 16px rgba(255, 106, 0, 0.22), 0 2px 6px rgba(255, 106, 0, 0.12);
+  /* Legacy gray aliases */
+  --gray-50: var(--bg-secondary);
+  --gray-100: var(--bg-secondary);
+  --gray-200: rgba(255, 255, 255, 0.08);
+  --gray-300: rgba(255, 255, 255, 0.12);
+  --gray-400: rgba(255, 255, 255, 0.25);
+  --gray-500: rgba(255, 255, 255, 0.4);
+  --gray-600: var(--text-secondary);
+  --gray-700: var(--text-primary);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.35), 0 4px 8px -4px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 20px 40px -8px rgba(0, 0, 0, 0.4), 0 8px 16px -6px rgba(0, 0, 0, 0.3);
+  --shadow-dropdown: 0 8px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+  --shadow-accent: 0 2px 8px rgba(200, 155, 60, 0.2), 0 1px 3px rgba(200, 155, 60, 0.12);
+  --shadow-accent-lg: 0 4px 16px rgba(200, 155, 60, 0.3), 0 2px 6px rgba(200, 155, 60, 0.15);
+  --shadow-gold-glow: 0 0 0 3px rgba(200, 155, 60, 0.15);
 
   /* Border tokens */
-  --border-subtle: var(--neutral-200);
-  --border-default: var(--neutral-200);
-  --border-strong: var(--neutral-300);
+  --border-subtle: var(--border);
+  --border-default: var(--border);
 
-  /* Transitions — premium easing */
+  /* Transitions */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -68,11 +65,16 @@
   --duration: 180ms;
   --duration-slow: 280ms;
 
+  /* Radius */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 10px;
+
   /* Typography */
   --font-sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* ─── Global Reset & Base ─── */
+/* --- Global Reset & Base --- */
 *,
 *::before,
 *::after {
@@ -88,9 +90,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--bg-primary);
   font-family: var(--font-sans);
-  color: var(--dark);
+  color: var(--text-primary);
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -0.008em;
@@ -105,7 +107,7 @@ button {
   font-family: var(--font-sans);
 }
 
-/* ─── Premium Scrollbar ─── */
+/* --- Premium Scrollbar --- */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -116,34 +118,34 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-300);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
   transition: background 200ms;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-400);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--gray-300) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
-/* ─── Focus Styles ─── */
+/* --- Focus Styles --- */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
   border-radius: 5px;
 }
 
-/* ─── Selection ─── */
+/* --- Selection --- */
 ::selection {
-  background: rgba(255, 106, 0, 0.14);
-  color: var(--dark);
+  background: rgba(200, 155, 60, 0.3);
+  color: var(--text-primary);
 }
 
-/* ─── Range Input ─── */
+/* --- Range Input --- */
 input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
@@ -162,16 +164,16 @@ input[type='range']::-webkit-slider-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2.5px solid var(--white);
-  box-shadow: var(--shadow-accent);
+  background: var(--accent-gold-highlight);
+  border: 2.5px solid var(--bg-primary);
+  box-shadow: var(--shadow-accent), 0 0 0 3px rgba(200, 155, 60, 0.12);
   margin-top: -6px;
   transition: transform 150ms var(--ease-bounce), box-shadow 150ms var(--ease);
 }
 
 input[type='range']::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  box-shadow: var(--shadow-accent-lg);
+  box-shadow: var(--shadow-accent-lg), 0 0 0 4px rgba(200, 155, 60, 0.18);
 }
 
 input[type='range']:active::-webkit-slider-thumb {
@@ -187,65 +189,65 @@ input[type='range']::-moz-range-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2.5px solid var(--white);
+  background: var(--accent-gold-highlight);
+  border: 2.5px solid var(--bg-primary);
   box-shadow: var(--shadow-accent);
 }
 
-/* ─── Input Focus ─── */
+/* --- Input Focus --- */
 input[type='text']:focus,
 input[type='number']:focus,
 select:focus {
-  border-color: rgba(255, 106, 0, 0.35) !important;
-  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.08);
+  border-color: var(--accent-gold) !important;
+  box-shadow: var(--shadow-gold-glow);
 }
 
 /* Shared component tokens */
 .chip-token {
-  background: var(--neutral-0);
-  border: 1px solid var(--neutral-200);
-  color: var(--neutral-700);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
 }
 
 .chip-token:hover {
-  background: #FFF3EB;
-  border-color: var(--primary-500);
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
 }
 
 .chip-token[data-selected='true'] {
-  background: var(--primary-100);
-  border-color: var(--primary-500);
-  color: var(--primary-900);
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-primary);
 }
 
 .chip-token:disabled,
 .chip-token[aria-disabled='true'] {
-  background: var(--neutral-100);
-  border-color: var(--neutral-200);
-  color: #B5B5B5;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border);
+  color: rgba(255, 255, 255, 0.25);
   cursor: not-allowed;
 }
 
 .btn-primary-token {
-  background: var(--primary-500);
-  color: var(--neutral-0);
+  background: var(--accent-gold);
+  color: var(--bg-primary);
 }
 
 .btn-primary-token:hover {
-  background: var(--primary-hover);
+  background: var(--accent-gold-highlight);
 }
 
 .btn-primary-token:active {
-  background: var(--primary-pressed);
+  background: #B8892F;
 }
 
 .btn-secondary-token {
-  background: var(--neutral-0);
-  border: 1px solid var(--neutral-200);
-  color: var(--neutral-900);
+  background: transparent;
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
 }
 
-/* ─── Button Base ─── */
+/* --- Button Base --- */
 button {
   font-family: inherit;
   cursor: pointer;
@@ -256,7 +258,7 @@ button:active {
   transform: scale(0.97);
 }
 
-/* ─── Leaflet Overrides ─── */
+/* --- Leaflet Overrides --- */
 .leaflet-container {
   font-family: inherit !important;
 }
@@ -276,4 +278,3 @@ button:active {
 .leaflet-popup-tip {
   box-shadow: none !important;
 }
-

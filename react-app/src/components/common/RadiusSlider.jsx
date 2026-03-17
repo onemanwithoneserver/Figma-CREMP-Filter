@@ -41,10 +41,10 @@ export default function RadiusSlider({ value, onChange }) {
           onTouchEnd={() => setIsActive(false)}
           onChange={(e) => { onChange(Number(e.target.value)); requestAnimationFrame(updateTooltipPos) }}
           className="relative z-10 h-1.5 w-full cursor-pointer appearance-none rounded-full outline-none
-            [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#1E1E1E] [&::-webkit-slider-thumb]:border-[2px] [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(30,30,30,0.3)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-90
-            [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#1E1E1E] [&::-moz-range-thumb]:border-[2px] [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-[0_2px_8px_rgba(30,30,30,0.3)]"
+            [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C89B3C] [&::-webkit-slider-thumb]:border-[2px] [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.3)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-90
+            [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#C89B3C] [&::-moz-range-thumb]:border-[2px] [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.3)]"
           style={{
-            background: `linear-gradient(to right, #1E1E1E 0%, #1E1E1E ${percentage}%, #ECECEC ${percentage}%, #ECECEC 100%)`,
+            background: `linear-gradient(to right, #C89B3C 0%, #C89B3C ${percentage}%, rgba(255,255,255,0.12) ${percentage}%, rgba(255,255,255,0.12) 100%)`,
           }}
         />
 
@@ -58,10 +58,10 @@ export default function RadiusSlider({ value, onChange }) {
                 top: `${tooltipPos.y - 20}px`,
               }}
             >
-              <div className="relative rounded-[5px] bg-[#1E1E1E] px-2.5 py-1 text-[12px] font-bold tracking-wide text-white shadow-lg">
+              <div className="relative rounded-[8px] bg-[#C89B3C] px-2.5 py-1 text-[12px] font-bold tracking-wide text-white shadow-lg">
                 {value} km
                 {/* Tooltip Triangle */}
-                <div className="absolute -bottom-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-sm bg-[#1E1E1E]" />
+                <div className="absolute -bottom-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-sm bg-[#C89B3C]" />
               </div>
             </div>
           ),
@@ -71,8 +71,8 @@ export default function RadiusSlider({ value, onChange }) {
 
       {/* Distance Label - Solid Brown Text */}
       <div className="flex min-w-[44px] items-baseline justify-end gap-1 text-right">
-        <span className="text-[13px] font-bold tabular-nums text-[#1E1E1E]">{value}</span>
-        <span className="text-[11px] font-medium text-[#1E1E1E]/60">km</span>
+        <span className="text-[13px] font-bold tabular-nums text-white">{value}</span>
+        <span className="text-[11px] font-medium text-white/60">km</span>
       </div>
     </div>
   )

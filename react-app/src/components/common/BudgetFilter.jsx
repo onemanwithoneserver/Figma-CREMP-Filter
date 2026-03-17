@@ -68,20 +68,20 @@ function StyledSelect({ value, onChange, placeholder, options }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`flex w-full items-center justify-between rounded-[5px] border bg-white p-2 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
+        className={`flex w-full items-center justify-between rounded-[8px] border bg-[#1C2A44] p-2 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
           open
-            ? 'border-[#1E1E1E]/30 shadow-sm ring-2 ring-[#1E1E1E]/5'
-            : 'border-[#1E1E1E]/10 hover:border-[#1E1E1E]/20 hover:bg-[#FFFFFF]'
+            ? 'border-white/30 shadow-sm ring-2 ring-[#C89B3C]/20'
+            : 'border-white/10 hover:border-white/20 hover:bg-[#1C2A44]'
         }`}
       >
-        <span className={selected ? 'text-[#1E1E1E]' : 'text-[#1E1E1E]/50 font-light'}>
+        <span className={selected ? 'text-white' : 'text-white/50 font-light'}>
           {selected ? selected.label : placeholder}
         </span>
         <ChevronDown
           size={14}
           strokeWidth={1.5}
           className={`shrink-0 transition-transform duration-300 ${
-            open ? 'rotate-180 text-[#1E1E1E]' : 'text-[#1E1E1E]/40'
+            open ? 'rotate-180 text-white' : 'text-white/40'
           }`}
         />
       </button>
@@ -96,7 +96,7 @@ function StyledSelect({ value, onChange, placeholder, options }) {
             left: pos.left,
             width: pos.width,
           }}
-          className="z-[9999] overflow-hidden rounded-[5px] border border-[#1E1E1E]/10 bg-white/95 backdrop-blur-xl shadow-[0_20px_40px_rgba(30,30,30,0.12)] animate-in fade-in slide-in-from-top-1 duration-200"
+          className="z-[9999] overflow-hidden rounded-[8px] border border-white/10 bg-[#1C2A44]/95 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
           <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
             {/* Reset / placeholder option */}
@@ -104,10 +104,10 @@ function StyledSelect({ value, onChange, placeholder, options }) {
               <button
                 type="button"
                 onClick={() => handleSelect('')}
-                className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[12px] transition-colors duration-200 ${
+                className={`flex w-full items-center gap-2 rounded-[8px] p-2 text-[12px] transition-colors duration-200 ${
                   !value
-                    ? 'bg-[#1E1E1E]/5 font-medium text-[#1E1E1E]'
-                    : 'text-[#1E1E1E]/60 hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]'
+                    ? 'bg-[#C89B3C]/5 font-medium text-white'
+                    : 'text-white/60 hover:bg-[#C89B3C]/5 hover:text-white'
                 }`}
               >
                 <span className="w-3" />
@@ -123,10 +123,10 @@ function StyledSelect({ value, onChange, placeholder, options }) {
                   <button
                     type="button"
                     onClick={() => handleSelect(option.value)}
-                    className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[13px] font-medium transition-colors duration-200 ${
+                    className={`flex w-full items-center gap-2 rounded-[8px] p-2 text-[13px] font-medium transition-colors duration-200 ${
                       isActive
-                        ? 'bg-[#1E1E1E] text-white shadow-sm' // Selected rule: Brown bg, white text
-                        : 'text-[#1E1E1E]/80 hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]'
+                        ? 'bg-[#C89B3C] text-[#0F1B2E] shadow-sm'
+                        : 'text-[#D1D5DB] hover:bg-white/5 hover:text-white'
                     }`}
                   >
                     <Check
@@ -167,14 +167,14 @@ export default function BudgetFilter({
   return (
     <div className="pt-1">
       {/* Segmented Control - Tab Rules Applied */}
-      <div className="mb-3 inline-flex items-center gap-1 rounded-[5px] border border-[#1E1E1E]/10 bg-[#FFFFFF] p-1 shadow-sm">
+      <div className="mb-3 inline-flex items-center gap-1 rounded-[8px] border border-white/10 bg-[#1C2A44] p-1 shadow-sm">
         <button
           type="button"
           onClick={() => onModeChange('per')}
-          className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
+          className={`rounded-[8px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
             mode === 'per'
-              ? 'bg-[#1E1E1E] text-white shadow-md scale-[0.98]' // Selected Rule: Brown bg, white text
-              : 'text-[#4B4B4B] hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]'
+              ? 'bg-[#C89B3C] text-[#0F1B2E] shadow-md scale-[0.98]'
+              : 'text-[#D1D5DB] hover:bg-white/5 hover:text-white'
           }`}
         >
           {perLabel}
@@ -182,10 +182,10 @@ export default function BudgetFilter({
         <button
           type="button"
           onClick={() => onModeChange('overall')}
-          className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
+          className={`rounded-[8px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
             mode === 'overall'
-              ? 'bg-[#1E1E1E] text-white shadow-md scale-[0.98]' // Selected Rule: Brown bg, white text
-              : 'text-[#4B4B4B] hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]'
+              ? 'bg-[#C89B3C] text-[#0F1B2E] shadow-md scale-[0.98]'
+              : 'text-[#D1D5DB] hover:bg-white/5 hover:text-white'
           }`}
         >
           {overallLabel === 'Overall Budget' ? 'Total Investment' : overallLabel}
@@ -202,7 +202,7 @@ export default function BudgetFilter({
         />
         
         {/* Softened separator line */}
-        <div className="h-px w-3 shrink-0 bg-[#1E1E1E]/20 rounded-full"></div>
+        <div className="h-px w-3 shrink-0 bg-[#C89B3C]/20 rounded-full"></div>
         
         <StyledSelect 
           value={max} 

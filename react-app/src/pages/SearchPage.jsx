@@ -1,18 +1,17 @@
 import { Heart, Search, SlidersHorizontal } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import RadiusSlider from '../components/common/RadiusSlider'
-import FlatsFilters from '../components/Flats/FlatsFilters'
-import PlotsFilters from '../components/Plots/PlotsFilters'
-import SkyVillasFilters from '../components/SkyVillas/SkyVillasFilters'
+import LeaseRentFilters from '../components/Commercial/LeaseRentFilters'
+import BuyInvestFilters from '../components/Commercial/BuyInvestFilters'
+import BusinessFilters from '../components/Commercial/BusinessFilters'
 import ResultsSection from '../components/layout/ResultsSection'
 import TopControls from '../components/layout/TopControls'
-import VillasFilters from '../components/Villas/VillasFilters'
 
 // --- SEARCH PANEL COMPONENT --- //
-const TRENDING_SEARCHES = ['Flats in Hyderabad', 'Plots in Future City', 'Luxury Villas']
-const RECENT_SEARCHES = ['Kompally flats', 'Gachibowli Villas']
-const SAVED_SEARCHES = ['3BHK near office', 'Flats near Suchitra']
-const SEARCHABLE_PROJECTS = ['Urban Nest - Madhapur', 'Skyline - Kokapet', 'Aero - Narsingi']
+const TRENDING_SEARCHES = ['Office Space in Hitech City', 'Retail in Banjara Hills', 'Coworking Gachibowli']
+const RECENT_SEARCHES = ['Warehouse Shamshabad', 'Office Madhapur']
+const SAVED_SEARCHES = ['Retail near Metro', 'Office 5000 sqft Jubilee Hills']
+const SEARCHABLE_PROJECTS = ['Skyline Tower - Madhapur', 'Commerce Hub - Kokapet', 'Business Park - Narsingi']
 
 const filterEntries = (entries, query) => {
   if (!query) return entries
@@ -22,17 +21,17 @@ const filterEntries = (entries, query) => {
 
 function SearchRow({ label, showFavorite = true, showRemove = true }) {
   return (
-    <li className="group flex items-center justify-between gap-4 rounded-[6px] p-1.5 text-[15px] font-normal text-[#333333] transition-colors duration-200 hover:bg-[#FFF3EB]">
+    <li className="group flex items-center justify-between gap-4 rounded-[8px] p-1.5 text-[15px] font-normal text-[#D1D5DB] transition-colors duration-200 hover:bg-[#C89B3C]/10">
       <span className="flex items-center gap-2 truncate" title={label}>
-        <span className="h-[6px] w-[6px] shrink-0 rounded-full bg-[#FF6A00]" />
+        <span className="h-[6px] w-[6px] shrink-0 rounded-full bg-[#C89B3C]" />
         {label}
       </span>
       {showFavorite && showRemove && (
         <div className="flex items-center gap-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <button className="flex items-center justify-center rounded-[5px] p-1 text-[#8C8C8C] transition-colors hover:text-[#FF6A00]">
+          <button className="flex items-center justify-center rounded-[8px] p-1 text-white/40 transition-colors hover:text-[#C89B3C]">
             <Heart size={14} strokeWidth={1.75} />
           </button>
-          <button className="text-[13px] font-medium text-[#8C8C8C] transition-colors hover:text-[#FF6A00]">Remove</button>
+          <button className="text-[13px] font-medium text-white/40 transition-colors hover:text-[#C89B3C]">Remove</button>
         </div>
       )}
     </li>
@@ -42,8 +41,8 @@ function SearchRow({ label, showFavorite = true, showRemove = true }) {
 function SearchGroup({ title, entries, showActions = true, hasDivider = false }) {
   if (entries.length === 0) return null;
   return (
-    <section className={`flex flex-col gap-1 ${hasDivider ? 'border-t border-[#ECECEC] pt-1' : ''}`}>
-      <h4 className="px-2 py-1 text-[16px] font-semibold text-[#1E1E1E]">{title}</h4>
+    <section className={`flex flex-col gap-1 ${hasDivider ? 'border-t border-white/8 pt-1' : ''}`}>
+      <h4 className="px-2 py-1 text-[16px] font-semibold text-white">{title}</h4>
       <ul className="flex flex-col gap-1">
         {entries.map((item) => (
           <SearchRow key={`${title}-${item}`} label={item} showFavorite={showActions} showRemove={showActions} />
@@ -77,15 +76,15 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
   return (
     <div className="relative mx-auto w-full">
       <div 
-        className={`flex items-center gap-2 rounded-[5px] border bg-white p-1 transition-all duration-300
+        className={`flex items-center gap-2 rounded-[10px] border bg-[#1C2A44] p-1 transition-all duration-300
           ${isSearchFocused 
-            ? 'border-[#D9D9D9] shadow-md' 
-            : 'border-[#ECECEC] shadow-sm hover:border-[#D9D9D9]'
+            ? 'border-[#C89B3C]/40 shadow-[0_0_0_2px_rgba(200,155,60,0.15)]' 
+            : 'border-white/8 shadow-sm hover:border-white/12'
           }`}
       >
-        {/* Left icon swapped to Brown */}
-        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-[#1E1E1E]/10 text-[#1E1E1E]">
-          <div className="h-3 w-3 rotate-45 border-2 border-current rounded-sm"></div>
+        {/* Location pin icon */}
+        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#C89B3C]/10 text-[#C89B3C]">
+          <Search size={14} strokeWidth={1.5} />
         </div>
 
         <input
@@ -95,25 +94,25 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
           onChange={(e) => setSearchText(e.target.value)}
           onFocus={() => setIsSearchFocused(true)}
           onBlur={() => window.setTimeout(() => setIsSearchFocused(false), 200)}
-          placeholder="Search locations, projects, or builders"
-          className="h-full flex-1 bg-transparent px-1 text-[14px] font-medium tracking-wide text-[#1E1E1E] placeholder:font-light placeholder:text-[#1E1E1E]/50 focus:outline-none"
+          placeholder="Search locations, projects, or properties"
+          className="h-full flex-1 bg-transparent px-1 text-[14px] font-medium tracking-wide text-white placeholder:font-light placeholder:text-white/40 focus:outline-none"
         />
 
         <div className="m-1 flex items-center gap-1">
-          {/* Filter button swapped to Orange */}
+          {/* Filter toggle */}
           <button
             onClick={() => {
               setIsSearchFocused(false)
               onOpenFilters?.()
             }}
-            className="flex h-8 w-8 items-center justify-center rounded-[5px] bg-[#FF6A00] text-white shadow-sm transition-colors hover:bg-[#E85F00]/90 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-[8px] text-[#C89B3C] transition-colors hover:bg-[#C89B3C]/10 active:scale-95"
           >
             <SlidersHorizontal size={14} strokeWidth={1.5} />
           </button>
           
-          {/* Search button swapped to Brown (Selected/Primary BG rule) */}
+          {/* Search CTA */}
           <button
-            className="flex h-8 w-8 items-center justify-center rounded-[5px] bg-[#1E1E1E] text-white shadow-sm transition-colors hover:bg-[#1E1E1E]/90 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#C89B3C] text-[#0F1B2E] shadow-sm transition-colors hover:bg-[#E6C36A] active:scale-95"
           >
             <Search size={14} strokeWidth={2} />
           </button>
@@ -121,20 +120,25 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
       </div>
 
       {showSuggestions && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-[5px] border border-[#1E1E1E]/10 bg-white/95 backdrop-blur-xl shadow-[0_20px_40px_rgba(30,30,30,0.12)]">
+        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-[10px] border border-white/10 bg-[#1C2A44]/95 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
           <div className="custom-scrollbar flex max-h-[320px] flex-col gap-2 overflow-auto p-2">
             {hasQuery && matchedResults.length > 0 && (
-              <SearchGroup title="Top Matches" entries={matchedResults.slice(0, 5)} />
+              <SearchGroup title="🔥 Top Matches" entries={matchedResults.slice(0, 5)} />
             )}
-            <SearchGroup title="Trending Now" entries={trendingEntries} hasDivider={hasQuery && matchedResults.length > 0} />
-            <SearchGroup title="Recent Searches" entries={recentEntries} hasDivider={trendingEntries.length > 0 || (hasQuery && matchedResults.length > 0)} />
-            <SearchGroup title="Saved Searches" entries={savedEntries} showActions={false} hasDivider={recentEntries.length > 0 || trendingEntries.length > 0 || (hasQuery && matchedResults.length > 0)} />
+            <SearchGroup title="📈 Trending Now" entries={trendingEntries} hasDivider={hasQuery && matchedResults.length > 0} />
+            <SearchGroup title="🕒 Recent Searches" entries={recentEntries} hasDivider={trendingEntries.length > 0 || (hasQuery && matchedResults.length > 0)} />
+            <SearchGroup title="⭐ Saved Searches" entries={savedEntries} showActions={false} hasDivider={recentEntries.length > 0 || trendingEntries.length > 0 || (hasQuery && matchedResults.length > 0)} />
 
             {(!hasQuery && trendingEntries.length === 0) && (
               <div className="m-2 p-2 text-center">
-                <p className="text-[13px] font-light text-[#1E1E1E]/50">Start typing to find properties</p>
+                <p className="text-[13px] font-light text-white/50">Start typing to find properties</p>
               </div>
             )}
+          </div>
+
+          <div className="flex items-center justify-between border-t border-white/5 bg-[#1C2A44] px-3 py-2">
+            <span className="text-[11px] font-bold tracking-wide text-[#C89B3C]">🏢 Commercial Search</span>
+            <span className="text-[12px] text-white/40">Press ESC to close</span>
           </div>
         </div>
       )}
@@ -144,26 +148,23 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
 
 // --- MAIN SEARCH PAGE COMPONENT --- //
 const FILTER_COMPONENTS = {
-  Flats: FlatsFilters,
-  SkyVillas: SkyVillasFilters,
-  Villas: VillasFilters,
-  Plots: PlotsFilters,
+  LeaseRent: LeaseRentFilters,
+  BuyInvest: BuyInvestFilters,
+  Business: BusinessFilters,
 }
 
-const PROPERTY_TYPES = Object.keys(FILTER_COMPONENTS)
+const MODE_TYPES = Object.keys(FILTER_COMPONENTS)
 
-const PROPERTY_TYPE_ICONS = {
-  Flats: '🏢',
-  SkyVillas: '🏙️',
-  Villas: '🏡',
-  Plots: '🌄',
+const MODE_CONFIG = {
+  LeaseRent: { label: 'Lease / Rent', emoji: '🔑' },
+  BuyInvest: { label: 'Buy / Invest', emoji: '🏪' },
+  Business: { label: 'Business Opportunities', emoji: '💼' },
 }
 
 const SECTION_IDS = {
-  Flats: ['radius', 'unitSize', 'budget', 'projectType', 'projectStatus', 'specialOffers'],
-  SkyVillas: ['radius', 'unitSize', 'budget', 'projectType', 'projectStatus', 'specialOffers'],
-  Villas: ['radius', 'unitSize', 'budget', 'projectType', 'projectStatus', 'specialOffers'],
-  Plots: ['radius', 'plotSize', 'budget', 'projectType', 'approvals', 'plotType', 'speciality'],
+  LeaseRent: ['radius', 'propertyType', 'size', 'budget', 'sublease'],
+  BuyInvest: ['radius', 'propertyType', 'saleType', 'size', 'budget'],
+  Business: ['radius', 'opportunity', 'budget', 'category'],
 }
 
 const createFilterState = (defaultRadius = 50) => ({
@@ -171,45 +172,33 @@ const createFilterState = (defaultRadius = 50) => ({
   budgetMode: 'per',
   budgetMin: '',
   budgetMax: '',
-  unitSizes: [],
-  unitAreaMin: '',
-  unitAreaMax: '',
-  villasPlotMin: '',
-  villasPlotMax: '',
-  villasBuiltupMin: '',
-  villasBuiltupMax: '',
-  plotsPlotMin: '',
-  plotsPlotMax: '',
-  orrDistance: '',
-  projectTypes: [],
-  projectStatuses: [],
-  propertyAges: [],
-  specialOffers: [],
-  plotSizes: [],
-  approvals: [],
-  finalPermissions: [],
-  plotTypes: [],
+  propertyTypes: [],
   saleTypes: [],
-  specialityProjects: [],
+  opportunities: [],
+  businessCategories: [],
+  landMin: '',
+  landMax: '',
+  buaMin: '',
+  buaMax: '',
+  includeSublease: false,
 })
 
 const DEFAULT_FILTERS = {
-  Flats: createFilterState(50),
-  SkyVillas: createFilterState(50),
-  Villas: createFilterState(50),
-  Plots: createFilterState(50),
+  LeaseRent: createFilterState(50),
+  BuyInvest: createFilterState(50),
+  Business: createFilterState(50),
 }
 
 export default function SearchPage() {
   const [previewMode, setPreviewMode] = useState('desktop')
-  const [activeType, setActiveType] = useState('SkyVillas')
+  const [activeType, setActiveType] = useState('LeaseRent')
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [showFilters, setShowFilters] = useState({ desktop: false, tablet: false, mobile: false })
   const [isSearchOpen, setIsSearchOpen] = useState({ desktop: false, tablet: false, mobile: false })
   const [openSections, setOpenSections] = useState({
-    desktop: SECTION_IDS.SkyVillas,
-    tablet: SECTION_IDS.SkyVillas,
-    mobile: [SECTION_IDS.SkyVillas[0]],
+    desktop: SECTION_IDS.LeaseRent,
+    tablet: SECTION_IDS.LeaseRent,
+    mobile: [SECTION_IDS.LeaseRent[0]],
   })
 
   const ActiveFilters = useMemo(() => FILTER_COMPONENTS[activeType], [activeType])
@@ -284,28 +273,28 @@ export default function SearchPage() {
         {/* Top Controls Row */}
         <div className="flex flex-wrap items-stretch z-20 relative overflow-visible">
           
-          {/* Property Type Toggles */}
-          <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-4 gap-2' : 'flex min-w-0 shrink-0 gap-2'}`}>
-            {PROPERTY_TYPES.map((type) => {
-              const typeEmoji = PROPERTY_TYPE_ICONS[type]
-              const isActive = activeType === type
+          {/* Mode Toggle Tabs */}
+          <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-2' : 'flex min-w-0 shrink-0 gap-2'}`}>
+            {MODE_TYPES.map((mode) => {
+              const config = MODE_CONFIG[mode]
+              const isActive = activeType === mode
 
               return (
                 <button
-                  key={`${mode}-${type}`}
+                  key={`${mode}-tab`}
                   type="button"
-                  onClick={() => setActiveType(type)}
+                  onClick={() => setActiveType(mode)}
                   className={`
-                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[5px] p-2 text-[10px]' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[5px] px-4 py-2 text-[12px] min-w-[80px]'}
+                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[8px] p-2 text-[10px]' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[8px] px-4 py-2 text-[12px] min-w-[100px]'}
                     font-medium tracking-wide transition-all duration-300 border
                     ${isActive
-                      ? 'bg-[#1E1E1E] text-white border-[#1E1E1E] shadow-md scale-[0.98]' // Selected = Brown bg, White text
-                      : 'bg-transparent text-[#4B4B4B] border-[#1E1E1E]/10 hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]'
+                      ? 'bg-[#C89B3C] text-[#0F1B2E] border-[#C89B3C] shadow-md scale-[0.98]'
+                      : 'bg-transparent text-[#D1D5DB] border-white/10 hover:bg-[#C89B3C]/5 hover:text-white'
                     }
                   `}
                 >
-                  <span className={`text-[16px] leading-none ${isActive ? 'opacity-100' : 'opacity-70 grayscale'}`} role="img" aria-hidden="true">{typeEmoji}</span>
-                  {type === 'SkyVillas' ? 'Sky Villas' : type}
+                  <span className={`text-[16px] leading-none ${isActive ? 'opacity-100' : 'opacity-70 grayscale'}`} role="img" aria-hidden="true">{config.emoji}</span>
+                  {config.label}
                 </button>
               )
             })}
@@ -313,8 +302,8 @@ export default function SearchPage() {
 
           {/* Desktop Radius Slider */}
           {!isMobile && (
-            <div className="flex flex-1 items-center gap-4 rounded-[5px]  bg-white px-4 py-2  z-30 overflow-visible relative">
-              <span className="text-[13px] font-semibold tracking-wide text-[#1E1E1E]">Radius</span>
+            <div className="flex flex-1 items-center gap-4 rounded-[8px]  bg-[#1C2A44] px-4 py-2  z-30 overflow-visible relative">
+              <span className="text-[13px] font-semibold tracking-wide text-white">📍 Radius</span>
               <div className="flex-1 w-full min-w-50">
                 <RadiusSlider
                   value={activeFilterState.radius}
@@ -326,17 +315,17 @@ export default function SearchPage() {
 
           {/* Projects Count Box - Swapped to Orange */}
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-[5px] bg-[#FF6A00] px-5 py-2 text-white shadow-md">
+            <div className="flex flex-col items-center justify-center rounded-[8px] bg-[#C89B3C] px-5 py-2 text-[#0F1B2E] shadow-md">
               <span className="text-[20px] font-bold leading-none">0</span>
-              <span className="text-[10px] uppercase tracking-wider text-white/90">Projects</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#0F1B2E]/80">Projects</span>
             </div>
           )}
         </div>
 
         {/* Mobile Radius Slider */}
         {isMobile && (
-          <div className="mt-2 flex items-center gap-4 rounded-[5px] border border-[#1E1E1E]/10 bg-white px-4 py-2 shadow-sm z-30 overflow-visible relative">
-            <span className="text-[12px] font-semibold tracking-wide text-[#1E1E1E]">Radius</span>
+          <div className="mt-2 flex items-center gap-4 rounded-[8px] border border-white/10 bg-[#1C2A44] px-4 py-2 shadow-sm z-30 overflow-visible relative">
+            <span className="text-[12px] font-semibold tracking-wide text-white">📍 Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
                 value={activeFilterState.radius}
@@ -347,7 +336,7 @@ export default function SearchPage() {
         )}
 
         {/* Filter Grids Area */}
-        <div className="mt-1 rounded-[5px]">
+        <div className="mt-1 rounded-[8px]">
           {ActiveFilters && (
             <ActiveFilters
               filterState={activeFilterState}
@@ -365,22 +354,22 @@ export default function SearchPage() {
         <div className=" flex items-center pt-1 ">
           <button
             type="button"
-            className="rounded-[5px] px-1 py-1 text-[13px] font-medium text-[#1E1E1E] transition-all hover:bg-[#1E1E1E]/5 hover:text-[#1E1E1E]"
+            className="rounded-[8px] px-1 py-1 text-[13px] font-medium text-white transition-all hover:bg-[#C89B3C]/5 hover:text-white"
           >
-            Clear All
+            🗑️ Clear All
           </button>
           <button
             type="button"
-            className="rounded-[5px] border border-[#1E1E1E]/20 bg-white px-4 py-2 text-[13px] font-medium text-[#1E1E1E] shadow-sm transition-all hover:border-[#1E1E1E]/40 hover:bg-[#FFFFFF]"
+            className="rounded-[8px] border border-white/20 bg-[#1C2A44] px-4 py-2 text-[13px] font-medium text-white shadow-sm transition-all hover:border-white/40 hover:bg-[#1C2A44]"
           >
-            Save Search
+            💾 Save Search
           </button>
           {/* Show Properties Button - Swapped to Brown (Selected/Primary BG Rule) */}
           <button
             type="button"
-            className="ml-auto rounded-[5px] bg-[#1E1E1E] px-6 py-2 text-[13px] font-bold tracking-wide text-white shadow-[0_4px_12px_rgba(30,30,30,0.2)] transition-all duration-300 hover:bg-[#1E1E1E]/90 active:scale-95"
+            className="ml-auto rounded-[8px] bg-[#C89B3C] px-6 py-2 text-[13px] font-bold tracking-wide text-[#0F1B2E] shadow-[0_4px_12px_rgba(0,0,0,0.4)] transition-all duration-300 hover:bg-[#C89B3C]/90 active:scale-95"
           >
-            Show 0 Properties
+            🔍 View Properties (0)
           </button>
         </div>
       </>
@@ -392,11 +381,11 @@ export default function SearchPage() {
           <div className="flex min-w-0 flex-col z-20 relative overflow-visible">{filterControls}</div>
           
           {/* Sample Ad / Premium Boost Box - REMAINS COMPLETELY UNCHANGED PER YOUR RULE */}
-          <aside className="rounded-[5px] bg-[#1E1E1E] p-5 text-white shadow-lg h-full flex flex-col">
-            <div className="inline-flex rounded-[3px] bg-[#FF6A00]/20 px-2 py-1 self-start">
-              <p className="text-[10px] font-bold tracking-widest text-[#FF6A00] ">Sample Add</p>
+          <aside className="rounded-[8px] bg-[#C89B3C] p-5 text-[#0F1B2E] shadow-lg h-full flex flex-col">
+            <div className="inline-flex rounded-[3px] bg-[#0F1B2E]/20 px-2 py-1 self-start">
+              <p className="text-[10px] font-bold tracking-widest text-[#0F1B2E] ">Sample Add</p>
             </div>
-            <p className="mt-3 text-[14px] font-light leading-snug text-white/70">
+            <p className="mt-3 text-[14px] font-light leading-snug text-[#0F1B2E]/70">
               ..
             </p>
           </aside>
@@ -449,7 +438,7 @@ export default function SearchPage() {
                   : mode === 'tablet'
                   ? 'w-full max-w-[820px]'
                   : 'w-full max-w-[400px]'
-              } rounded-[5px] border border-[#1E1E1E]/5 bg-[#FFFFFF] p-4 overflow-visible`}
+              } rounded-[8px] border border-white/5 bg-[#1C2A44] p-4 overflow-visible`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
             </div>
@@ -460,8 +449,8 @@ export default function SearchPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F7F7] font-sans text-[#1E1E1E] overflow-visible">
-      <div className="sticky top-0 z-50 bg-[#F7F7F7]/80 backdrop-blur-md pt-2 pb-2 border-b border-[#1E1E1E]/5">
+    <div className="min-h-screen bg-[#0F1B2E] font-sans text-white overflow-visible">
+      <div className="sticky top-0 z-50 bg-[#0F1B2E]/80 backdrop-blur-md pt-2 pb-2 border-b border-white/5">
         <TopControls
           previewMode={previewMode}
           onPreviewModeChange={setPreviewMode}

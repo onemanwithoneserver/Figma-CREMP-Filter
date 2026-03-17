@@ -81,7 +81,7 @@ export default function VillasFilters({
  {/* Right Column */}
  <div className="flex flex-col">
  <AccordionSection
- title="Project Type"
+ title="Project Classification"
  icon={Building2}
  collapsible={!isMobile}
  open={isOpen('projectType')}
@@ -94,7 +94,7 @@ export default function VillasFilters({
  </AccordionSection>
 
  <AccordionSection
- title="Project Status & Age"
+ title="Availability & Property Age"
  icon={CalendarDays}
  collapsible={!isMobile}
  open={isOpen('projectStatus')}
@@ -110,7 +110,7 @@ export default function VillasFilters({
  </AccordionSection>
 
  <AccordionSection
- title="Special Offers"
+ title="Investment Benefits"
  icon={Sparkles}
  collapsible={!isMobile}
  open={isOpen('specialOffers')}

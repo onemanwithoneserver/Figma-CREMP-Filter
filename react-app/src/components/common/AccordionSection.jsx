@@ -13,6 +13,13 @@ const SECTION_EMOJIS = {
   Approvals: '✅',
   'Plot Type & Sale': '🧾',
   'Speciality Projects': '🌱',
+  // Commercial
+  'Property Category': '🏢',
+  'Size & Area': '📐',
+  'Additional Options': '⚙️',
+  'Sale Type': '🛒',
+  'Business Opportunities': '💼',
+  'Business Category': '🗂️',
 }
 
 export default function AccordionSection({
@@ -32,12 +39,12 @@ export default function AccordionSection({
 
   return (
     <section
-      className={`group rounded-[5px] mb-1 border transition-all duration-300 ${
+      className={`group rounded-[8px] mb-1 border transition-all duration-300 ${
         highlight
-          ? 'border-[#FF6A00]/30 bg-[#FF6A00]/5' // Swapped highlight to Orange tint
+          ? 'border-[#C89B3C]/30 bg-[#C89B3C]/5' // Swapped highlight to Orange tint
           : isOpen
-          ? 'border-[#1E1E1E]/10 bg-white shadow-sm'
-          : 'border-[#1E1E1E]/5 bg-[#FFFFFF] hover:border-[#1E1E1E]/15 hover:bg-white'
+          ? 'border-white/10 bg-[#1C2A44] shadow-sm'
+          : 'border-white/5 bg-[#1C2A44] hover:border-white/15 hover:bg-[#1C2A44]'
       } ${sectionClassName}`}
     >
       {collapsible ? (
@@ -48,19 +55,19 @@ export default function AccordionSection({
         >
           <div className="flex items-center gap-2">
             {Icon && (
-              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[5px] transition-all duration-300 ${
+              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] transition-all duration-300 ${
                 highlight
-                  ? 'bg-[#FF6A00]/10'
+                  ? 'bg-[#C89B3C]/10'
                   : isOpen
-                  ? 'bg-[#1E1E1E]/10'
-                  : 'bg-[#1E1E1E]/5 group-hover:bg-[#1E1E1E]/10'
+                  ? 'bg-[#C89B3C]/10'
+                  : 'bg-[#C89B3C]/5 group-hover:bg-[#C89B3C]/10'
               }`}>
                 <span className="text-[14px] leading-none" role="img" aria-hidden="true">
                   {sectionEmoji}
                 </span>
               </div>
             )}
-            <span className="text-[13px] font-semibold tracking-wide text-[#1E1E1E]">
+            <span className="text-[13px] font-semibold tracking-wide text-white">
               {title}
             </span>
           </div>
@@ -68,7 +75,7 @@ export default function AccordionSection({
             size={14}
             strokeWidth={2}
             className={`shrink-0 transition-transform duration-300 ${
-              isOpen ? 'rotate-180 text-[#FF6A00]' : 'text-[#1E1E1E]/40 group-hover:text-[#1E1E1E]'
+              isOpen ? 'rotate-180 text-[#C89B3C]' : 'text-white/40 group-hover:text-white'
             }`}
           />
         </button>
@@ -76,19 +83,19 @@ export default function AccordionSection({
         <div className={`flex w-full items-center justify-between p-2 text-left outline-none transition-all ${headerClassName}`}>
           <div className="flex items-center gap-2">
             {Icon && (
-              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[5px] transition-all duration-300 ${
+              <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[8px] transition-all duration-300 ${
                 highlight
-                  ? 'bg-[#FF6A00]/10'
+                  ? 'bg-[#C89B3C]/10'
                   : isOpen
-                  ? 'bg-[#1E1E1E]/10'
-                  : 'bg-[#1E1E1E]/5'
+                  ? 'bg-[#C89B3C]/10'
+                  : 'bg-[#C89B3C]/5'
               }`}>
                 <span className="text-[14px] leading-none" role="img" aria-hidden="true">
                   {sectionEmoji}
                 </span>
               </div>
             )}
-            <span className="text-[13px] font-semibold tracking-wide text-[#1E1E1E]">
+            <span className="text-[13px] font-semibold tracking-wide text-white">
               {title}
             </span>
           </div>
@@ -102,7 +109,7 @@ export default function AccordionSection({
       >
         <div className="overflow-hidden">
           <div
-            className={`m-2 mt-0 border-t border-[#1E1E1E]/5 pt-2 text-[13px] text-[#1E1E1E] ${contentClassName}`}
+            className={`m-2 mt-0 border-t border-white/5 pt-2 text-[13px] text-white ${contentClassName}`}
           >
             {children}
           </div>

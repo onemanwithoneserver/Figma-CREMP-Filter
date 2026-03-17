@@ -7,21 +7,21 @@ export default function ResultsSection({ results, variant = 'inline' }) {
  <div className="flex items-center">
  <button
  type="button"
- className="flex-1 rounded-[5px] border border-[#1E1E1E] bg-white px-1 py-1.5 text-[5px] font-semibold text-[#1E1E1E] transition-all hover:border-[#1E1E1E]/8 hover:text-[#1E1E1E]"
+ className="flex-1 rounded-[8px] border border-white/12 bg-[#1C2A44] px-1 py-1.5 text-[5px] font-semibold text-white transition-all hover:border-white/20 hover:text-white"
  >
- Clear All
+ 🗑️ Clear All
  </button>
  <button
  type="button"
- className="flex-1 rounded-[5px] border border-[#1E1E1E] bg-white px-1 py-1.5 text-[5px] font-semibold text-[#1E1E1E] transition-all hover:border-[#1E1E1E]/8 hover:text-[#1E1E1E]"
+ className="flex-1 rounded-[8px] border border-white/12 bg-[#1C2A44] px-1 py-1.5 text-[5px] font-semibold text-white transition-all hover:border-white/20 hover:text-white"
  >
- Save Search
+ 💾 Save Search
  </button>
  <button
  type="button"
- className="flex-[1.3] rounded-[5px] bg-[#FF6A00] px-1 py-1.5 text-[5px] font-bold text-white transition-all hover:bg-[#E85F00]"
+ className="flex-[1.3] rounded-[8px] bg-[#C89B3C] px-1 py-1.5 text-[5px] font-bold text-[#0F1B2E] transition-all hover:bg-[#E6C36A]"
  >
- View Properties ({results.length})
+ 🔍 View Properties ({results.length})
  </button>
  </div>
  </div>
@@ -33,33 +33,33 @@ export default function ResultsSection({ results, variant = 'inline' }) {
  <div className="flex items-center gap-1.5">
  <button
  type="button"
- className="rounded-[5px] border border-[#1E1E1E]/8 bg-white px-3.5 py-1.5 text-[10.5px] font-semibold text-[#1E1E1E] transition-all hover:border-[#1E1E1E]/8 hover:text-[#1E1E1E]"
+ className="rounded-[8px] border border-white/8 bg-[#1C2A44] px-3.5 py-1.5 text-[10.5px] font-semibold text-white transition-all hover:border-white/8 hover:text-white"
  >
- Clear All
+ 🗑️ Clear All
  </button>
  <button
  type="button"
- className="rounded-[5px] border border-[#1E1E1E]/8 bg-white px-3.5 py-1.5 text-[10.5px] font-semibold text-[#1E1E1E] transition-all hover:border-[#1E1E1E]/8 hover:text-[#1E1E1E]"
+ className="rounded-[8px] border border-white/8 bg-[#1C2A44] px-3.5 py-1.5 text-[10.5px] font-semibold text-white transition-all hover:border-white/8 hover:text-white"
  >
- Save Search
+ 💾 Save Search
  </button>
  <button
  type="button"
- className="ml-auto rounded-[5px] bg-[#FF6A00] px-5 py-1.5 text-[10.5px] font-bold text-white transition-all hover:bg-[#E85F00]"
+ className="ml-auto rounded-[8px] bg-[#C89B3C] px-5 py-1.5 text-[10.5px] font-bold text-[#0F1B2E] transition-all hover:bg-[#E6C36A]"
  >
- Show {results.length} Properties
+ 🔍 View Properties ({results.length})
  </button>
  </div>
  )
  }
 
  return (
- <div className="flex h-full min-w-16 flex-col items-center justify-center rounded-[6px] border border-[#1E1E1E] bg-[#1E1E1E] px-2 py-1">
- <span className="text-[30px] font-bold leading-none text-[#ffffff]">
+ <div className="flex h-full min-w-16 flex-col items-center justify-center rounded-[8px] border border-[#C89B3C] bg-[#C89B3C] px-2 py-1">
+ <span className="text-[30px] font-bold leading-none text-[#0F1B2E]">
  {results.length}
  </span>
- <span className="text-[11px] font-semibold leading-none text-[#ffffff]">
- Projects
+ <span className="text-[11px] font-semibold leading-none text-[#0F1B2E]">
+ 🏢 Projects
  </span>
  </div>
  )
