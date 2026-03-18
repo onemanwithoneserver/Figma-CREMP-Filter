@@ -16,9 +16,9 @@ const SECTION_EMOJIS = {
   'Speciality Projects': '🌱',
   // Commercial
   'Property Type': '🏢',
-  'Size & Area': '📏',
+  'Size & Area': '🗺️',
   'Additional Options': '⚙️',
-  'Sale Type': '🛒',
+  'Sale Type': '🤝',
   'Business Opportunities': '💼',
   'Business Category': '🗂️',
 

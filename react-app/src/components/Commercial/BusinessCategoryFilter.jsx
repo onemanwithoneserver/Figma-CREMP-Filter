@@ -77,15 +77,15 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
           style={{ position: 'fixed', top: pos.top, left: pos.left, width: pos.width }}
           className="z-9999 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
-          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
+          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-0.5">
             {BUSINESS_CATEGORY_OPTIONS.map((cat) => {
               const isSelected = selected.includes(cat)
               return (
-                <li key={cat} className="mt-1 first:mt-0">
+                <li key={cat}>
                   <button
                     type="button"
                     onClick={() => onToggle(cat)}
-                    className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[13px] font-medium transition-colors duration-200 ${
+                    className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[13px] font-medium transition-colors duration-200 ${
                       isSelected
                         ? 'bg-[#1C2A44]/12 text-[#1C2A44]'
                         : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'

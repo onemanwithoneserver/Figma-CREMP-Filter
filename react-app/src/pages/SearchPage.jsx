@@ -315,7 +315,7 @@ export default function SearchPage() {
 
           {/* Desktop Radius Slider */}
           {!isMobile && (
-            <div className="flex flex-1 items-center gap-4 rounded-[5px] bg-white border border-[#1C2A44]/8 px-3 py-1.5 z-30 overflow-visible relative">
+            <div className="flex flex-1 items-center gap-4 px-3 py-1.5 z-30 overflow-visible relative">
               <span className="text-[13px] font-semibold tracking-wide text-[#1C2A44]">Radius</span>
               <div className="flex-1 w-full min-w-50">
                 <RadiusSlider

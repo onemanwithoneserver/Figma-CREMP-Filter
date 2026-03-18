@@ -97,13 +97,13 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
           }}
           className="z-9999 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
-          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
+          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-0.5">
             {/* Reset / placeholder option */}
             <li>
               <button
                 type="button"
                 onClick={() => handleSelect('')}
-                className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[12px] transition-colors duration-200 ${
+                className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[12px] transition-colors duration-200 ${
                   !value
                     ? 'bg-[#1C2A44]/5 font-medium text-[#1C2A44]'
                     : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
@@ -118,11 +118,11 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
             {options.map((option) => {
               const isActive = option.value === value
               return (
-                <li key={`${option.label}-${option.value}`} className="mt-1">
+                <li key={`${option.label}-${option.value}`}>
                   <button
                     type="button"
                     onClick={() => handleSelect(option.value)}
-                    className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[13px] font-medium transition-colors duration-200 ${
+                    className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[13px] font-medium transition-colors duration-200 ${
                       isActive
                         ? 'bg-[#1C2A44]/12 text-[#1C2A44] shadow-sm'
                         : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'

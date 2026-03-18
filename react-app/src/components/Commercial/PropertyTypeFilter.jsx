@@ -27,7 +27,6 @@ export default function PropertyTypeFilter({ selected, onChange }) {
     <div className="flex gap-3">
       {/* Left — Land (radio, exclusive) */}
       <div className="flex flex-col gap-1">
-        <span className="text-[9px] font-semibold tracking-wide text-[#1C2A44]/40">Plot</span>
         <button
           type="button"
           onClick={handleLandClick}
@@ -51,7 +50,6 @@ export default function PropertyTypeFilter({ selected, onChange }) {
 
       {/* Right — Built-up types (multi-select checkboxes) */}
       <div className="flex flex-col gap-1">
-        <span className="text-[9px] font-semibold tracking-wide text-[#1C2A44]/40">Built-up Space</span>
         <div className="flex flex-wrap gap-1">
           {BUILT_UP_TYPES.map((type) => {
             const isSelected = selected.includes(type)
