@@ -24,17 +24,17 @@ export default function PropertyTypeFilter({ selected, onChange }) {
   }
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-3">
       {/* Left — Land (radio, exclusive) */}
       <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-semibold tracking-wide text-[#1C2A44]">Plot</span>
+        <span className="text-[9px] font-semibold tracking-wide text-[#1C2A44]/40">Plot</span>
         <button
           type="button"
           onClick={handleLandClick}
           className={`flex items-center gap-1.5 rounded-[5px] border px-2 py-1 text-[10.5px] font-medium transition-all duration-150 ${
             isLandSelected
               ? 'border-[#C89B3C]/60 bg-[#C89B3C]/15 text-[#C89B3C] font-semibold'
-              : 'border-[#1C2A44]/10 bg-[#F5F7FA] text-[#4A5568] hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/5'
+              : 'border-[#1C2A44]/10 bg-[#1C2A44]/5 text-[#1C2A44]/55 hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/8'
           }`}
         >
           <span className={`inline-flex h-3 w-3 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
@@ -51,7 +51,7 @@ export default function PropertyTypeFilter({ selected, onChange }) {
 
       {/* Right — Built-up types (multi-select checkboxes) */}
       <div className="flex flex-col gap-1">
-        <span className="text-[10px] font-semibold tracking-wide text-[#1C2A44]">Built-up Space</span>
+        <span className="text-[9px] font-semibold tracking-wide text-[#1C2A44]/40">Built-up Space</span>
         <div className="flex flex-wrap gap-1">
           {BUILT_UP_TYPES.map((type) => {
             const isSelected = selected.includes(type)
@@ -63,7 +63,7 @@ export default function PropertyTypeFilter({ selected, onChange }) {
                 className={`flex items-center gap-1.5 rounded-[5px] border px-2 py-1 text-[10.5px] font-medium transition-all duration-150 ${
                   isSelected
                     ? 'border-[#C89B3C]/60 bg-[#C89B3C]/15 text-[#C89B3C] font-semibold'
-                    : 'border-[#1C2A44]/10 bg-[#F5F7FA] text-[#4A5568] hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/5'
+                    : 'border-[#1C2A44]/10 bg-[#1C2A44]/5 text-[#1C2A44]/55 hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/8'
                 }`}
               >
                 <span className={`inline-flex h-3 w-3 shrink-0 items-center justify-center rounded-[3px] border transition-all ${

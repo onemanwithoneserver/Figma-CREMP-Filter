@@ -1,6 +1,7 @@
 import AccordionSection from '../common/AccordionSection'
 import RadiusSlider from '../common/RadiusSlider'
 import { BUSINESS_INVEST_OPTIONS } from '../common/filterOptions'
+import { StyledSelect } from '../common/BudgetFilter'
 import OpportunityFilter from './OpportunityFilter'
 import BusinessCategoryFilter from './BusinessCategoryFilter'
 
@@ -50,29 +51,19 @@ export default function BusinessFilters({
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >
-          <div className="">
-            <div className="grid grid-cols-2 gap-1.5">
-              <select
-                value={filterState.budgetMin}
-                onChange={(e) => onUpdate('budgetMin', e.target.value)}
-                className="rounded-[5px] border border-[#1C2A44]/10 bg-white px-2 py-1.5 text-[11px] text-[#1C2A44] outline-none transition-all focus:border-[#1C2A44]/40"
-              >
-                <option value="">Min Investment</option>
-                {BUSINESS_INVEST_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              <select
-                value={filterState.budgetMax}
-                onChange={(e) => onUpdate('budgetMax', e.target.value)}
-                className="rounded-[5px] border border-[#1C2A44]/10 bg-white px-2 py-1.5 text-[11px] text-[#1C2A44] outline-none transition-all focus:border-[#1C2A44]/40"
-              >
-                <option value="">Max Investment</option>
-                {BUSINESS_INVEST_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-            </div>
+          <div className="grid grid-cols-2 gap-1.5">
+            <StyledSelect
+              value={filterState.budgetMin}
+              onChange={(value) => onUpdate('budgetMin', value)}
+              placeholder="Min Investment"
+              options={BUSINESS_INVEST_OPTIONS}
+            />
+            <StyledSelect
+              value={filterState.budgetMax}
+              onChange={(value) => onUpdate('budgetMax', value)}
+              placeholder="Max Investment"
+              options={BUSINESS_INVEST_OPTIONS}
+            />
           </div>
         </AccordionSection>
       </div>

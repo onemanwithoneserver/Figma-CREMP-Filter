@@ -20,9 +20,9 @@ const filterEntries = (entries, query) => {
 
 function SearchRow({ label, showFavorite = true, showRemove = true }) {
   return (
-    <li className="group flex items-center justify-between gap-4 rounded-[5px] p-1.5 text-[15px] font-normal text-[#4A5568] transition-colors duration-200 hover:bg-[#1C2A44]/8">
+    <li className="group flex items-center justify-between gap-3 rounded-[5px] px-2 py-1 text-[13px] font-normal text-[#1C2A44]/55 transition-all duration-150 hover:bg-[#1C2A44]/5">
       <span className="flex items-center gap-2 truncate" title={label}>
-        <span className="h-[6px] w-[6px] shrink-0 rounded-full bg-[#1C2A44]" />
+        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1C2A44]/30" />
         {label}
       </span>
       {showFavorite && showRemove && (
@@ -41,7 +41,7 @@ function SearchGroup({ title, entries, showActions = true, hasDivider = false })
   if (entries.length === 0) return null;
   return (
     <section className={`flex flex-col gap-1 ${hasDivider ? 'border-t border-[#1C2A44]/8 pt-1' : ''}`}>
-      <h4 className="px-2 py-1 text-[16px] font-semibold text-[#1C2A44]">{title}</h4>
+      <h4 className="px-2 pb-0.5 pt-1 text-[10px] font-semibold tracking-wide text-[#1C2A44]/40">{title}</h4>
       <ul className="flex flex-col gap-1">
         {entries.map((item) => (
           <SearchRow key={`${title}-${item}`} label={item} showFavorite={showActions} showRemove={showActions} />
@@ -75,10 +75,10 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
   return (
     <div className="relative mx-auto w-full">
       <div 
-        className={`flex items-center gap-2 rounded-[5px] border bg-white p-1 transition-all duration-300
+        className={`flex items-center gap-2 rounded-[7px] border bg-white p-1 transition-all duration-300
           ${isSearchFocused 
-            ? 'border-[#1C2A44]/40 shadow-[0_0_0_2px_rgba(28,42,68,0.12)]' 
-            : 'border-[#1C2A44]/10 shadow-sm hover:border-[#1C2A44]/18'
+            ? 'border-[#1C2A44]/25 shadow-[0_0_0_3px_rgba(28,42,68,0.09),0_6px_20px_rgba(28,42,68,0.10)]' 
+            : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.07)] hover:border-[#1C2A44]/18 hover:shadow-[0_4px_16px_rgba(28,42,68,0.09)]'
           }`}
       >
         {/* Location pin icon */}
@@ -121,7 +121,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
           
           {/* Search CTA */}
           <button
-            className="flex h-8 w-8 items-center justify-center rounded-[5px] bg-[#1C2A44] text-white shadow-sm transition-colors hover:bg-[#15203A] active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-[5px] bg-[#1C2A44] text-white shadow-sm transition-all hover:opacity-90 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7"/>
@@ -133,7 +133,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
 
       {showSuggestions && (
         <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)]">
-          <div className="custom-scrollbar flex max-h-[320px] flex-col gap-2 overflow-auto p-2">
+          <div className="custom-scrollbar flex max-h-80 flex-col gap-2 overflow-auto p-2">
             {hasQuery && matchedResults.length > 0 && (
               <SearchGroup title="🔥 Top Matches" entries={matchedResults.slice(0, 5)} />
             )}
@@ -148,7 +148,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
             )}
           </div>
 
-          <div className="flex items-center justify-between border-t border-[#1C2A44]/8 bg-[#F5F7FA] px-3 py-2">
+          <div className="flex items-center justify-between border-t border-[#1C2A44]/6 bg-white/90 px-3 py-2">
             <span className="text-[11px] font-bold tracking-wide text-[#1C2A44]">�x�¢ Commercial Search</span>
             <span className="text-[12px] text-[#1C2A44]/40">Press ESC to close</span>
           </div>
@@ -298,11 +298,11 @@ export default function SearchPage() {
                   type="button"
                   onClick={() => setActiveType(mode)}
                   className={`
-                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[5px] p-2 text-[10px]' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[5px] px-4 py-2 text-[12px] min-w-[100px]'}
+                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[5px] p-2 text-[10px]' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[5px] px-4 py-2 text-[12px] min-w-25'}
                     font-medium tracking-wide transition-all duration-300 border
                     ${isActive
-                      ? 'bg-[#1C2A44] text-white border-[#1C2A44] shadow-md scale-[0.98]'
-                      : 'bg-white text-[#4A5568] border-[#1C2A44]/10 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                      ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.28)]'
+                      : 'bg-white text-[#1C2A44]/55 border-[#1C2A44]/10 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44] hover:border-[#1C2A44]/18'
                     }
                   `}
                 >
@@ -315,7 +315,7 @@ export default function SearchPage() {
 
           {/* Desktop Radius Slider */}
           {!isMobile && (
-            <div className="flex flex-1 items-center gap-4 rounded-[5px] bg-[#F5F7FA] px-4 py-2 z-30 overflow-visible relative">
+            <div className="flex flex-1 items-center gap-4 rounded-[5px] bg-white border border-[#1C2A44]/8 px-3 py-1.5 z-30 overflow-visible relative">
               <span className="text-[13px] font-semibold tracking-wide text-[#1C2A44]">Radius</span>
               <div className="flex-1 w-full min-w-50">
                 <RadiusSlider
@@ -328,16 +328,16 @@ export default function SearchPage() {
 
           {/* Projects Count Box */}
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-[5px] bg-[#C89B3C] px-5 py-2 text-[#000000] shadow-md">
+            <div className="flex flex-col items-center justify-center rounded-[5px] bg-[#C89B3C] px-3 py-1.5 text-[#000000] shadow-[0_4px_16px_rgba(200,155,60,0.40)]">
               <span className="text-[20px] font-bold leading-none">0</span>
-              <span className="text-[10px] tracking-wider text-[#000000]/70">Projects</span>
+              <span className="text-[9px] font-semibold tracking-wide text-[#000000]/60">Projects</span>
             </div>
           )}
         </div>
 
         {/* Mobile Radius Slider */}
         {isMobile && (
-          <div className="mt-2 flex items-center gap-4 rounded-[5px] border border-[#1C2A44]/10 bg-[#F5F7FA] px-4 py-2 shadow-sm z-30 overflow-visible relative">
+          <div className="mt-1 flex items-center gap-4 rounded-[5px] bg-white border border-[#1C2A44]/8 px-3 py-1.5 shadow-sm z-30 overflow-visible relative">
             <span className="text-[12px] font-semibold tracking-wide text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
@@ -367,21 +367,21 @@ export default function SearchPage() {
         <div className="flex items-center pt-1 gap-0.5">
           <button
             type="button"
-            className="rounded-[5px] px-1 py-1 text-[13px] font-medium text-[#4A5568] transition-all hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]"
+            className="rounded-[5px] px-2 py-1.5 text-[11.5px] font-medium text-[#1C2A44]/50 transition-all hover:text-[#1C2A44] hover:bg-[#1C2A44]/5"
           >
             Clear All
           </button>
           <button
             type="button"
-            className="rounded-[5px] border border-[#1C2A44]/15 bg-white px-1 py-1 text-[13px] font-medium text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/25 hover:bg-[#F5F7FA]"
+            className="rounded-[5px] border border-[#1C2A44]/18 bg-white px-2 py-1.5 text-[11.5px] font-semibold text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/28 hover:bg-[#1C2A44]/5"
           >
             Save Search
           </button>
           <button
             type="button"
-            className="ml-auto rounded-[5px] bg-[#C89B3C] px-3 py-2 text-[13px] font-bold tracking-wide text-[#000000] shadow-[0_4px_12px_rgba(200,155,60,0.30)] transition-all duration-300 hover:bg-[#E6C36A] active:scale-95"
+            className="ml-auto rounded-[5px] bg-[#C89B3C] px-3 py-1.5 text-[11.5px] font-bold tracking-wide text-[#000000] shadow-[0_4px_14px_rgba(200,155,60,0.40)] transition-all duration-150 hover:bg-[#E6C36A] active:scale-95"
           >
-            View Properties
+            View Properties →
           </button>
         </div>
 
@@ -390,13 +390,13 @@ export default function SearchPage() {
 
     if (isDesktop) {
       return (
-        <div className="grid grid-cols-[minmax(0,1fr)_340px] gap-4 z-10 relative overflow-visible">
+        <div className="grid grid-cols-[minmax(0,1fr)_340px] gap-2 z-10 relative overflow-visible">
           <div className="flex min-w-0 flex-col z-20 relative overflow-visible">{filterControls}</div>
           
           {/* Sample Ad / Premium Boost Box */}
-          <aside className="rounded-[5px] bg-[#1C2A44] p-5 text-white shadow-lg h-full flex flex-col">
+          <aside className="rounded-[7px] bg-[#1C2A44] p-3 text-white shadow-[0_8px_32px_rgba(28,42,68,0.22)] h-full flex flex-col">
             <div className="inline-flex rounded-[3px] bg-white/20 px-2 py-1 self-start">
-              <p className="text-[10px] font-bold tracking-widest text-white">Sample Add</p>
+              <p className="text-[10px] font-bold tracking-wide text-white">Sample Add</p>
             </div>
             <p className="mt-3 text-[14px] font-light leading-snug text-white/70">
               ..
@@ -427,11 +427,11 @@ export default function SearchPage() {
           previewMode === mode ? 'opacity-100' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'
         }`}
       >
-        <div className={`${viewportShellClass} flex flex-col gap-4 p-4 overflow-visible relative`}>
+<div className={`${viewportShellClass} flex flex-col gap-2 p-2 overflow-visible relative`}>
           
           {/* Top Search Bar Area */}
           <div className="z-40 mx-auto flex w-full justify-center px-2">
-            <div className="w-full max-w-[500px]">
+            <div className="w-full max-w-125">
               <FilterSearchPanel
                 onOpenFilters={() => toggleFiltersForMode(mode)}
                 onSearchFocusChange={(isFocused) => handleSearchFocusChange(mode, isFocused)}
@@ -447,11 +447,11 @@ export default function SearchPage() {
             <div
               className={`${
                 mode === 'desktop'
-                  ? 'w-full max-w-[1220px]'
+                  ? 'w-full max-w-305'
                   : mode === 'tablet'
-                  ? 'w-full max-w-[820px]'
-                  : 'w-full max-w-[400px]'
-              } rounded-[5px] border border-[#1C2A44]/8 bg-[#F5F7FA] p-2 overflow-visible shadow-sm`}
+                  ? 'w-full max-w-205'
+                  : 'w-full max-w-100'
+                } rounded-[10px] bg-white p-4 overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.13),0_4px_12px_rgba(28,42,68,0.07)]`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
             </div>

@@ -1,11 +1,11 @@
 export default function SubleaseToggle({ value, onChange }) {
   return (
     <div className="flex items-center justify-between gap-3 px-1 py-1.5">
-      <span className="text-[11px] font-medium tracking-wide text-[#4A5568]">Include Sublease / Shared Space</span>
+      <span className="text-[11px] font-medium tracking-wide text-[#1C2A44]/55">Include Sublease / Shared Space</span>
       <button
         type="button"
         onClick={() => onChange(!value)}
-        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-[4px] border transition-colors duration-300 ${
+        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-sm border transition-colors duration-300 ${
           value ? 'bg-[#1C2A44]/80 border-[#1C2A44]' : 'bg-[#1C2A44]/10 border-[#1C2A44]/15'
         }`}
       >

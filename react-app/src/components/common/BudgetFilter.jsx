@@ -11,7 +11,7 @@ const DEFAULT_BUDGET_OPTIONS = [
   { label: 'â‚¹1Cr', value: '100' },
 ]
 
-function StyledSelect({ value, onChange, placeholder, options }) {
+export function StyledSelect({ value, onChange, placeholder, options }) {
   const [open, setOpen] = useState(false)
   const triggerRef = useRef(null)
   const dropdownRef = useRef(null)
@@ -72,7 +72,7 @@ function StyledSelect({ value, onChange, placeholder, options }) {
         className={`flex w-full items-center justify-between rounded-[5px] border bg-white p-2 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
           open
             ? 'border-[#1C2A44]/20 shadow-sm ring-2 ring-[#1C2A44]/15'
-            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#F9FAFB]'
+            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/5'
         }`}
       >
         <span className={selected ? 'text-[#1C2A44]' : 'text-[#1C2A44]/40 font-light'}>
@@ -95,7 +95,7 @@ function StyledSelect({ value, onChange, placeholder, options }) {
             left: pos.left,
             width: pos.width,
           }}
-          className="z-[9999] overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
+          className="z-9999 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
           <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
             {/* Reset / placeholder option */}
@@ -106,7 +106,7 @@ function StyledSelect({ value, onChange, placeholder, options }) {
                 className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[12px] transition-colors duration-200 ${
                   !value
                     ? 'bg-[#1C2A44]/5 font-medium text-[#1C2A44]'
-                    : 'text-[#4A5568] hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                    : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
                 }`}
               >
                 <span className="w-3" />
@@ -124,8 +124,8 @@ function StyledSelect({ value, onChange, placeholder, options }) {
                     onClick={() => handleSelect(option.value)}
                     className={`flex w-full items-center gap-2 rounded-[5px] p-2 text-[13px] font-medium transition-colors duration-200 ${
                       isActive
-                        ? 'bg-[#1C2A44]/12 text-[#15203A] shadow-sm'
-                        : 'text-[#4A5568] hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                        ? 'bg-[#1C2A44]/12 text-[#1C2A44] shadow-sm'
+                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
                     }`}
                   >
                     <span
@@ -171,7 +171,7 @@ export default function BudgetFilter({
           className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
             mode === 'per'
               ? 'bg-[#1C2A44] text-white shadow-sm scale-[0.98]'
-              : 'text-[#4A5568] hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
           }`}
         >
           {perLabel}
@@ -182,7 +182,7 @@ export default function BudgetFilter({
           className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
             mode === 'overall'
               ? 'bg-[#1C2A44] text-white shadow-sm scale-[0.98]'
-              : 'text-[#4A5568] hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
           }`}
         >
           {overallLabel === 'Overall Budget' ? 'Total Investment' : overallLabel}

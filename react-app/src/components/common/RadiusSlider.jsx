@@ -41,8 +41,8 @@ export default function RadiusSlider({ value, onChange }) {
           onTouchEnd={() => setIsActive(false)}
           onChange={(e) => { onChange(Number(e.target.value)); requestAnimationFrame(updateTooltipPos) }}
           className="relative z-10 h-1.5 w-full cursor-pointer appearance-none rounded-full outline-none
-            [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C89B3C] [&::-webkit-slider-thumb]:border-[2px] [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-90
-            [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#C89B3C] [&::-moz-range-thumb]:border-[2px] [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)]"
+            [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C89B3C] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-90
+            [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#C89B3C] [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)]"
           style={{
             background: `linear-gradient(to right, #C89B3C 0%, #C89B3C ${percentage}%, rgba(28,42,68,0.10) ${percentage}%, rgba(28,42,68,0.10) 100%)`,
           }}
@@ -52,7 +52,7 @@ export default function RadiusSlider({ value, onChange }) {
         {createPortal(
           (isHovered || isActive) && (
             <div
-              className="pointer-events-none fixed z-[9999] -translate-x-1/2 animate-in fade-in zoom-in-95 duration-200"
+              className="pointer-events-none fixed z-9999 -translate-x-1/2 animate-in fade-in zoom-in-95 duration-200"
               style={{
                 left: `${tooltipPos.x}px`,
                 top: `${tooltipPos.y - 20}px`,
@@ -70,7 +70,7 @@ export default function RadiusSlider({ value, onChange }) {
       </div>
 
       {/* Distance Label */}
-      <div className="flex min-w-[44px] items-baseline justify-end gap-1 text-right">
+      <div className="flex min-w-11 items-baseline justify-end gap-1 text-right">
         <span className="text-[13px] font-bold tabular-nums text-[#1C2A44]">{value}</span>
         <span className="text-[11px] font-medium text-[#1C2A44]/50">km</span>
       </div>
