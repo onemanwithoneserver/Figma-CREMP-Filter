@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useMemo, useRef, useState } from 'react'
 import RadiusSlider from '../components/common/RadiusSlider'
 import LeaseRentFilters from '../components/Commercial/LeaseRentFilters'
@@ -20,14 +20,14 @@ const filterEntries = (entries, query) => {
 
 function SearchRow({ label, showFavorite = true, showRemove = true }) {
   return (
-    <li className="group flex items-center justify-between gap-3 rounded-[5px] px-2 py-1 text-[13px] font-normal text-[#1C2A44]/55 transition-all duration-150 hover:bg-[#1C2A44]/5">
+    <li className="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-sm font-normal text-[#1C2A44]/55 transition-all duration-150 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]">
       <span className="flex items-center gap-2 truncate" title={label}>
-        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1C2A44]/30" />
+        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1C2A44]/25" />
         {label}
       </span>
       {showFavorite && showRemove && (
         <div className="flex items-center gap-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <button className="flex items-center justify-center rounded-[5px] p-1 text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44]">
+          <button className="flex items-center justify-center rounded-md p-1 text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44] hover:bg-[#1C2A44]/5">
             <span className="text-[14px] leading-none" role="img" aria-label="save">🤍</span>
           </button>
           <button className="text-[13px] font-medium text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44]">Remove</button>
@@ -40,8 +40,8 @@ function SearchRow({ label, showFavorite = true, showRemove = true }) {
 function SearchGroup({ title, entries, showActions = true, hasDivider = false }) {
   if (entries.length === 0) return null;
   return (
-    <section className={`flex flex-col gap-1 ${hasDivider ? 'border-t border-[#1C2A44]/8 pt-1' : ''}`}>
-      <h4 className="px-2 pb-0.5 pt-1 text-[10px] font-semibold tracking-wide text-[#1C2A44]/40">{title}</h4>
+    <section className={`flex flex-col gap-1 ${hasDivider ? 'border-t border-[#1C2A44]/8 pt-2' : ''}`}>
+      <h4 className="px-2 pb-1 pt-1 text-xs font-semibold uppercase tracking-widest text-[#1C2A44]/38">{title}</h4>
       <ul className="flex flex-col gap-1">
         {entries.map((item) => (
           <SearchRow key={`${title}-${item}`} label={item} showFavorite={showActions} showRemove={showActions} />
@@ -75,14 +75,14 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
   return (
     <div className="relative mx-auto w-full">
       <div 
-        className={`flex items-center gap-2 rounded-[7px] border bg-white p-1 transition-all duration-300
-          ${isSearchFocused 
-            ? 'border-[#1C2A44]/25 shadow-[0_0_0_3px_rgba(28,42,68,0.09),0_6px_20px_rgba(28,42,68,0.10)]' 
-            : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.07)] hover:border-[#1C2A44]/18 hover:shadow-[0_4px_16px_rgba(28,42,68,0.09)]'
-          }`}
+      className={`${
+              isSearchFocused
+                ? 'border-[#1C2A44]/28 shadow-[0_0_0_3px_rgba(28,42,68,0.08),0_6px_20px_rgba(28,42,68,0.09)]'
+                : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.06)] hover:border-[#1C2A44]/16 hover:shadow-[0_4px_16px_rgba(28,42,68,0.08)]'
+            } flex items-center gap-2 rounded-lg border bg-white p-1 transition-all duration-300`}
       >
         {/* Location pin icon */}
-        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-[#1C2A44]/10 text-[#1C2A44]">
+        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#1C2A44]/8 text-[#1C2A44]">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
             <circle cx="12" cy="9" r="2.5"/>
@@ -107,7 +107,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
               setIsSearchFocused(false)
               onOpenFilters?.()
             }}
-            className="flex h-8 w-8 items-center justify-center rounded-[5px] text-[#1C2A44] transition-colors hover:bg-[#1C2A44]/10 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-md text-[#1C2A44] transition-colors hover:bg-[#1C2A44]/8 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="4" y1="6" x2="20" y2="6"/>
@@ -121,7 +121,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
           
           {/* Search CTA */}
           <button
-            className="flex h-8 w-8 items-center justify-center rounded-[5px] bg-[#1C2A44] text-white shadow-sm transition-all hover:opacity-90 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-md bg-[#1C2A44] text-white shadow-(--shadow-accent) transition-all hover:opacity-90 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7"/>
@@ -132,7 +132,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
       </div>
 
       {showSuggestions && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)]">
+        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-lg border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)]">
           <div className="custom-scrollbar flex max-h-80 flex-col gap-2 overflow-auto p-2">
             {hasQuery && matchedResults.length > 0 && (
               <SearchGroup title="🔥 Top Matches" entries={matchedResults.slice(0, 5)} />
@@ -148,9 +148,9 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
             )}
           </div>
 
-          <div className="flex items-center justify-between border-t border-[#1C2A44]/6 bg-white/90 px-3 py-2">
-            <span className="text-[11px] font-bold tracking-wide text-[#1C2A44]">�x�¢ Commercial Search</span>
-            <span className="text-[12px] text-[#1C2A44]/40">Press ESC to close</span>
+          <div className="flex items-center justify-between border-t border-[#1C2A44]/6 bg-white/90 px-4 py-2">
+            <span className="text-xs font-bold tracking-wide text-[#1C2A44]">Commercial Search</span>
+            <span className="text-xs text-[#1C2A44]/40">Press ESC to close</span>
           </div>
         </div>
       )}
@@ -298,11 +298,11 @@ export default function SearchPage() {
                   type="button"
                   onClick={() => setActiveType(mode)}
                   className={`
-                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[5px] p-2 text-[10px]' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[5px] px-4 py-2 text-[12px] min-w-25'}
-                    font-medium tracking-wide transition-all duration-300 border
+                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-lg p-2 text-xs' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-lg px-4 py-2 text-xs min-w-25'}
+                    font-semibold tracking-wide transition-all duration-200 border
                     ${isActive
-                      ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.28)]'
-                      : 'bg-white text-[#1C2A44]/55 border-[#1C2A44]/10 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44] hover:border-[#1C2A44]/18'
+                      ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.24)]'
+                      : 'bg-white text-[#1C2A44]/50 border-[#1C2A44]/10 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44] hover:border-[#1C2A44]/16'
                     }
                   `}
                 >
@@ -315,8 +315,8 @@ export default function SearchPage() {
 
           {/* Desktop Radius Slider */}
           {!isMobile && (
-            <div className="flex flex-1 items-center gap-4 px-3 py-1.5 z-30 overflow-visible relative">
-              <span className="text-[13px] font-semibold tracking-wide text-[#1C2A44]">Radius</span>
+            <div className="flex flex-1 items-center gap-4 px-4 py-2 z-30 overflow-visible relative">
+              <span className="text-sm font-semibold text-[#1C2A44]">Radius</span>
               <div className="flex-1 w-full min-w-50">
                 <RadiusSlider
                   value={activeFilterState.radius}
@@ -328,17 +328,17 @@ export default function SearchPage() {
 
           {/* Projects Count Box */}
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-[5px] bg-[#C89B3C] px-3 py-1.5 text-[#000000] shadow-[0_4px_16px_rgba(200,155,60,0.40)]">
-              <span className="text-[20px] font-bold leading-none">0</span>
-              <span className="text-[9px] font-semibold tracking-wide text-[#000000]/60">Projects</span>
+            <div className="flex flex-col items-center justify-center rounded-lg bg-[#C89B3C] px-4 py-2 text-[#000000] shadow-(--shadow-gold)">
+              <span className="text-xl font-bold leading-none">0</span>
+              <span className="text-[11px] font-semibold tracking-wider text-[#000000]/55">Projects</span>
             </div>
           )}
         </div>
 
         {/* Mobile Radius Slider */}
         {isMobile && (
-          <div className="mt-1 flex items-center gap-4 rounded-[5px] bg-white border border-[#1C2A44]/8 px-3 py-1.5 shadow-sm z-30 overflow-visible relative">
-            <span className="text-[12px] font-semibold tracking-wide text-[#1C2A44]">Radius</span>
+          <div className="mt-2 flex items-center gap-4 rounded-lg bg-white border border-[#1C2A44]/8 px-4 py-2 shadow-sm z-30 overflow-visible relative">
+            <span className="text-xs font-semibold text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
                 value={activeFilterState.radius}
@@ -349,7 +349,7 @@ export default function SearchPage() {
         )}
 
         {/* Filter Grids Area */}
-        <div className="mt-1 rounded-[5px]">
+        <div className="mt-4 ">
           {ActiveFilters && (
             <ActiveFilters
               filterState={activeFilterState}
@@ -364,22 +364,22 @@ export default function SearchPage() {
         </div>
 
         {/* Footer Action Buttons */}
-        <div className="flex items-center pt-1 gap-0.5">
+        <div className="flex items-center pt-2 gap-2">
           <button
             type="button"
-            className="rounded-[5px] px-2 py-1.5 text-[11.5px] font-medium text-[#1C2A44]/50 transition-all hover:text-[#1C2A44] hover:bg-[#1C2A44]/5"
+            className="rounded-md px-3 py-2 text-xs font-medium text-[#1C2A44]/45 transition-all hover:text-[#1C2A44] hover:bg-[#1C2A44]/5 active:scale-95"
           >
             Clear All
           </button>
           <button
             type="button"
-            className="rounded-[5px] border border-[#1C2A44]/18 bg-white px-2 py-1.5 text-[11.5px] font-semibold text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/28 hover:bg-[#1C2A44]/5"
+            className="rounded-md border border-[#1C2A44]/16 bg-white px-3 py-2 text-xs font-semibold text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/24 hover:bg-[#1C2A44]/4 active:scale-95"
           >
             Save Search
           </button>
           <button
             type="button"
-            className="ml-auto rounded-[5px] bg-[#C89B3C] px-3 py-1.5 text-[11.5px] font-bold tracking-wide text-[#000000] shadow-[0_4px_14px_rgba(200,155,60,0.40)] transition-all duration-150 hover:bg-[#E6C36A] active:scale-95"
+            className="ml-auto rounded-md bg-[#C89B3C] px-4 py-2 text-xs font-bold tracking-wide text-black shadow-(--shadow-gold) transition-all duration-150 hover:bg-[#D4A848] active:scale-95"
           >
             View Properties →
           </button>
@@ -394,11 +394,11 @@ export default function SearchPage() {
           <div className="flex min-w-0 flex-col z-20 relative overflow-visible">{filterControls}</div>
           
           {/* Sample Ad / Premium Boost Box */}
-          <aside className="rounded-[7px] bg-[#1C2A44] p-3 text-white shadow-[0_8px_32px_rgba(28,42,68,0.22)] h-full flex flex-col">
-            <div className="inline-flex rounded-[3px] bg-white/20 px-2 py-1 self-start">
-              <p className="text-[10px] font-bold tracking-wide text-white">Sample Add</p>
+          <aside className="rounded-lg bg-[#1C2A44] p-4 text-white shadow-(--shadow-accent-lg) h-full flex flex-col">
+            <div className="inline-flex rounded-sm bg-white/15 px-2 py-1 self-start">
+              <p className="text-[11px] font-bold tracking-widest uppercase text-white/80">Sample Ad</p>
             </div>
-            <p className="mt-3 text-[14px] font-light leading-snug text-white/70">
+            <p className="mt-4 text-sm font-light leading-relaxed text-white/60">
               ..
             </p>
           </aside>
@@ -451,7 +451,7 @@ export default function SearchPage() {
                   : mode === 'tablet'
                   ? 'w-full max-w-205'
                   : 'w-full max-w-100'
-                } rounded-[10px] bg-white p-4 overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.13),0_4px_12px_rgba(28,42,68,0.07)]`}
+                } rounded-lg bg-white p-4 overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.11),0_4px_12px_rgba(28,42,68,0.06),inset_0_0_0_1px_rgba(28,42,68,0.05)]`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
             </div>

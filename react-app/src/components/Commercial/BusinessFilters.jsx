@@ -16,7 +16,7 @@ export default function BusinessFilters({
   const isOpen = (id) => openSections.includes(id)
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-0.5' : 'grid grid-cols-1 gap-x-2 gap-y-0.5 lg:grid-cols-2'}>
+    <div className={isMobile ? 'flex flex-col gap-y-2' : 'grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-2'}>
       {/* Left Column */}
       <div className="flex flex-col">
         {showRadiusInAccordion && (
@@ -51,7 +51,7 @@ export default function BusinessFilters({
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >
-          <div className="grid grid-cols-2 gap-1.5">
+          <div className="grid grid-cols-2 gap-2">
             <StyledSelect
               value={filterState.budgetMin}
               onChange={(value) => onUpdate('budgetMin', value)}

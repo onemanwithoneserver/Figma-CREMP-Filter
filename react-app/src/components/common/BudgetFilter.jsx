@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+﻿import { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 
 const DEFAULT_BUDGET_OPTIONS = [
@@ -69,17 +69,17 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`flex w-full items-center justify-between rounded-[5px] border bg-white p-2 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
+        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none ${
           open
-            ? 'border-[#1C2A44]/20 shadow-sm ring-2 ring-[#1C2A44]/15'
-            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/5'
+            ? 'border-[#1C2A44]/22 shadow-sm ring-2 ring-[#1C2A44]/12'
+            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/3'
         }`}
       >
         <span className={selected ? 'text-[#1C2A44]' : 'text-[#1C2A44]/40 font-light'}>
           {selected ? selected.label : placeholder}
         </span>
         <span
-          className={`shrink-0 text-[12px] leading-none inline-block transition-transform duration-300 ${
+          className={`shrink-0 text-[24px] leading-none inline-block transition-transform duration-300 ${
             open ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35'
           }`}
         >▾</span>
@@ -95,18 +95,18 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
             left: pos.left,
             width: pos.width,
           }}
-          className="z-9999 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
+          className="z-9999 overflow-hidden rounded-lg border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
-          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-0.5">
+          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
             {/* Reset / placeholder option */}
             <li>
               <button
                 type="button"
                 onClick={() => handleSelect('')}
-                className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[12px] transition-colors duration-200 ${
+                className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs transition-colors duration-150 ${
                   !value
-                    ? 'bg-[#1C2A44]/5 font-medium text-[#1C2A44]'
-                    : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                    ? 'bg-[#1C2A44]/5 font-semibold text-[#1C2A44]'
+                    : 'text-[#1C2A44]/50 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
                 }`}
               >
                 <span className="w-3" />
@@ -122,10 +122,10 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
                   <button
                     type="button"
                     onClick={() => handleSelect(option.value)}
-                    className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[13px] font-medium transition-colors duration-200 ${
+                    className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-150 ${
                       isActive
-                        ? 'bg-[#1C2A44]/12 text-[#1C2A44] shadow-sm'
-                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                        ? 'bg-[#1C2A44]/10 text-[#1C2A44] shadow-sm'
+                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
                     }`}
                   >
                     <span
@@ -162,16 +162,16 @@ export default function BudgetFilter({
   const activeOptions = mode === 'overall' ? overallOptions ?? options : perOptions ?? options
 
   return (
-    <div className="pt-1">
-      {/* Segmented Control - Tab Rules Applied */}
-      <div className="mb-3 inline-flex items-center gap-1 rounded-[5px] border border-[#1C2A44]/10 bg-white p-1 shadow-sm">
+    <div className="pt-2">
+      {/* Segmented Control */}
+      <div className="mb-3 inline-flex items-center gap-1 rounded-lg border border-[#1C2A44]/10 bg-[#1C2A44]/3 p-1 shadow-sm">
         <button
           type="button"
           onClick={() => onModeChange('per')}
-          className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
+          className={`rounded-md px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${
             mode === 'per'
-              ? 'bg-[#1C2A44] text-white shadow-sm scale-[0.98]'
-              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+              ? 'bg-[#1C2A44] text-white shadow-sm'
+              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/6 hover:text-[#1C2A44]'
           }`}
         >
           {perLabel}
@@ -179,10 +179,10 @@ export default function BudgetFilter({
         <button
           type="button"
           onClick={() => onModeChange('overall')}
-          className={`rounded-[5px] px-3 py-1.5 text-[12px] font-medium tracking-wide transition-all duration-300 ${
+          className={`rounded-md px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${
             mode === 'overall'
-              ? 'bg-[#1C2A44] text-white shadow-sm scale-[0.98]'
-              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+              ? 'bg-[#1C2A44] text-white shadow-sm'
+              : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/6 hover:text-[#1C2A44]'
           }`}
         >
           {overallLabel === 'Overall Budget' ? 'Total Investment' : overallLabel}

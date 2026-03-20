@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+﻿import { useState, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 
 export default function RadiusSlider({ value, onChange }) {
@@ -58,7 +58,7 @@ export default function RadiusSlider({ value, onChange }) {
                 top: `${tooltipPos.y - 20}px`,
               }}
             >
-              <div className="relative rounded-[5px] bg-[#1C2A44] px-2.5 py-1 text-[12px] font-bold tracking-wide text-white shadow-lg">
+              <div className="relative rounded-md bg-[#1C2A44] px-2.5 py-1 text-xs font-bold tracking-wide text-white shadow-lg">
                 {value} km
                 {/* Tooltip Triangle */}
                 <div className="absolute -bottom-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-sm bg-[#1C2A44]" />
@@ -70,9 +70,9 @@ export default function RadiusSlider({ value, onChange }) {
       </div>
 
       {/* Distance Label */}
-      <div className="flex min-w-11 items-baseline justify-end gap-1 text-right">
-        <span className="text-[13px] font-bold tabular-nums text-[#1C2A44]">{value}</span>
-        <span className="text-[11px] font-medium text-[#1C2A44]/50">km</span>
+      <div className="flex min-w-12 items-baseline justify-end gap-1 text-right">
+        <span className="text-sm font-bold tabular-nums text-[#1C2A44]">{value}</span>
+        <span className="text-xs font-medium text-[#1C2A44]/45">km</span>
       </div>
     </div>
   )

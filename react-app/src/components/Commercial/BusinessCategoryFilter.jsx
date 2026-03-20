@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+﻿import { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { BUSINESS_CATEGORY_OPTIONS } from '../common/filterOptions'
 
@@ -54,17 +54,17 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`flex w-full items-center justify-between rounded-[5px] border bg-white p-2 text-[13px] font-medium transition-all duration-300 focus:outline-none ${
+        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none ${
           open
-            ? 'border-[#1C2A44]/20 shadow-sm ring-2 ring-[#1C2A44]/15'
-            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/5'
+            ? 'border-[#1C2A44]/22 shadow-sm ring-2 ring-[#1C2A44]/12'
+            : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/3'
         }`}
       >
         <span className={selected.length > 0 ? 'text-[#1C2A44]' : 'font-light text-[#1C2A44]/40'}>
           {label}
         </span>
         <span
-          className={`shrink-0 text-[12px] leading-none inline-block transition-transform duration-300 ${
+          className={`shrink-0 text-[24px] leading-none inline-block transition-transform duration-300 ${
             open ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35'
           }`}
         >▾</span>
@@ -75,9 +75,9 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
         <div
           ref={dropdownRef}
           style={{ position: 'fixed', top: pos.top, left: pos.left, width: pos.width }}
-          className="z-9999 overflow-hidden rounded-[5px] border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
+          className="z-9999 overflow-hidden rounded-lg border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
         >
-          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-0.5">
+          <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
             {BUSINESS_CATEGORY_OPTIONS.map((cat) => {
               const isSelected = selected.includes(cat)
               return (
@@ -85,10 +85,10 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
                   <button
                     type="button"
                     onClick={() => onToggle(cat)}
-                    className={`flex w-full items-center gap-2 rounded-[5px] px-2 py-1 text-[13px] font-medium transition-colors duration-200 ${
+                    className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-150 ${
                       isSelected
-                        ? 'bg-[#1C2A44]/12 text-[#1C2A44]'
-                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/5 hover:text-[#1C2A44]'
+                        ? 'bg-[#1C2A44]/10 text-[#1C2A44]'
+                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
                     }`}
                   >
                     <span
@@ -110,11 +110,11 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
 
       {/* Selected chips */}
       {selected.length > 0 && (
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1.5">
           {selected.map((cat) => (
             <span
               key={cat}
-              className="flex items-center gap-1 rounded-[5px] bg-[#C89B3C]/15 px-2 py-0.5 text-[10px] font-medium text-[#C89B3C]"
+              className="flex items-center gap-1 rounded-sm bg-[#C89B3C]/10 px-2 py-1 text-xs font-medium text-[#B88A2C]"
             >
               {cat}
               <button

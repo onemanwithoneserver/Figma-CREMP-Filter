@@ -1,4 +1,4 @@
-import TagButton from '../common/TagButton'
+﻿import TagButton from '../common/TagButton'
 
 const LAND = 'Land'
 const BUILT_UP_TYPES = ['Retail Space', 'Office Space', 'Coworking', 'Full Building']
@@ -26,17 +26,17 @@ export default function PropertyTypeFilter({ selected, onChange }) {
   return (
     <div className="flex gap-3">
       {/* Left — Land (radio, exclusive) */}
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1.5">
         <button
           type="button"
           onClick={handleLandClick}
-          className={`flex items-center gap-1.5 rounded-[5px] border px-2 py-1 text-[10.5px] font-medium transition-all duration-150 ${
+          className={`flex items-center gap-2 rounded-sm border px-3 py-1 text-xs font-medium transition-all duration-150 ${
             isLandSelected
-              ? 'border-[#C89B3C]/60 bg-[#C89B3C]/15 text-[#C89B3C] font-semibold'
-              : 'border-[#1C2A44]/10 bg-[#1C2A44]/5 text-[#1C2A44]/55 hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/8'
+              ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
+              : 'border-[#1C2A44]/10 bg-[#1C2A44]/4 text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/7 hover:text-[#1C2A44]'
           }`}
         >
-          <span className={`inline-flex h-3 w-3 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
+          <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
             isLandSelected ? 'border-[#C89B3C]' : 'border-[#1C2A44]/30'
           }`}>
             {isLandSelected && <span className="h-1.5 w-1.5 rounded-full bg-[#C89B3C]" />}
@@ -49,32 +49,32 @@ export default function PropertyTypeFilter({ selected, onChange }) {
       <div className="w-px self-stretch bg-[#1C2A44]/10" />
 
       {/* Right — Built-up types (multi-select checkboxes) */}
-      <div className="flex flex-col gap-1">
-        <div className="flex flex-wrap gap-1">
-          {BUILT_UP_TYPES.map((type) => {
-            const isSelected = selected.includes(type)
-            return (
-              <button
-                key={type}
-                type="button"
-                onClick={() => handleBuiltUpClick(type)}
-                className={`flex items-center gap-1.5 rounded-[5px] border px-2 py-1 text-[10.5px] font-medium transition-all duration-150 ${
-                  isSelected
-                    ? 'border-[#C89B3C]/60 bg-[#C89B3C]/15 text-[#C89B3C] font-semibold'
-                    : 'border-[#1C2A44]/10 bg-[#1C2A44]/5 text-[#1C2A44]/55 hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/8'
-                }`}
-              >
-                <span className={`inline-flex h-3 w-3 shrink-0 items-center justify-center rounded-[3px] border transition-all ${
-                  isSelected ? 'border-[#C89B3C] bg-[#C89B3C]' : 'border-[#1C2A44]/30 bg-white'
-                }`}>
-                  {isSelected && <span className="text-[8px] font-bold leading-none text-white">✓</span>}
-                </span>
-                {type}
-              </button>
-            )
-          })}
+      <div className="flex flex-col gap-1.5">
+          <div className="flex flex-wrap gap-1.5">
+            {BUILT_UP_TYPES.map((type) => {
+              const isSelected = selected.includes(type)
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => handleBuiltUpClick(type)}
+                  className={`flex items-center gap-2 rounded-sm border px-3 py-1 text-xs font-medium transition-all duration-150 ${
+                    isSelected
+                      ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
+                      : 'border-[#1C2A44]/10 bg-[#1C2A44]/4 text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/7 hover:text-[#1C2A44]'
+                  }`}
+                >
+                  <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${
+                    isSelected ? 'border-[#C89B3C] bg-[#C89B3C]' : 'border-[#1C2A44]/30 bg-white'
+                  }`}>
+                    {isSelected && <span className="text-[8px] font-bold leading-none text-white">✓</span>}
+                  </span>
+                  {type}
+                </button>
+              )
+            })}
+          </div>
         </div>
-      </div>
     </div>
   )
 }
