@@ -85,10 +85,10 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
                   <button
                     type="button"
                     onClick={() => onToggle(cat)}
-                    className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-150 ${
+                    className={`flex w-full items-center gap-2 rounded-md px-2 py-2 text-[12px] font-medium transition-colors duration-150 ${
                       isSelected
-                        ? 'bg-[#1C2A44]/10 text-[#1C2A44]'
-                        : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
+                        ? ' text-[#1C2A44]'
+                        : 'text-[#1C2A44]/55 '
                     }`}
                   >
                     <span
@@ -114,13 +114,13 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
           {selected.map((cat) => (
             <span
               key={cat}
-              className="flex items-center gap-1 rounded-sm bg-[#C89B3C]/10 px-2 py-1 text-xs font-medium text-[#B88A2C]"
+              className="flex items-center gap-4 rounded-sm bg-[#C89B3C]/10 px-4 py-2 text-xs font-medium text-[#B88A2C]"
             >
               {cat}
               <button
                 type="button"
                 onClick={() => onToggle(cat)}
-                className="leading-none text-[#C89B3C]/70 hover:text-[#C89B3C]"
+                className="leading-none text-[#C89B3C]/70 text-[12px] hover:text-[#C89B3C]"
               >
                 ×
               </button>

@@ -211,7 +211,7 @@ export default function SearchPage() {
   const [openSections, setOpenSections] = useState({
     desktop: SECTION_IDS.LeaseRent,
     tablet: SECTION_IDS.LeaseRent,
-    mobile: [SECTION_IDS.LeaseRent[0]],
+    mobile: SECTION_IDS.LeaseRent,
   })
 
   const ActiveFilters = useMemo(() => FILTER_COMPONENTS[activeType], [activeType])
@@ -225,7 +225,7 @@ export default function SearchPage() {
         return {
           desktop: defaults,
           tablet: defaults,
-          mobile: [defaults[0]],
+          mobile: defaults,
         }
       }
       return prev
@@ -252,11 +252,6 @@ export default function SearchPage() {
   }
 
   const toggleSection = (mode, id) => {
-    if (mode === 'mobile') {
-      setOpenSections((previous) => ({ ...previous, mobile: [id] }))
-      return
-    }
-
     setOpenSections((previous) => ({
       ...previous,
       [mode]: previous[mode].includes(id)
@@ -337,7 +332,7 @@ export default function SearchPage() {
 
         {/* Mobile Radius Slider */}
         {isMobile && (
-          <div className="mt-2 flex items-center gap-4 rounded-lg bg-white border border-[#1C2A44]/8 px-4 py-2 shadow-sm z-30 overflow-visible relative">
+          <div className="mt-2 flex items-center gap-4 bg-white px-4 py-2 ">
             <span className="text-xs font-semibold text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
@@ -349,7 +344,7 @@ export default function SearchPage() {
         )}
 
         {/* Filter Grids Area */}
-        <div className="mt-4 ">
+        <div className={isMobile ? 'm-0.5' : 'm-2'}>
           {ActiveFilters && (
             <ActiveFilters
               filterState={activeFilterState}
@@ -379,9 +374,9 @@ export default function SearchPage() {
           </button>
           <button
             type="button"
-            className="ml-auto rounded-md bg-[#C89B3C] px-4 py-2 text-xs font-bold tracking-wide text-black shadow-(--shadow-gold) transition-all duration-150 hover:bg-[#D4A848] active:scale-95"
+            className="ml-auto rounded-md bg-[#C89B3C] px-4 py-2 text-[12px] font-bold tracking-wide text-black shadow-(--shadow-gold) transition-all duration-150 hover:bg-[#D4A848] active:scale-95"
           >
-            View Properties →
+            View Properties
           </button>
         </div>
 
@@ -451,7 +446,7 @@ export default function SearchPage() {
                   : mode === 'tablet'
                   ? 'w-full max-w-205'
                   : 'w-full max-w-100'
-                } rounded-lg bg-white p-4 overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.11),0_4px_12px_rgba(28,42,68,0.06),inset_0_0_0_1px_rgba(28,42,68,0.05)]`}
+                } rounded-lg bg-white ${mode === 'mobile' ? 'p-1' : 'p-4'} overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.11),0_4px_12px_rgba(28,42,68,0.06),inset_0_0_0_1px_rgba(28,42,68,0.05)]`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
             </div>

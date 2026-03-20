@@ -16,14 +16,15 @@ export default function BusinessFilters({
   const isOpen = (id) => openSections.includes(id)
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-2' : 'grid grid-cols-1 gap-x-4 gap-y-4 lg:grid-cols-2'}>
+    <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-4 gap-y-1 lg:grid-cols-2'}>
       {/* Left Column */}
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-1">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
             icon={true}
-            collapsible={!isMobile}
+            collapsible
+            borderless
             open={isOpen('radius')}
             onToggle={() => onToggleSection('radius')}
           >
@@ -34,7 +35,7 @@ export default function BusinessFilters({
         <AccordionSection
           title="Business Opportunities"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('opportunity')}
           onToggle={() => onToggleSection('opportunity')}
         >
@@ -47,7 +48,7 @@ export default function BusinessFilters({
         <AccordionSection
           title="Investment Range"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >
@@ -69,11 +70,11 @@ export default function BusinessFilters({
       </div>
 
       {/* Right Column */}
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-1">
         <AccordionSection
           title="Business Category"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('category')}
           onToggle={() => onToggleSection('category')}
           highlight

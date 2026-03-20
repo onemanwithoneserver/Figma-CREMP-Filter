@@ -31,6 +31,7 @@ export default function AccordionSection({
   children,
   collapsible = true,
   highlight = false,
+  borderless = false,
   icon: Icon,
   sectionClassName = '',
   headerClassName = '',
@@ -42,7 +43,9 @@ export default function AccordionSection({
   return (
     <section
       className={`group rounded-sm transition-all duration-300 ${
-        highlight
+        borderless
+          ? 'bg-transparent'
+          : highlight
           ? 'bg-[#1C2A44]/4 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.09)]'
           : isOpen
           ? 'bg-white shadow-[0_2px_12px_rgba(28,42,68,0.08),inset_0_0_0_1px_rgba(28,42,68,0.07)]'
@@ -53,7 +56,7 @@ export default function AccordionSection({
         <button
           type="button"
           onClick={onToggle}
-          className={`flex w-full items-center justify-between px-4 py-4 text-left outline-none transition-all ${headerClassName}`}
+          className={`flex w-full items-center justify-between px-2 py-2 text-left outline-none transition-all ${headerClassName}`}
         >
           <div className="flex items-center gap-4">
             {Icon && (
@@ -109,7 +112,7 @@ export default function AccordionSection({
       >
         <div className="overflow-hidden">
           <div
-            className={`px-3 pb-3 border-t border-[#1C2A44]/7 pt-2.5 text-sm text-[#1C2A44] ${contentClassName}`}
+            className={`px-4 py-2 text-sm text-[#1C2A44] ${contentClassName}`}
           >
             {children}
           </div>

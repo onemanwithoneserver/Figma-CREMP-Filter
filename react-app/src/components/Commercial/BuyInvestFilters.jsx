@@ -21,14 +21,15 @@ export default function BuyInvestFilters({
   const isOpen = (id) => openSections.includes(id)
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-0.5' : 'grid grid-cols-1 gap-x-2 gap-y-0.5 lg:grid-cols-2'}>
+    <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-2 gap-y-1 lg:grid-cols-2'}>
       {/* Left Column */}
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-1">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
             icon={true}
-            collapsible={!isMobile}
+            collapsible
+            borderless
             open={isOpen('radius')}
             onToggle={() => onToggleSection('radius')}
           >
@@ -39,7 +40,7 @@ export default function BuyInvestFilters({
         <AccordionSection
           title="Property Type"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('propertyType')}
           onToggle={() => onToggleSection('propertyType')}
         >
@@ -52,7 +53,7 @@ export default function BuyInvestFilters({
         <AccordionSection
           title="Sale Type"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('saleType')}
           onToggle={() => onToggleSection('saleType')}
         >
@@ -64,11 +65,11 @@ export default function BuyInvestFilters({
       </div>
 
       {/* Right Column */}
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-y-1">
         <AccordionSection
           title="Size & Area"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
         >
@@ -90,7 +91,7 @@ export default function BuyInvestFilters({
         <AccordionSection
           title="Investment Range"
           icon={true}
-          collapsible={!isMobile}
+          collapsible
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >

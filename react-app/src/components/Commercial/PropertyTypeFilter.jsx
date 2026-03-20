@@ -30,10 +30,10 @@ export default function PropertyTypeFilter({ selected, onChange }) {
         <button
           type="button"
           onClick={handleLandClick}
-          className={`flex items-center gap-2 rounded-sm border px-3 py-1 text-xs font-medium transition-all duration-150 ${
+          className={`flex items-center gap-2 rounded-[4px] border pt-2 pb-1 px-1 text-xs font-medium transition-all duration-150 ${
             isLandSelected
               ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
-              : 'border-[#1C2A44]/10 bg-[#1C2A44]/4 text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/7 hover:text-[#1C2A44]'
+              : 'border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
           }`}
         >
           <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
@@ -58,10 +58,10 @@ export default function PropertyTypeFilter({ selected, onChange }) {
                   key={type}
                   type="button"
                   onClick={() => handleBuiltUpClick(type)}
-                  className={`flex items-center gap-2 rounded-sm border px-3 py-1 text-xs font-medium transition-all duration-150 ${
+                  className={`flex items-center gap-2 rounded-[4px] border pt-2 pb-1 px-1 text-xs font-medium transition-all duration-150 ${
                     isSelected
                       ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
-                      : 'border-[#1C2A44]/10 bg-[#1C2A44]/4 text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/7 hover:text-[#1C2A44]'
+                      : 'border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
                   }`}
                 >
                   <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${

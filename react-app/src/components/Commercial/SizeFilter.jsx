@@ -16,12 +16,8 @@ export default function SizeFilter({
 }) {
   const [landUnit, setLandUnit] = useState('sqyd')  // 'sqyd' | 'acre'
 
-  const hasLand = selectedTypes.includes('Land')
-  const hasBuiltUp = selectedTypes.some((t) => t !== 'Land')
-  const noneSelected = selectedTypes.length === 0
-
-  const showLand = hasLand || noneSelected
-  const showBua = hasBuiltUp || noneSelected
+  const showLand = true
+  const showBua = true
 
   const bothVisible = showLand && showBua
   const layoutClass = isDesktopView
