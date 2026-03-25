@@ -14,10 +14,13 @@ export default function SizeFilter({
   isMobile = false,
   isDesktopView = false,
 }) {
+
   const [landUnit, setLandUnit] = useState('sqyd')  // 'sqyd' | 'acre'
 
-  const showLand = true
-  const showBua = true
+  // Only show Land Area for 'Land', Built-up Area for others
+  const isLand = selectedTypes && selectedTypes.length === 1 && selectedTypes[0] === 'Land';
+  const showLand = isLand;
+  const showBua = !isLand;
 
   const bothVisible = showLand && showBua
   const layoutClass = isDesktopView

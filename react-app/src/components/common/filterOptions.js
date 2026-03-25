@@ -9,7 +9,7 @@ export const COMMERCIAL_PROPERTY_CATEGORY_OPTIONS = [
 
 // ─── Sale Type (Buy/Invest mode) ───
 export const SALE_TYPE_OPTIONS = [
-  'Vacant for Sale',
+  'Vacant Space',
   'Pre-Leased',
   'Fractional Investment',
 ]
@@ -52,6 +52,14 @@ export const COMMERCIAL_RENT_PER_SFT_OPTIONS = [
 
 // ─── Commercial: Overall Rent/Lease Budget (Lakh-based) ───
 export const COMMERCIAL_RENT_OVERALL_OPTIONS = [
+  { label: '₹10K', value: '10' },
+  { label: '₹15K', value: '15' },
+  { label: '₹20K', value: '20' },
+  { label: '₹25K', value: '25' },
+  { label: '₹30K', value: '30' },
+  { label: '₹40K', value: '40' },
+  { label: '₹50K', value: '50' },
+  { label: '₹75K', value: '75' },
   { label: '₹1L', value: '100' },
   { label: '₹1.5L', value: '150' },
   { label: '₹2L', value: '200' },
