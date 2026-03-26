@@ -78,11 +78,6 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
         <span className={selected ? 'text-[#1C2A44]' : 'text-[#1C2A44]/40 font-light'}>
           {selected ? selected.label : placeholder}
         </span>
-        <span
-          className={`shrink-0 text-[24px] leading-none inline-block transition-transform duration-300 ${
-            open ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35'
-          }`}
-        >▾</span>
       </button>
 
       {/* Dropdown via Portal */}

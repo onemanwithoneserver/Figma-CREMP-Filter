@@ -46,10 +46,10 @@ export default function AccordionSection({
         borderless
           ? 'bg-transparent'
           : highlight
-          ? 'bg-[#1C2A44]/4 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.09)]'
+          ? ''
           : isOpen
-          ? 'bg-white shadow-[0_2px_12px_rgba(28,42,68,0.08),inset_0_0_0_1px_rgba(28,42,68,0.07)]'
-          : 'bg-white shadow-[inset_0_0_0_1px_rgba(28,42,68,0.07)] '
+          ? ''
+          : ''
       } ${sectionClassName}`}
     >
       {collapsible ? (
@@ -76,11 +76,6 @@ export default function AccordionSection({
               {title}
             </span>
           </div>
-          <span
-            className={`shrink-0 text-[24px] leading-none inline-block transition-transform duration-300 ${
-              isOpen ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35 group-hover:text-[#1C2A44]'
-            }`}
-          >▾</span>
         </button>
       ) : (
         <div className={`flex w-full items-center justify-between px-2 py-4 text-left outline-none transition-all ${headerClassName}`}>

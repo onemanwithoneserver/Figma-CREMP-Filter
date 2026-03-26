@@ -63,11 +63,6 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
         <span className={selected.length > 0 ? 'text-[#1C2A44]' : 'font-light text-[#1C2A44]/40'}>
           {label}
         </span>
-        <span
-          className={`shrink-0 text-[24px] leading-none inline-block transition-transform duration-300 ${
-            open ? 'rotate-180 text-[#1C2A44]' : 'text-[#1C2A44]/35'
-          }`}
-        >▾</span>
       </button>
 
       {/* Portal Dropdown */}
