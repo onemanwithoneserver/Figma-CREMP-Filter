@@ -24,9 +24,9 @@ export default function PropertyTypeFilter({ selected, onChange }) {
   }
 
   return (
-    <div className="flex gap-1">
+    <div className="flex flex-wrap gap-1 items-center justify-start">
       {/* Left — Land (radio, exclusive) */}
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1.5 items-center justify-center">
         <button
           type="button"
           onClick={handleLandClick}
@@ -44,7 +44,7 @@ export default function PropertyTypeFilter({ selected, onChange }) {
       </div>
 
       {/* Divider */}
-      <div className="w-px self-stretch bg-[#1C2A44]/10" />
+      <div className="h-px self-stretch bg-[#1C2A44]/10" />
 
       {/* Right — Built-up types (multi-select checkboxes) */}
       <div className="flex flex-col gap-1.5">

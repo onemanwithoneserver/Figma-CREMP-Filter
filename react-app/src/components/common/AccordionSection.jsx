@@ -51,7 +51,7 @@ export default function AccordionSection({
       >
         <div className="flex items-center gap-4">
           {Icon && (
-            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition-all duration-300 ${highlight
+            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] transition-all duration-300 ${highlight
               ? 'bg-[#1C2A44]/10 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.12)]'
               : 'bg-[#1C2A44]/10 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.10)]'
               }`}>
@@ -72,7 +72,7 @@ export default function AccordionSection({
       >
         <div className="overflow-hidden">
           <div
-            className={`px-4 py-2 text-sm text-[#1C2A44] ${contentClassName}`}
+            className={` py-2 text-sm text-[#1C2A44] ${contentClassName}`}
           >
             {children}
           </div>

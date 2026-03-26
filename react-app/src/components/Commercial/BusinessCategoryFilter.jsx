@@ -12,8 +12,8 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
     selected.length === 0
       ? 'Select categories…'
       : selected.length === 1
-      ? selected[0]
-      : `${selected.length} categories selected`
+        ? selected[0]
+        : `${selected.length} categories selected`
 
   const updatePosition = useCallback(() => {
     if (triggerRef.current) {
@@ -54,11 +54,10 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none ${
-          open
+        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none ${open
             ? 'border-[#1C2A44]/22 shadow-sm ring-2 ring-[#1C2A44]/12'
             : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/3'
-        }`}
+          }`}
       >
         <span className={selected.length > 0 ? 'text-[#1C2A44]' : 'font-light text-[#1C2A44]/40'}>
           {label}
@@ -80,16 +79,14 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
                   <button
                     type="button"
                     onClick={() => onToggle(cat)}
-                    className={`flex w-full items-center gap-2 rounded-md px-2 py-2 text-[12px] font-medium transition-colors duration-150 ${
-                      isSelected
+                    className={`flex w-full items-center gap-2 rounded-md px-2 py-2 text-[12px] font-medium transition-colors duration-150 ${isSelected
                         ? ' text-[#1C2A44]'
                         : 'text-[#1C2A44]/55 '
-                    }`}
+                      }`}
                   >
                     <span
-                      className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${
-                        isSelected ? 'border-[#C89B3C] bg-[#C89B3C]' : 'border-[#1C2A44]/25 bg-white'
-                      }`}
+                      className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${isSelected ? 'border-[#C89B3C] bg-[#C89B3C]' : 'border-[#1C2A44]/25 bg-white'
+                        }`}
                     >
                       {isSelected && <span className="text-[8px] font-bold leading-none text-white">✓</span>}
                     </span>
@@ -109,7 +106,7 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
           {selected.map((cat) => (
             <span
               key={cat}
-              className="flex items-center gap-4 rounded-sm bg-[#C89B3C]/10 px-4 py-2 text-xs font-medium text-[#B88A2C]"
+              className="flex items-center gap-4 rounded-sm bg-[#C89B3C]/10 px-2 py-2 text-xs font-medium text-[#B88A2C]"
             >
               {cat}
               <button

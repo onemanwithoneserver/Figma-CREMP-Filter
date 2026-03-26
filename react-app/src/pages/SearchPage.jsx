@@ -27,7 +27,7 @@ function SearchRow({ label, showFavorite = true, showRemove = true }) {
       </span>
       {showFavorite && showRemove && (
         <div className="flex items-center gap-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <button className="flex items-center justify-center rounded-md p-1 text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44] hover:bg-[#1C2A44]/5">
+          <button className="flex items-center justify-center rounded-[4px] p-1 text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44] hover:bg-[#1C2A44]/5">
             <span className="text-[14px] leading-none" role="img" aria-label="save">🤍</span>
           </button>
           <button className="text-[13px] font-medium text-[#1C2A44]/30 transition-colors hover:text-[#1C2A44]">Remove</button>
@@ -76,12 +76,12 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
     <div className="relative mx-auto w-full">
       <div
         className={`${isSearchFocused
-            ? 'border-[#1C2A44]/28 shadow-[0_0_0_3px_rgba(28,42,68,0.08),0_6px_20px_rgba(28,42,68,0.09)]'
-            : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.06)] hover:border-[#1C2A44]/16 hover:shadow-[0_4px_16px_rgba(28,42,68,0.08)]'
+          ? 'border-[#1C2A44]/28 shadow-[0_0_0_3px_rgba(28,42,68,0.08),0_6px_20px_rgba(28,42,68,0.09)]'
+          : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.06)] hover:border-[#1C2A44]/16 hover:shadow-[0_4px_16px_rgba(28,42,68,0.08)]'
           } flex items-center gap-2 rounded-lg border bg-white p-1 transition-all duration-300`}
       >
         {/* Location pin icon */}
-        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#1C2A44]/8 text-[#1C2A44]">
+        <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] bg-[#1C2A44]/8 text-[#1C2A44]">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
             <circle cx="12" cy="9" r="2.5" />
@@ -106,7 +106,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
               setIsSearchFocused(false)
               onOpenFilters?.()
             }}
-            className="flex h-8 w-8 items-center justify-center rounded-md text-[#1C2A44] transition-colors hover:bg-[#1C2A44]/8 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-[4px] text-[#1C2A44] transition-colors hover:bg-[#1C2A44]/8 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="4" y1="6" x2="20" y2="6" />
@@ -120,7 +120,7 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
 
           {/* Search CTA */}
           <button
-            className="flex h-8 w-8 items-center justify-center rounded-md bg-[#1C2A44] text-white shadow-(--shadow-accent) transition-all hover:opacity-90 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-[4px] bg-[#1C2A44] text-white shadow-(--shadow-accent) transition-all hover:opacity-90 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />
@@ -159,16 +159,16 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
 
 // --- MAIN SEARCH PAGE COMPONENT --- //
 const FILTER_COMPONENTS = {
-  LeaseRent: LeaseRentFilters,
   BuyInvest: BuyInvestFilters,
+  LeaseRent: LeaseRentFilters,
   Business: BusinessFilters,
 }
 
 const MODE_TYPES = Object.keys(FILTER_COMPONENTS)
 
 const MODE_CONFIG = {
-  LeaseRent: { label: 'Lease / Rent', emoji: '🔑' },
   BuyInvest: { label: 'Buy / Invest', emoji: '🪙' },
+  LeaseRent: { label: 'Lease / Rent', emoji: '🔑' },
   Business: { label: 'Business Opportunities', emoji: '💼' },
 
 }
@@ -292,7 +292,7 @@ export default function SearchPage() {
                   type="button"
                   onClick={() => setActiveType(mode)}
                   className={`
-                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-lg p-2 text-xs' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-lg px-4 py-2 text-xs min-w-25'}
+                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-lg p-2 text-xs' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[4px] px-2 py-2 text-xs min-w-25'}
                     font-semibold tracking-wide transition-all duration-200 border
                     ${isActive
                       ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.24)]'
@@ -438,10 +438,10 @@ export default function SearchPage() {
             }`}>
             <div
               className={`${mode === 'desktop'
-                  ? 'w-full max-w-305'
-                  : mode === 'tablet'
-                    ? 'w-full max-w-205'
-                    : 'w-full max-w-100'
+                ? 'w-full max-w-305'
+                : mode === 'tablet'
+                  ? 'w-full max-w-205'
+                  : 'w-full max-w-100'
                 } rounded-lg bg-white ${mode === 'mobile' ? 'p-1' : 'p-4'} overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.11),0_4px_12px_rgba(28,42,68,0.06),inset_0_0_0_1px_rgba(28,42,68,0.05)]`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
