@@ -1,6 +1,5 @@
 import AccordionSection from '../common/AccordionSection'
 import RadiusSlider from '../common/RadiusSlider'
-// 1. Import your newly added options array
 import { BUSINESS_INVEST_OPTIONS, BUSINESS_CATEGORY_OPTIONS } from '../common/filterOptions'
 import { StyledSelect } from '../common/BudgetFilter'
 import OpportunityFilter from './OpportunityFilter'
@@ -15,52 +14,37 @@ export default function BusinessFilters({
   showRadiusInAccordion = isMobile,
 }) {
   const isOpen = (id) => openSections.includes(id)
-
-  // 2. Add custom logic to handle the array manipulation
   const handleCategoryToggle = (clickedValue) => {
-    // Get all real categories (excluding 'Select All')
     const actualCategories = BUSINESS_CATEGORY_OPTIONS.filter(opt => opt !== 'Select All')
     const currentSelected = filterState.businessCategories || []
 
     if (clickedValue === 'Select All') {
-      // Check if everything is currently selected
       const isAllSelected = currentSelected.includes('Select All') || currentSelected.length >= actualCategories.length
 
       if (isAllSelected) {
-        // If everything is selected, clear the array
-        // Note: Passing the array without the 'true' 3rd argument usually replaces the state entirely
         onUpdate('businessCategories', [])
       } else {
-        // If not all are selected, select everything (including the 'Select All' string for the UI)
         onUpdate('businessCategories', [...BUSINESS_CATEGORY_OPTIONS])
       }
     } else {
-      // Logic for clicking a standard individual category
       let newSelected;
 
       if (currentSelected.includes(clickedValue)) {
-        // Unchecking an item: remove the item, and also ensure 'Select All' gets removed
         newSelected = currentSelected.filter(item => item !== clickedValue && item !== 'Select All')
       } else {
-        // Checking an item: add it to the array
         newSelected = [...currentSelected, clickedValue]
-
-        // Auto-check 'Select All' if clicking this item means all actual categories are now selected
         const selectedActualsCount = newSelected.filter(item => item !== 'Select All').length
         if (selectedActualsCount === actualCategories.length) {
           newSelected.push('Select All')
         }
       }
-
-      // Update the state with the newly calculated array
       onUpdate('businessCategories', newSelected)
     }
   }
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-4 gap-y-1 lg:grid-cols-2'}>
-      {/* Left Column */}
-      <div className="flex flex-col gap-y-1">
+    <div className={isMobile ? 'flex flex-col gap-1' : 'grid grid-cols-1 gap-x-4 gap-y-1 lg:grid-cols-2'}>
+      <div className="flex flex-col gap-2">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
@@ -121,7 +105,6 @@ export default function BusinessFilters({
           onToggle={() => onToggleSection('category')}
           highlight
         >
-          {/* 3. Pass the new handler here instead of the inline function */}
           <BusinessCategoryFilter
             selected={filterState.businessCategories}
             onToggle={handleCategoryToggle}
