@@ -11,6 +11,7 @@ export default function SaleTypeFilter({ selected, onToggle }) {
           tooltip={option.tooltip}
           selected={selected.includes(option.label)}
           onClick={() => onToggle(option.label)}
+          showCheckbox={true}
         />
       ))}
     </div>

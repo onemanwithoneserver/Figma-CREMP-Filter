@@ -1,7 +1,15 @@
 import { useState, useId, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-export default function TagButton({ label, selected = false, onClick, disabled = false, tooltip }) {
+export default function TagButton({
+  label,
+  selected = false,
+  onClick,
+  disabled = false,
+  tooltip,
+  showCheckbox = false,
+  customClass = ''
+}) {
   const [showTooltip, setShowTooltip] = useState(false)
   const [mounted, setMounted] = useState(false)
   const tooltipId = useId()
@@ -43,7 +51,7 @@ export default function TagButton({ label, selected = false, onClick, disabled =
 
   return (
     <div
-      className="inline-block"
+      className={customClass.includes('w-full') ? 'block w-full' : 'inline-block'}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setShowTooltip(false)}
     >
@@ -56,19 +64,29 @@ export default function TagButton({ label, selected = false, onClick, disabled =
         onBlur={() => setShowTooltip(false)}
         onKeyDown={handleKeyDown}
         aria-describedby={tooltip && showTooltip ? tooltipId : undefined}
-
-        className={`inline-flex items-center rounded-sm border px-3 py-1 text-xs font-medium tracking-wide transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-1
+        title={tooltip}
+        className={`flex items-center gap-2 rounded-[4px] border px-2 py-2  text-xs transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-1
           ${disabled ? 'cursor-not-allowed opacity-40' : ''}
           ${selected
-            ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold shadow-[inset_0_0_0_1px_rgba(200,155,60,0.25)]'
-            : 'border-[#1C2A44]/10 bg-[#1C2A44]/4 text-[#1C2A44]/60 hover:border-[#1C2A44]/20 hover:bg-[#1C2A44]/7 hover:text-[#1C2A44]'
-          }`}
+            ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
+            : 'font-medium border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
+          } ${customClass}`}
         data-selected={selected}
       >
+        {showCheckbox && (
+          <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${selected
+            ? 'border-[#C89B3C] bg-[#C89B3C]'
+            : 'border-[#1C2A44]/30 bg-white'
+            }`}>
+            {selected && (
+              <span className="text-[8px] font-bold leading-none text-white">✓</span>
+            )}
+          </span>
+        )}
+
         {label}
       </button>
 
-      {/* The Tooltip Box */}
       {mounted && tooltip && showTooltip && createPortal(
         <div
           id={tooltipId}
@@ -78,8 +96,6 @@ export default function TagButton({ label, selected = false, onClick, disabled =
             left: `${position.left}px`,
             transform: 'translateX(-50%)',
           }}
-          // CHANGED: Removed whitespace-nowrap & min-w-max. 
-          // ADDED: w-48 (fixed width of 192px) and text-center to allow multiline wrapping.
           className="pointer-events-none absolute z-[99999] w-48 text-center rounded bg-[#1C2A44] px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg animate-in fade-in duration-200"
         >
           <span>{tooltip}</span>

@@ -75,7 +75,7 @@ export default function BusinessFilters({
         )}
 
         <AccordionSection
-          title="Business Opportunities"
+          title="Active Business"
           icon={true}
           collapsible
           open={isOpen('opportunity')}
