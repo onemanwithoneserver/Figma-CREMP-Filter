@@ -24,7 +24,8 @@ export const OPPORTUNITY_OPTIONS = [
 
 // ─── Business Categories (placeholder — multi select from backend) ───
 export const BUSINESS_CATEGORY_OPTIONS = [
-  'Restaurant / Café',
+  'Select All',
+  'Restaurant / Cafe',
   'Retail / Showroom',
   'Salon / Spa',
   'Gym / Fitness',
