@@ -343,7 +343,7 @@ export default function SearchPage() {
         )}
 
         {/* Filter Grids Area */}
-        <div className={isMobile ? 'm-0.5' : 'm-2'}>
+        <div className={isMobile ? 'm-2.5' : 'm-2'}>
           {ActiveFilters && (
             <ActiveFilters
               filterState={activeFilterState}
@@ -358,7 +358,7 @@ export default function SearchPage() {
         </div>
 
         {/* Footer Action Buttons */}
-        <div className="flex items-center pt-2 gap-2">
+        <div className="flex items-center p-2 gap-2">
           <button
             type="button"
             className="rounded-md px-3 py-2 text-xs font-medium text-[#1C2A44]/45 transition-all hover:text-[#1C2A44] hover:bg-[#1C2A44]/5 active:scale-95"
