@@ -1,19 +1,17 @@
-
-
 const SECTION_EMOJIS = {
-  Radius: '📍',
-  'Search Radius': '📍',
-  'Area & Configuration': '🏠',
-  'Land Area': '🏘️',
-  'Plot Size': '📍',
+  Radius: '🎯',
+  'Search Radius': '🧭',
+  'Area & Configuration': '📐',
+  'Land Area': '🏞️',
+  'Plot Size': '📏',
   'Investment Range': '💰',
-  'Monthly Rent / Lease': '💰',
+  'Monthly Rent / Lease': '🪙',
   'Project Classification': '🏗️',
   'Availability & Property Age': '🗓️',
-  'Investment Benefits': '🎁',
-  Approvals: '✅',
-  'Plot Type & Sale': '🧾',
-  'Speciality Projects': '🌱',
+  'Investment Benefits': '📈',
+  Approvals: '📜',
+  'Plot Type & Sale': '🏷️',
+  'Speciality Projects': '✨',
   // Commercial
   'Property Type': '🏢',
   'Size & Area': '🗺️',
@@ -21,8 +19,7 @@ const SECTION_EMOJIS = {
   'Sale Type': '🤝',
   'Active Business': '💼',
   'Business Category': '🗂️',
-
-}
+};
 
 export default function AccordionSection({
   title,
