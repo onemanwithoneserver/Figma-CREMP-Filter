@@ -67,7 +67,7 @@ export default function AccordionSection({
       </div>
 
       <div
-        className={`px-1 grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        className={`px-1 grid transition-all border border-[#1C2A44]/10  duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
           }`}
       >
         <div className="overflow-hidden">

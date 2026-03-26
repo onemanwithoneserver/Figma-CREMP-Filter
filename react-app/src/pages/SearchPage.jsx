@@ -322,7 +322,7 @@ export default function SearchPage() {
 
           {/* Projects Count Box */}
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-lg bg-[#C89B3C] px-4 py-2 text-[#000000] shadow-(--shadow-gold)">
+            <div className="flex flex-col items-center justify-center rounded-[6px] bg-[#C89B3C] px-4 py-2 text-[#000000] shadow-(--shadow-gold)">
               <span className="text-xl font-bold leading-none">0</span>
               <span className="text-[11px] font-semibold tracking-wider text-[#000000]/55">Projects</span>
             </div>
@@ -367,13 +367,13 @@ export default function SearchPage() {
           </button>
           <button
             type="button"
-            className="rounded-md border border-[#1C2A44]/16 bg-white px-3 py-2 text-xs font-semibold text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/24 hover:bg-[#1C2A44]/4 active:scale-95"
+            className="rounded-[4px] border border-[#1C2A44]/16 bg-white px-3 py-2 text-xs font-semibold text-[#1C2A44] shadow-sm transition-all hover:border-[#1C2A44]/24 hover:bg-[#1C2A44]/4 active:scale-95"
           >
             Save Search
           </button>
           <button
             type="button"
-            className="ml-auto rounded-md bg-[#C89B3C] px-4 py-2 text-[12px] font-bold tracking-wide text-black shadow-(--shadow-gold) transition-all duration-150 hover:bg-[#D4A848] active:scale-95"
+            className="ml-auto rounded-[4px] bg-[#C89B3C] px-4 py-2 text-[12px] font-bold tracking-wide text-black shadow-(--shadow-gold) transition-all duration-150 hover:bg-[#D4A848] active:scale-95"
           >
             View Properties
           </button>
