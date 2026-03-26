@@ -9,11 +9,19 @@ export const COMMERCIAL_PROPERTY_CATEGORY_OPTIONS = [
 
 // ─── Sale Type (Buy/Invest mode) ───
 export const SALE_TYPE_OPTIONS = [
-  'Vacant Space',
-  'Pre-Leased',
-  'Fractional Investment',
+  {
+    label: 'Vacant',
+    tooltip: 'Ready for immediate possession or new tenants'
+  },
+  {
+    label: 'Pre-Leased',
+    tooltip: 'Comes with existing tenants and immediate rental income'
+  },
+  {
+    label: 'Fractional Investment',
+    tooltip: 'Own a fraction of a high-value commercial asset'
+  },
 ]
-
 // ─── Business Opportunities ───
 export const OPPORTUNITY_OPTIONS = [
   'Sale',
