@@ -67,12 +67,12 @@ export default function AccordionSection({
       </div>
 
       <div
-        className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        className={`px-1 grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
           }`}
       >
         <div className="overflow-hidden">
           <div
-            className={` py-2 text-sm text-[#1C2A44] ${contentClassName}`}
+            className={` pb-4 text-sm text-[#1C2A44] ${contentClassName}`}
           >
             {children}
           </div>

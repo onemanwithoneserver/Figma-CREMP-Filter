@@ -24,7 +24,7 @@ export default function PropertyTypeFilter({ selected, onChange }) {
   }
 
   return (
-    <div className="flex flex-wrap gap-1 items-center justify-start">
+    <div className="flex flex-wrap gap-1 px-1 items-center justify-start">
       {/* Left — Land (radio, exclusive) */}
       <div className="flex flex-col gap-1.5 items-center justify-center">
         <button
