@@ -16,10 +16,8 @@ export const SALE_TYPE_OPTIONS = [
 
 // ─── Business Opportunities ───
 export const OPPORTUNITY_OPTIONS = [
-  'Active Business – Sale',
-  'Active Business – Lease',
-  'Co-working / Shared Space',
-  'Franchise Investment',
+  'Sale',
+  'Lease',
 ]
 
 // ─── Business Categories (placeholder — multi select from backend) ───

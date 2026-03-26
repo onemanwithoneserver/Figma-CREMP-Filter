@@ -74,18 +74,17 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
 
   return (
     <div className="relative mx-auto w-full">
-      <div 
-      className={`${
-              isSearchFocused
-                ? 'border-[#1C2A44]/28 shadow-[0_0_0_3px_rgba(28,42,68,0.08),0_6px_20px_rgba(28,42,68,0.09)]'
-                : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.06)] hover:border-[#1C2A44]/16 hover:shadow-[0_4px_16px_rgba(28,42,68,0.08)]'
-            } flex items-center gap-2 rounded-lg border bg-white p-1 transition-all duration-300`}
+      <div
+        className={`${isSearchFocused
+            ? 'border-[#1C2A44]/28 shadow-[0_0_0_3px_rgba(28,42,68,0.08),0_6px_20px_rgba(28,42,68,0.09)]'
+            : 'border-[#1C2A44]/10 shadow-[0_2px_10px_rgba(28,42,68,0.06)] hover:border-[#1C2A44]/16 hover:shadow-[0_4px_16px_rgba(28,42,68,0.08)]'
+          } flex items-center gap-2 rounded-lg border bg-white p-1 transition-all duration-300`}
       >
         {/* Location pin icon */}
         <div className="m-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#1C2A44]/8 text-[#1C2A44]">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            <circle cx="12" cy="9" r="2.5"/>
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+            <circle cx="12" cy="9" r="2.5" />
           </svg>
         </div>
 
@@ -110,22 +109,22 @@ function FilterSearchPanel({ onOpenFilters, onSearchFocusChange, autoFocusInput 
             className="flex h-8 w-8 items-center justify-center rounded-md text-[#1C2A44] transition-colors hover:bg-[#1C2A44]/8 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="4" y1="6" x2="20" y2="6"/>
-              <line x1="4" y1="12" x2="20" y2="12"/>
-              <line x1="4" y1="18" x2="20" y2="18"/>
-              <circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/>
-              <circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/>
-              <circle cx="9" cy="18" r="2" fill="currentColor" stroke="none"/>
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="18" x2="20" y2="18" />
+              <circle cx="9" cy="6" r="2" fill="currentColor" stroke="none" />
+              <circle cx="15" cy="12" r="2" fill="currentColor" stroke="none" />
+              <circle cx="9" cy="18" r="2" fill="currentColor" stroke="none" />
             </svg>
           </button>
-          
+
           {/* Search CTA */}
           <button
             className="flex h-8 w-8 items-center justify-center rounded-md bg-[#1C2A44] text-white shadow-(--shadow-accent) transition-all hover:opacity-90 active:scale-95"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"/>
-              <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="22" y2="22" />
             </svg>
           </button>
         </div>
@@ -280,7 +279,7 @@ export default function SearchPage() {
       <>
         {/* Top Controls Row */}
         <div className="flex flex-wrap items-stretch z-20 relative overflow-visible">
-          
+
           {/* Mode Toggle Tabs */}
           <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-2' : 'flex min-w-0 shrink-0 gap-2'}`}>
             {MODE_TYPES.map((mode) => {
@@ -387,7 +386,7 @@ export default function SearchPage() {
       return (
         <div className="grid grid-cols-[minmax(0,1fr)_340px] gap-2 z-10 relative overflow-visible">
           <div className="flex min-w-0 flex-col z-20 relative overflow-visible">{filterControls}</div>
-          
+
           {/* Sample Ad / Premium Boost Box */}
           <aside className="rounded-lg bg-[#1C2A44] p-4 text-white shadow-(--shadow-accent-lg) h-full flex flex-col">
             <div className="inline-flex rounded-sm bg-white/15 px-2 py-1 self-start">
@@ -406,24 +405,23 @@ export default function SearchPage() {
 
   const renderPreview = (mode) => {
     const showModeFilters = showFilters[mode]
-    
+
     const viewportShellClass =
       mode === 'desktop'
         ? 'mx-auto w-full max-w-[1280px]'
         : mode === 'tablet'
-        ? 'mx-auto w-full max-w-[820px]'
-        : 'mx-auto w-full max-w-[400px]'
+          ? 'mx-auto w-full max-w-[820px]'
+          : 'mx-auto w-full max-w-[400px]'
 
     return (
       <section
         key={mode}
         id={`preview-${mode}`}
-        className={`mx-auto w-full transition-all duration-300 overflow-visible ${
-          previewMode === mode ? 'opacity-100' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'
-        }`}
+        className={`mx-auto w-full transition-all duration-300 overflow-visible ${previewMode === mode ? 'opacity-100' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'
+          }`}
       >
-<div className={`${viewportShellClass} flex flex-col gap-2 p-2 overflow-visible relative`}>
-          
+        <div className={`${viewportShellClass} flex flex-col gap-2 p-2 overflow-visible relative`}>
+
           {/* Top Search Bar Area */}
           <div className="z-40 mx-auto flex w-full justify-center px-2">
             <div className="w-full max-w-125">
@@ -436,16 +434,14 @@ export default function SearchPage() {
           </div>
 
           {/* Filter Body Area */}
-          <div className={`relative z-30 flex w-full justify-center transition-all duration-500 ease-out ${
-            showModeFilters ? 'opacity-100 translate-y-0' : 'h-0 opacity-0 overflow-hidden -translate-y-2'
-          }`}>
+          <div className={`relative z-30 flex w-full justify-center transition-all duration-500 ease-out ${showModeFilters ? 'opacity-100 translate-y-0' : 'h-0 opacity-0 overflow-hidden -translate-y-2'
+            }`}>
             <div
-              className={`${
-                mode === 'desktop'
+              className={`${mode === 'desktop'
                   ? 'w-full max-w-305'
                   : mode === 'tablet'
-                  ? 'w-full max-w-205'
-                  : 'w-full max-w-100'
+                    ? 'w-full max-w-205'
+                    : 'w-full max-w-100'
                 } rounded-lg bg-white ${mode === 'mobile' ? 'p-1' : 'p-4'} overflow-visible shadow-[0_16px_48px_rgba(28,42,68,0.11),0_4px_12px_rgba(28,42,68,0.06),inset_0_0_0_1px_rgba(28,42,68,0.05)]`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
