@@ -5,7 +5,7 @@ const SECTION_EMOJIS = {
   'Land Area': '🏞️',
   'Plot Size': '📏',
   'Investment Range': '💰',
-  'Monthly Rent / Lease': '🪙',
+  'Monthly Rent / Lease': '🤝',
   'Project Classification': '🏗️',
   'Availability & Property Age': '🗓️',
   'Investment Benefits': '📈',
@@ -13,10 +13,10 @@ const SECTION_EMOJIS = {
   'Plot Type & Sale': '🏷️',
   'Speciality Projects': '✨',
   // Commercial
-  'Property Type': '🏢',
+  'Property Type': '🏬',
   'Size & Area': '🗺️',
   'Additional Options': '⚙️',
-  'Sale Type': '🤝',
+  'Sale Type': '💳',
   'Active Business': '💼',
   'Business Category': '🗂️',
 };
