@@ -284,7 +284,7 @@ export default function SearchPage() {
                     ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[4px] p-1.5 text-[11px]' : 'flex min-w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-[4px] px-2 py-1.5 text-[11px]'}
                     border font-medium tracking-wide transition-all duration-200
                     ${isActive
-                      ? 'border-transparent bg-gradient-to-r from-[#5c4018] to-[#8c6828] text-white shadow-sm'
+                      ? 'border-transparent bg-gradient-to-br from-[#1C2A44] to-[#154eb1] text-white shadow-sm'
                       : 'border-[#1C2A44]/10 bg-gradient-to-b from-white to-[#F9FAFB] text-[#1C2A44]/60 hover:border-[#1C2A44]/20 hover:text-[#1C2A44]'
                     }
                   `}
@@ -309,7 +309,7 @@ export default function SearchPage() {
           )}
 
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-[4px] bg-gradient-to-br from-[#1C2A44] to-[#253755] px-3 py-1 text-white shadow-sm">
+            <div className="flex flex-col items-center justify-center rounded-[4px] bg-gradient-to-r from-[#5c4018] to-[#8c6828] px-2 py-1 text-white shadow-sm">
               <span className="text-[18px] font-bold leading-none">0</span>
               <span className="text-[12px] font-semibold tracking-wider text-white">Projects Found</span>
             </div>
