@@ -30,9 +30,9 @@ export default function BuyInvestFilters({
   }, [isOpen('size')])
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-[1fr_auto_1fr] gap-y-1.5'}>
+    <div className={isMobile ? 'flex flex-col gap-[2px]' : 'grid grid-cols-[1fr_auto_1fr] gap-y-[2px]'}>
       {/* Left column */}
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-[2px]">
         {showRadiusInAccordion && (
           <>
             <AccordionSection
@@ -45,7 +45,7 @@ export default function BuyInvestFilters({
             >
               <RadiusSlider value={filterState.radius} onChange={(value) => onUpdate('radius', value)} />
             </AccordionSection>
-            <div className="h-px bg-gray-200 my-2" />
+            <div className="h-px bg-gray-200 my-[2px]" />
           </>
         )}
 
@@ -61,7 +61,7 @@ export default function BuyInvestFilters({
             onChange={(newTypes) => onUpdate('propertyTypes', newTypes)}
           />
         </AccordionSection>
-        <div className="h-px bg-gray-200 my-2" />
+        <div className="h-px bg-gray-200 my-[2px]" />
 
         <AccordionSection
           title="Sale Type"
@@ -78,10 +78,10 @@ export default function BuyInvestFilters({
       </div>
 
       {/* Vertical divider for desktop */}
-      <div className="hidden lg:block w-px bg-gray-200 mx-4" />
+      <div className="hidden lg:block w-px bg-gray-200 mx-[2px]" />
 
       {/* Right column */}
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-[2px]">
         <AccordionSection
           title="Size & Area"
           icon={true}
@@ -105,7 +105,7 @@ export default function BuyInvestFilters({
             unit={sizeUnit}
           />
         </AccordionSection>
-        <div className="h-px bg-gray-200 my-2" />
+        <div className="h-px bg-gray-200 my-[2px]" />
 
         <AccordionSection
           title="Investment Range"

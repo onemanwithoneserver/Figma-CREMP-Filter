@@ -41,11 +41,11 @@ export default function SizeFilter({
   const bothVisible = showLand && showBua
   const layoutClass = isDesktopView
     ? bothVisible
-      ? 'grid grid-cols-[1fr_auto_1fr] items-start gap-2.5'
+      ? 'grid grid-cols-[1fr_auto_1fr] items-start gap-[2px]'
       : 'block'
     : isMobile
-      ? 'grid grid-cols-1 gap-2'
-      : 'grid gap-2 lg:grid-cols-2'
+      ? 'grid grid-cols-1 gap-[2px]'
+      : 'grid gap-[2px] lg:grid-cols-2'
 
   const landPlaceholder = unit === 'acre'
     ? { min: 'Min (acres)', max: 'Max (acres)' }
@@ -55,7 +55,7 @@ export default function SizeFilter({
     <div className={layoutClass}>
       {showLand && (
         <div>
-          <div className="flex flex-row gap-2 px-2 pt-1">
+          <div className="flex flex-row gap-[2px] px-[2px] pt-[2px]">
             <input
               value={landMin}
               onChange={(e) => onLandMinChange(e.target.value)}
@@ -78,7 +78,7 @@ export default function SizeFilter({
 
       {showBua && (
         <div>
-          <div className="flex flex-row gap-2 px-2 pt-1">
+          <div className="flex flex-row gap-[2px] px-[2px] pt-[2px]">
             <input
               value={buaMin}
               onChange={(e) => onBuaMinChange(e.target.value)}

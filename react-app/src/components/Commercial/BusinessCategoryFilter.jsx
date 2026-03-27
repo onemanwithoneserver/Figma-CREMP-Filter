@@ -53,7 +53,7 @@ export default function BusinessCategoryFilter({ selected, onToggle }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className={`flex w-full items-center justify-between rounded-[4px] border bg-gradient-to-b from-white to-[#F9FAFB] px-2.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus:outline-none ${
+        className={`flex w-[200px] items-center justify-between rounded-[4px] border bg-gradient-to-b from-white to-[#F9FAFB] px-2.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus:outline-none ${
           open
             ? 'border-[#1C2A44]/30 shadow-sm ring-1 ring-[#1C2A44]/10'
             : 'border-[#1C2A44]/10 shadow-sm hover:border-[#1C2A44]/20'

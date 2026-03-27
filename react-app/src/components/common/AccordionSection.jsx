@@ -1,24 +1,6 @@
 const SECTION_EMOJIS = {
-  Radius: '🎯',
-  'Search Radius': '🧭',
-  'Area & Configuration': '📐',
-  'Land Area': '🏞️',
-  'Plot Size': '📏',
   'Investment Range': '💰',
-  'Monthly Rent / Lease': '🤝',
-  'Project Classification': '🏗️',
-  'Availability & Property Age': '🗓️',
-  'Investment Benefits': '📈',
-  Approvals: '📜',
-  'Plot Type & Sale': '🏷️',
-  'Speciality Projects': '✨',
-  // Commercial
-  'Property Type': '🏬',
-  'Size & Area': '🗺️',
-  'Additional Options': '⚙️',
-  'Sale Type': '💳',
-  'Active Business': '💼',
-  'Business Category': '🗂️',
+  // ... other emojis
 };
 
 export default function AccordionSection({

@@ -43,74 +43,83 @@ export default function BusinessFilters({
     }
   }
 
-  return (
-    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-y-1.5 lg:grid-cols-2'}>
-      <div className="flex flex-col gap-1.5">
-        {showRadiusInAccordion && (
+    return (
+      <div className={isMobile ? 'flex flex-col gap-[2px]' : 'grid grid-cols-[1fr_auto_1fr] gap-y-[2px]'}>
+        {/* Left column */}
+        <div className="flex flex-col gap-[2px]">
+          {showRadiusInAccordion && (
+            <>
+              <AccordionSection
+                title="Search Radius"
+                icon={true}
+                collapsible
+                borderless
+                open={isOpen('radius')}
+                onToggle={() => onToggleSection('radius')}
+              >
+                <RadiusSlider value={filterState.radius} onChange={(value) => onUpdate('radius', value)} />
+              </AccordionSection>
+              <div className="h-px bg-gray-200 my-[2px]" />
+            </>
+          )}
+
           <AccordionSection
-            title="Search Radius"
+            title="Active Business"
             icon={true}
             collapsible
-            borderless
-            open={isOpen('radius')}
-            onToggle={() => onToggleSection('radius')}
+            open={isOpen('opportunity')}
+            onToggle={() => onToggleSection('opportunity')}
           >
-            <RadiusSlider value={filterState.radius} onChange={(value) => onUpdate('radius', value)} />
+            <OpportunityFilter
+              selected={filterState.opportunities}
+              onToggle={(value) => onUpdate('opportunities', value, true)}
+            />
           </AccordionSection>
-        )}
+          <div className="h-px bg-gray-200 my-[2px]" />
 
-        <AccordionSection
-          title="Active Business"
-          icon={true}
-          collapsible
-          open={isOpen('opportunity')}
-          onToggle={() => onToggleSection('opportunity')}
-        >
-          <OpportunityFilter
-            selected={filterState.opportunities}
-            onToggle={(value) => onUpdate('opportunities', value, true)}
-          />
-        </AccordionSection>
+          <AccordionSection
+            title="Investment Range"
+            icon={true}
+            collapsible
+            open={isOpen('budget')}
+            onToggle={() => onToggleSection('budget')}
+          >
+            <div className="grid grid-cols-3 gap-[2px]">
+              <StyledSelect
+                value={filterState.budgetMin}
+                onChange={(value) => onUpdate('budgetMin', value)}
+                placeholder="Min Investment"
+                options={BUSINESS_INVEST_OPTIONS}
+              />
+              <StyledSelect
+                value={filterState.budgetMax}
+                onChange={(value) => onUpdate('budgetMax', value)}
+                placeholder="Max Investment"
+                options={BUSINESS_INVEST_OPTIONS}
+              />
+            </div>
+          </AccordionSection>
+        </div>
 
-        <AccordionSection
-          title="Investment Range"
-          icon={true}
-          collapsible
-          open={isOpen('budget')}
-          onToggle={() => onToggleSection('budget')}
-        >
-          <div className="grid grid-cols-2 gap-1.5">
-            <StyledSelect
-              value={filterState.budgetMin}
-              onChange={(value) => onUpdate('budgetMin', value)}
-              placeholder="Min Investment"
-              options={BUSINESS_INVEST_OPTIONS}
+        {/* Vertical divider for desktop */}
+        <div className="hidden lg:block w-px bg-gray-200 mx-[2px]" />
+
+        {/* Right column */}
+        <div className="flex flex-col gap-[2px]">
+          <AccordionSection
+            title="Business Category"
+            icon={true}
+            collapsible
+            open={isOpen('category')}
+            onToggle={() => onToggleSection('category')}
+            highlight
+          >
+            <BusinessCategoryFilter
+              selected={filterState.businessCategories}
+              onToggle={handleCategoryToggle}
             />
-            <StyledSelect
-              value={filterState.budgetMax}
-              onChange={(value) => onUpdate('budgetMax', value)}
-              placeholder="Max Investment"
-              options={BUSINESS_INVEST_OPTIONS}
-            />
-          </div>
-        </AccordionSection>
+          </AccordionSection>
+        </div>
       </div>
-
-      <div className="flex flex-col gap-1.5">
-        <AccordionSection
-          title="Business Category"
-          icon={true}
-          collapsible
-          open={isOpen('category')}
-          onToggle={() => onToggleSection('category')}
-          highlight
-        >
-          <BusinessCategoryFilter
-            selected={filterState.businessCategories}
-            onToggle={handleCategoryToggle}
-          />
-        </AccordionSection>
-      </div>
-    </div>
-  )
+    )
 }
