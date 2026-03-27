@@ -69,7 +69,7 @@ export default function AccordionSection({
       >
         <div className="overflow-hidden">
           <div
-            className={` pb-4 text-sm text-[#1C2A44] ${contentClassName}`}
+            className={`pb-1 text-sm text-[#1C2A44] ${contentClassName}`}
           >
             {children}
           </div>
