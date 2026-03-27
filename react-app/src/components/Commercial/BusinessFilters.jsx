@@ -79,7 +79,7 @@ export default function BusinessFilters({
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
         >
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-1.5">
             <StyledSelect
               value={filterState.budgetMin}
               onChange={(value) => onUpdate('budgetMin', value)}
@@ -96,7 +96,7 @@ export default function BusinessFilters({
         </AccordionSection>
       </div>
 
-      <div className="flex flex-col gap-y-1.5">
+      <div className="flex flex-col gap-1.5">
         <AccordionSection
           title="Business Category"
           icon={true}
