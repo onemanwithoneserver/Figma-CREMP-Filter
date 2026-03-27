@@ -15,31 +15,59 @@ export default function TagButton({
   const tooltipId = useId()
   const buttonRef = useRef(null)
 
-  const [position, setPosition] = useState({ top: 0, left: 0 })
+  const [position, setPosition] = useState({ top: 0, left: 0, placement: 'bottom' })
+  const tooltipRef = useRef(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const updatePosition = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect()
-      setPosition({
-        top: rect.bottom + window.scrollY + 8,
-        left: rect.left + window.scrollX + (rect.width / 2),
-      })
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    let top = rect.bottom + window.scrollY + 8;
+    let left = rect.left + window.scrollX + rect.width / 2;
+    let placement = 'bottom';
+
+    // If tooltip is rendered, check for overflow
+    if (tooltipRef.current) {
+      const tipRect = tooltipRef.current.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Horizontal overflow
+      if (tipRect.left < 4) {
+        left += 4 - tipRect.left;
+      } else if (tipRect.right > vw - 4) {
+        left -= (tipRect.right - vw + 4);
+      }
+
+      // Vertical overflow (bottom)
+      if (tipRect.bottom > vh - 4) {
+        // Try placing above
+        const aboveTop = rect.top + window.scrollY - tipRect.height - 8;
+        if (aboveTop > 4) {
+          top = aboveTop;
+          placement = 'top';
+        }
+      }
+      // Vertical overflow (top)
+      if (placement === 'top' && tipRect.top < 4) {
+        // fallback to bottom
+        top = rect.bottom + window.scrollY + 8;
+        placement = 'bottom';
+      }
     }
+    setPosition({ top, left, placement });
   }
 
   const handleMouseEnter = () => {
-    updatePosition()
-    setShowTooltip(true)
+    setShowTooltip(true);
   }
 
   const handleFocus = () => {
     if (!disabled) {
-      updatePosition()
-      setShowTooltip(true)
+      setShowTooltip(true);
     }
   }
 
@@ -48,6 +76,28 @@ export default function TagButton({
       setShowTooltip(false)
     }
   }
+
+  // Recalculate position when tooltip is shown or window resizes
+  useEffect(() => {
+    if (!showTooltip) return;
+    updatePosition();
+    const handleResize = () => updatePosition();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleResize, true);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleResize, true);
+    };
+    // eslint-disable-next-line
+  }, [showTooltip]);
+
+  // Recalculate after tooltip renders
+  useEffect(() => {
+    if (showTooltip && tooltipRef.current) {
+      updatePosition();
+    }
+    // eslint-disable-next-line
+  }, [showTooltip, tooltip]);
 
   return (
     <div
@@ -64,7 +114,7 @@ export default function TagButton({
         onBlur={() => setShowTooltip(false)}
         onKeyDown={handleKeyDown}
         aria-describedby={tooltip && showTooltip ? tooltipId : undefined}
-        title={tooltip}
+       
         className={`flex items-center gap-2 rounded-[4px] border px-2 py-2  text-xs transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-1
           ${disabled ? 'cursor-not-allowed opacity-40' : ''}
           ${selected
@@ -90,16 +140,26 @@ export default function TagButton({
       {mounted && tooltip && showTooltip && createPortal(
         <div
           id={tooltipId}
+          ref={tooltipRef}
           role="tooltip"
           style={{
             top: `${position.top}px`,
             left: `${position.left}px`,
             transform: 'translateX(-50%)',
+            position: 'absolute',
+            maxWidth: '90vw',
+            minWidth: '120px',
+            wordBreak: 'break-word',
+            zIndex: 99999
           }}
-          className="pointer-events-none absolute z-[99999] w-48 text-center rounded bg-[#1C2A44] px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg animate-in fade-in duration-200"
+          className="pointer-events-none text-center rounded bg-[#1C2A44] px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg animate-in fade-in duration-200"
         >
           <span>{tooltip}</span>
-          <div className="absolute left-1/2 bottom-full -mb-px -translate-x-1/2 border-4 border-transparent border-b-[#1C2A44]"></div>
+          {position.placement === 'bottom' ? (
+            <div className="absolute left-1/2 bottom-full -mb-px -translate-x-1/2 border-4 border-transparent border-b-[#1C2A44]"></div>
+          ) : (
+            <div className="absolute left-1/2 top-full -mt-px -translate-x-1/2 border-4 border-transparent border-t-[#1C2A44]"></div>
+          )}
         </div>,
         document.body
       )}

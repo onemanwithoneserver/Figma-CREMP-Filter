@@ -11,7 +11,7 @@ export const COMMERCIAL_PROPERTY_CATEGORY_OPTIONS = [
 export const SALE_TYPE_OPTIONS = [
   {
     label: 'Vacant',
-    tooltip: 'Ready for immediate possession or new tenants'
+    tooltip: 'Ready for immediate  possession or new tenants'
   },
   {
     label: 'Pre-Leased',

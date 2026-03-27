@@ -1,15 +1,20 @@
-﻿import { useState, useRef, useCallback } from 'react'
+﻿import { useState, useRef, useCallback, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 export default function RadiusSlider({ value, onChange }) {
   const [isHovered, setIsHovered] = useState(false)
   const [isActive, setIsActive] = useState(false)
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
+  const [mounted, setMounted] = useState(false)
   const sliderRef = useRef(null)
 
   const min = 1
   const max = 50
   const percentage = ((value - min) / (max - min)) * 100
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const updateTooltipPos = useCallback(() => {
     if (sliderRef.current) {
@@ -29,7 +34,6 @@ export default function RadiusSlider({ value, onChange }) {
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={() => { if (isHovered || isActive) updateTooltipPos() }}
       >
-        {/* Range Track */}
         <input
           type="range"
           min={min}
@@ -40,28 +44,26 @@ export default function RadiusSlider({ value, onChange }) {
           onTouchStart={() => { setIsActive(true); updateTooltipPos() }}
           onTouchEnd={() => setIsActive(false)}
           onChange={(e) => { onChange(Number(e.target.value)); requestAnimationFrame(updateTooltipPos) }}
-          className="relative z-10 h-1.5 w-full cursor-pointer appearance-none rounded-full outline-none
-            [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C89B3C] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-90
-            [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#C89B3C] [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-[0_2px_8px_rgba(200,155,60,0.35)]"
+          className="relative z-10 h-1.5 w-full cursor-pointer appearance-none rounded-[4px] outline-none
+            [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-[4px] [&::-webkit-slider-thumb]:bg-[linear-gradient(135deg,#7a5a1f,#c89b3c)] [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-white/80 [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-95
+            [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-[4px] [&::-moz-range-thumb]:bg-[linear-gradient(135deg,#7a5a1f,#c89b3c)] [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-white/80 [&::-moz-range-thumb]:shadow-sm"
           style={{
-            background: `linear-gradient(to right, #C89B3C 0%, #C89B3C ${percentage}%, rgba(28,42,68,0.10) ${percentage}%, rgba(28,42,68,0.10) 100%)`,
+            background: `linear-gradient(to right, #7a5a1f 0%, #c89b3c ${percentage}%, rgba(28,42,68,0.10) ${percentage}%, rgba(28,42,68,0.10) 100%)`,
           }}
         />
 
-        {/* Portal-based Floating Tooltip - FIXED AND VISIBLE AT DOCUMENT.BODY */}
-        {createPortal(
+        {mounted && createPortal(
           (isHovered || isActive) && (
             <div
-              className="pointer-events-none fixed z-9999 -translate-x-1/2 animate-in fade-in zoom-in-95 duration-200"
+              className="pointer-events-none fixed z-[9999] -translate-x-1/2 animate-in fade-in zoom-in-95 duration-200"
               style={{
                 left: `${tooltipPos.x}px`,
                 top: `${tooltipPos.y - 20}px`,
               }}
             >
-              <div className="relative rounded-md bg-[#1C2A44] px-2.5 py-1 text-xs font-bold tracking-wide text-white shadow-lg">
+              <div className="relative rounded-[4px] bg-gradient-to-br from-[#1C2A44] to-[#253755] px-2 py-1 text-[11px] font-bold tracking-wide text-white shadow-sm border border-[#1C2A44]/20">
                 {value} km
-                {/* Tooltip Triangle */}
-                <div className="absolute -bottom-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-sm bg-[#1C2A44]" />
+                <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 rounded-[1px] bg-[#253755] border-b border-r border-[#1C2A44]/20" />
               </div>
             </div>
           ),
@@ -69,10 +71,9 @@ export default function RadiusSlider({ value, onChange }) {
         )}
       </div>
 
-      {/* Distance Label */}
-      <div className="flex min-w-12 items-baseline justify-end gap-1 text-right">
-        <span className="text-sm font-bold tabular-nums text-[#1C2A44]">{value}</span>
-        <span className="text-xs font-medium text-[#1C2A44]/45">km</span>
+      <div className="flex min-w-10 items-baseline justify-end gap-1 text-right">
+        <span className="text-[13px] font-bold tabular-nums text-[#1C2A44]">{value}</span>
+        <span className="text-[11px] font-medium text-[#1C2A44]/50">km</span>
       </div>
     </div>
   )
