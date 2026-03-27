@@ -21,9 +21,8 @@ export default function LeaseRentFilters({
   const isOpen = (id) => openSections.includes(id)
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-2 gap-y-1 lg:grid-cols-2'}>
-      {/* Left Column */}
-      <div className="flex flex-col gap-y-1">
+    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
+      <div className="flex flex-col gap-1.5">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
@@ -73,8 +72,7 @@ export default function LeaseRentFilters({
         </AccordionSection>
       </div>
 
-      {/* Right Column */}
-      <div className="flex flex-col gap-y-1">
+      <div className="flex flex-col gap-1.5">
         <AccordionSection
           title="Monthly Rent / Lease"
           icon={true}
@@ -96,7 +94,7 @@ export default function LeaseRentFilters({
           />
         </AccordionSection>
 
-        <div className="px-1 pt-1 pb-0.5">
+        <div className="px-1.5 pt-1">
           <SubleaseToggle
             value={filterState.includeSublease}
             onChange={(value) => onUpdate('includeSublease', value)}

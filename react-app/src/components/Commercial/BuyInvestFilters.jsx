@@ -21,8 +21,8 @@ export default function BuyInvestFilters({
   const isOpen = (id) => openSections.includes(id)
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-2 gap-y-1 lg:grid-cols-2'}>
-      <div className="flex flex-col gap-y-1">
+    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
+      <div className="flex flex-col gap-1.5">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
@@ -63,8 +63,7 @@ export default function BuyInvestFilters({
         </AccordionSection>
       </div>
 
-      {/* Right Column */}
-      <div className="flex flex-col gap-y-1">
+      <div className="flex flex-col gap-1.5">
         <AccordionSection
           title="Size & Area"
           icon={true}

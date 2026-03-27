@@ -3,7 +3,7 @@ import { SALE_TYPE_OPTIONS } from '../common/filterOptions'
 
 export default function SaleTypeFilter({ selected, onToggle }) {
   return (
-    <div className="flex flex-wrap gap-2 pt-1 pb-2">
+    <div className="flex flex-wrap gap-1.5 py-1.5">
       {SALE_TYPE_OPTIONS.map((option) => (
         <TagButton
           key={option.label}

@@ -8,45 +8,47 @@ export default function PropertyTypeFilter({ selected, onChange }) {
 
   const handleLandClick = () => {
     if (isLandSelected) {
-      onChange(selected.filter((t) => t !== LAND))
+      onChange([])
     } else {
-      onChange([LAND]) // radio — clears all others
+      onChange([LAND])
     }
   }
 
   const handleBuiltUpClick = (type) => {
-    const withoutLand = selected.filter((t) => t !== LAND) // deselect Land when picking built-up
-    if (withoutLand.includes(type)) {
-      onChange(withoutLand.filter((t) => t !== type))
+    if (selected.includes(type)) {
+      onChange([])
     } else {
-      onChange([...withoutLand, type])
+      onChange([type])
     }
   }
 
   return (
-    <div className="flex flex-wrap gap-1 px-1 items-center justify-start">
-      {/* Left — Land (radio, exclusive) */}
-      <div className="flex flex-col gap-1.5 items-center justify-center">
+    <div className="flex flex-wrap items-center justify-start gap-1.5 py-1">
+      <div className="flex flex-col items-center justify-center gap-1.5">
         <button
           type="button"
           onClick={handleLandClick}
-          className={`flex items-center gap-1 rounded-[4px] border px-2 py-2  text-xs font-medium transition-all duration-150 ${isLandSelected
-            ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
-            : 'border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
-            }`}
+          className={`flex items-center gap-1.5 rounded-[4px] border px-2.5 py-1.5 text-[12px] font-medium transition-all duration-200 ${
+            isLandSelected
+              ? 'border-[#C89B3C]/40 bg-gradient-to-br from-[#C89B3C]/15 to-[#C89B3C]/5 text-[#7a5a1f] shadow-sm'
+              : 'border-[#1C2A44]/15 bg-gradient-to-b from-[#1C2A44]/5 to-transparent text-[#1C2A44]/60 hover:border-[#1C2A44]/25 hover:text-[#1C2A44]'
+          }`}
         >
-          <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${isLandSelected ? 'border-[#C89B3C]' : 'border-[#1C2A44]/30'
-            }`}>
-            {isLandSelected && <span className="h-1.5 w-1.5 rounded-full bg-[#C89B3C]" />}
+          <span
+            className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
+              isLandSelected
+                ? 'border-transparent bg-[linear-gradient(135deg,#7a5a1f,#c89b3c)] shadow-sm'
+                : 'border-[#1C2A44]/30 bg-white'
+            }`}
+          >
+            {isLandSelected && <span className="h-1.5 w-1.5 rounded-full bg-white"></span>}
           </span>
           Land
         </button>
       </div>
 
-      {/* Divider */}
-      <div className="h-px self-stretch bg-[#1C2A44]/10" />
+      <div className="mx-1 h-5 w-px shrink-0 bg-gray-200" />
 
-      {/* Right — Built-up types (multi-select checkboxes) */}
       <div className="flex flex-col gap-1.5">
         <div className="flex flex-wrap gap-1.5">
           {BUILT_UP_TYPES.map((type) => {
@@ -56,11 +58,17 @@ export default function PropertyTypeFilter({ selected, onChange }) {
                 key={type}
                 type="button"
                 onClick={() => handleBuiltUpClick(type)}
-                className={`flex items-center gap-2 rounded-[4px] border px-2 py-2  text-xs font-medium transition-all duration-150 ${isSelected
-                  ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
-                  : 'border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
-                  }`}
+                className={`flex items-center gap-1.5 rounded-[4px] border px-2.5 py-1.5 text-[12px] font-medium transition-all duration-200 ${
+                  isSelected
+                    ? 'border-[#C89B3C]/40 bg-gradient-to-br from-[#C89B3C]/15 to-[#C89B3C]/5 text-[#7a5a1f] shadow-sm'
+                    : 'border-[#1C2A44]/15 bg-gradient-to-b from-[#1C2A44]/5 to-transparent text-[#1C2A44]/60 hover:border-[#1C2A44]/25 hover:text-[#1C2A44]'
+                }`}
               >
+                {isSelected && (
+                  <span className="text-[10px] leading-none text-[#7a5a1f] transition-opacity duration-200">
+                    ✓
+                  </span>
+                )}
                 {type}
               </button>
             )

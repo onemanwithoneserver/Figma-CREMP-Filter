@@ -36,40 +36,45 @@ export default function AccordionSection({
 
   return (
     <section
-      className={`group rounded-sm transition-all duration-300 ${borderless
-        ? 'bg-transparent'
-        : highlight
-          ? ''
-          : ''
-        } ${sectionClassName}`}
+      className={`group rounded-[4px] transition-all duration-200 ${
+        borderless
+          ? 'bg-transparent'
+          : highlight
+            ? 'bg-gradient-to-b from-white to-[#F9FAFB]'
+            : 'bg-transparent'
+      } ${sectionClassName}`}
     >
       <div
-        className={`flex w-full items-center justify-between px-2 py-2 text-left  outline-none transition-all ${headerClassName}`}
+        className={`flex w-full items-center justify-between px-1.5 py-1.5 text-left outline-none transition-all ${headerClassName}`}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2.5">
           {Icon && (
-            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] transition-all duration-300 ${highlight
-              ? 'bg-[#1C2A44]/10 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.12)]'
-              : 'bg-[#1C2A44]/10 shadow-[inset_0_0_0_1px_rgba(28,42,68,0.10)]'
-              }`}>
-              <span className="text-sm leading-none" role="img" aria-hidden="true">
+            <div
+              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] transition-all duration-200 ${
+                highlight
+                  ? 'bg-gradient-to-br from-[#1C2A44]/15 to-[#1C2A44]/5 shadow-sm border border-[#1C2A44]/10'
+                  : 'bg-gradient-to-br from-[#1C2A44]/10 to-[#1C2A44]/5 shadow-sm border border-[#1C2A44]/10'
+              }`}
+            >
+              <span className="text-[13px] leading-none grayscale opacity-80" role="img" aria-hidden="true">
                 {sectionEmoji}
               </span>
             </div>
           )}
-          <span className="text-sm font-semibold text-[#1C2A44]">
+          <span className="text-[12px] font-semibold tracking-wide text-[#1C2A44]">
             {title}
           </span>
         </div>
       </div>
 
       <div
-        className={`px-1 grid transition-all  duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-          }`}
+        className={`px-1.5 grid transition-all duration-300 ease-out ${
+          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
       >
-        <div className="overflow-hidden">
+        <div className="overflow-visible">
           <div
-            className={`pb-1 text-sm text-[#1C2A44] ${contentClassName}`}
+            className={`pb-1.5 text-[13px] text-[#1C2A44]/80 ${contentClassName}`}
           >
             {children}
           </div>

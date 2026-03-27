@@ -14,6 +14,7 @@ export default function BusinessFilters({
   showRadiusInAccordion = isMobile,
 }) {
   const isOpen = (id) => openSections.includes(id)
+  
   const handleCategoryToggle = (clickedValue) => {
     const actualCategories = BUSINESS_CATEGORY_OPTIONS.filter(opt => opt !== 'Select All')
     const currentSelected = filterState.businessCategories || []
@@ -27,7 +28,7 @@ export default function BusinessFilters({
         onUpdate('businessCategories', [...BUSINESS_CATEGORY_OPTIONS])
       }
     } else {
-      let newSelected;
+      let newSelected
 
       if (currentSelected.includes(clickedValue)) {
         newSelected = currentSelected.filter(item => item !== clickedValue && item !== 'Select All')
@@ -43,8 +44,8 @@ export default function BusinessFilters({
   }
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-1' : 'grid grid-cols-1 gap-x-4 gap-y-1 lg:grid-cols-2'}>
-      <div className="flex flex-col gap-2">
+    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
+      <div className="flex flex-col gap-1.5">
         {showRadiusInAccordion && (
           <AccordionSection
             title="Search Radius"
@@ -95,8 +96,7 @@ export default function BusinessFilters({
         </AccordionSection>
       </div>
 
-      {/* Right Column */}
-      <div className="flex flex-col gap-y-1">
+      <div className="flex flex-col gap-y-1.5">
         <AccordionSection
           title="Business Category"
           icon={true}

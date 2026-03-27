@@ -1,4 +1,4 @@
-import { useState, useId, useRef, useEffect } from 'react'
+import { useState, useId, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 
 export default function TagButton({
@@ -15,51 +15,47 @@ export default function TagButton({
   const tooltipId = useId()
   const buttonRef = useRef(null)
 
-  const [position, setPosition] = useState({ top: 0, left: 0, placement: 'bottom' })
+  const [position, setPosition] = useState({ top: 0, left: 0, placement: 'bottom', width: 'auto' })
   const tooltipRef = useRef(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const updatePosition = () => {
+  const updatePosition = useCallback(() => {
     if (!buttonRef.current) return;
     const rect = buttonRef.current.getBoundingClientRect();
     let top = rect.bottom + window.scrollY + 8;
     let left = rect.left + window.scrollX + rect.width / 2;
     let placement = 'bottom';
+    const buttonWidth = rect.width;
 
-    // If tooltip is rendered, check for overflow
     if (tooltipRef.current) {
       const tipRect = tooltipRef.current.getBoundingClientRect();
       const vw = window.innerWidth;
       const vh = window.innerHeight;
 
-      // Horizontal overflow
       if (tipRect.left < 4) {
         left += 4 - tipRect.left;
       } else if (tipRect.right > vw - 4) {
         left -= (tipRect.right - vw + 4);
       }
 
-      // Vertical overflow (bottom)
       if (tipRect.bottom > vh - 4) {
-        // Try placing above
         const aboveTop = rect.top + window.scrollY - tipRect.height - 8;
         if (aboveTop > 4) {
           top = aboveTop;
           placement = 'top';
         }
       }
-      // Vertical overflow (top)
+      
       if (placement === 'top' && tipRect.top < 4) {
-        // fallback to bottom
         top = rect.bottom + window.scrollY + 8;
         placement = 'bottom';
       }
     }
-    setPosition({ top, left, placement });
-  }
+    setPosition({ top, left, placement, width: buttonWidth });
+  }, [])
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
@@ -77,7 +73,6 @@ export default function TagButton({
     }
   }
 
-  // Recalculate position when tooltip is shown or window resizes
   useEffect(() => {
     if (!showTooltip) return;
     updatePosition();
@@ -88,16 +83,13 @@ export default function TagButton({
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleResize, true);
     };
-    // eslint-disable-next-line
-  }, [showTooltip]);
+  }, [showTooltip, updatePosition]);
 
-  // Recalculate after tooltip renders
   useEffect(() => {
     if (showTooltip && tooltipRef.current) {
       updatePosition();
     }
-    // eslint-disable-next-line
-  }, [showTooltip, tooltip]);
+  }, [showTooltip, tooltip, updatePosition]);
 
   return (
     <div
@@ -114,26 +106,25 @@ export default function TagButton({
         onBlur={() => setShowTooltip(false)}
         onKeyDown={handleKeyDown}
         aria-describedby={tooltip && showTooltip ? tooltipId : undefined}
-       
-        className={`flex items-center gap-2 rounded-[4px] border px-2 py-2  text-xs transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-1
+        className={`flex items-center gap-1.5 rounded-[4px] border px-2.5 py-1.5 text-[12px] transition-all duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-1
           ${disabled ? 'cursor-not-allowed opacity-40' : ''}
           ${selected
-            ? 'border-[#C89B3C]/45 bg-[#C89B3C]/10 text-[#B88A2C] font-semibold'
-            : 'font-medium border-[#1C2A44]/10 bg-[#1C2A44]/[0.04] text-[#1C2A44]/60 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/[0.07] hover:text-[#1C2A44]'
+            ? 'border-[#C89B3C]/40 bg-gradient-to-br from-[#C89B3C]/15 to-[#C89B3C]/5 font-semibold text-[#7a5a1f] shadow-sm'
+            : 'font-medium border-[#1C2A44]/15 bg-gradient-to-b from-[#1C2A44]/5 to-transparent text-[#1C2A44]/60 hover:border-[#1C2A44]/25 hover:text-[#1C2A44]'
           } ${customClass}`}
         data-selected={selected}
       >
         {showCheckbox && (
-          <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border transition-all ${selected
-            ? 'border-[#C89B3C] bg-[#C89B3C]'
-            : 'border-[#1C2A44]/30 bg-white'
-            }`}>
+          <span className={`inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[2px] border transition-all duration-200 ${
+            selected
+              ? 'border-transparent bg-[linear-gradient(135deg,#7a5a1f,#c89b3c)] shadow-sm'
+              : 'border-[#1C2A44]/30 bg-white'
+          }`}>
             {selected && (
-              <span className="text-[8px] font-bold leading-none text-white">✓</span>
+              <span className="text-[9px] font-bold leading-none text-white">✓</span>
             )}
           </span>
         )}
-
         {label}
       </button>
 
@@ -147,18 +138,18 @@ export default function TagButton({
             left: `${position.left}px`,
             transform: 'translateX(-50%)',
             position: 'absolute',
-            maxWidth: '90vw',
-            minWidth: '120px',
+            maxWidth: Math.max(position.width, 120),
+            width: 'max-content',
             wordBreak: 'break-word',
             zIndex: 99999
           }}
-          className="pointer-events-none text-center rounded bg-[#1C2A44] px-3 py-2 text-xs font-normal leading-relaxed text-white shadow-lg animate-in fade-in duration-200"
+          className="pointer-events-none text-center rounded-[4px] bg-gradient-to-br from-[#1C2A44] to-[#253755] px-2 py-1.5 text-[11px] font-medium leading-relaxed text-white shadow-sm border border-[#1C2A44]/20"
         >
           <span>{tooltip}</span>
           {position.placement === 'bottom' ? (
-            <div className="absolute left-1/2 bottom-full -mb-px -translate-x-1/2 border-4 border-transparent border-b-[#1C2A44]"></div>
+            <div className="absolute left-1/2 bottom-full -mb-px -translate-x-1/2 border-[4px] border-transparent border-b-[#253755]"></div>
           ) : (
-            <div className="absolute left-1/2 top-full -mt-px -translate-x-1/2 border-4 border-transparent border-t-[#1C2A44]"></div>
+            <div className="absolute left-1/2 top-full -mt-px -translate-x-1/2 border-[4px] border-transparent border-t-[#253755]"></div>
           )}
         </div>,
         document.body

@@ -2,13 +2,13 @@
 import { createPortal } from 'react-dom'
 
 const DEFAULT_BUDGET_OPTIONS = [
-  { label: 'â‚¹10L', value: '10' },
-  { label: 'â‚¹20L', value: '20' },
-  { label: 'â‚¹30L', value: '30' },
-  { label: 'â‚¹40L', value: '40' },
-  { label: 'â‚¹50L', value: '50' },
-  { label: 'â‚¹75L', value: '75' },
-  { label: 'â‚¹1Cr', value: '100' },
+  { label: '₹10L', value: '10' },
+  { label: '₹20L', value: '20' },
+  { label: '₹30L', value: '30' },
+  { label: '₹40L', value: '40' },
+  { label: '₹50L', value: '50' },
+  { label: '₹75L', value: '75' },
+  { label: '₹1Cr', value: '100' },
 ]
 
 export function StyledSelect({ value, onChange, placeholder, options }) {
@@ -23,7 +23,7 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
     if (triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect()
       setPos({
-        top: rect.bottom + 4, // Tightened gap for premium feel
+        top: rect.bottom + 4,
         left: rect.left,
         width: rect.width,
       })
@@ -64,22 +64,21 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
 
   return (
     <div className="relative w-full">
-      {/* Trigger Button */}
       <button
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`flex w-full items-center justify-between rounded-md border bg-white px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none ${open
-          ? 'border-[#1C2A44]/22 shadow-sm ring-2 ring-[#1C2A44]/12'
-          : 'border-[#1C2A44]/10 hover:border-[#1C2A44]/18 hover:bg-[#1C2A44]/3'
-          }`}
+        className={`flex w-full items-center justify-between rounded-[4px] border bg-gradient-to-b from-white to-[#F9FAFB] px-2.5 py-1.5 text-[13px] font-medium transition-all duration-200 focus:outline-none ${
+          open
+            ? 'border-[#1C2A44]/30 shadow-sm ring-1 ring-[#1C2A44]/10'
+            : 'border-[#1C2A44]/10 shadow-sm hover:border-[#1C2A44]/20'
+        }`}
       >
-        <span className={selected ? 'text-[#1C2A44]' : 'text-[#1C2A44]/40 font-light'}>
+        <span className={selected ? 'text-[#1C2A44]' : 'text-[#1C2A44]/50 font-normal'}>
           {selected ? selected.label : placeholder}
         </span>
       </button>
 
-      {/* Dropdown via Portal */}
       {open && createPortal(
         <div
           ref={dropdownRef}
@@ -89,25 +88,24 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
             left: pos.left,
             width: pos.width,
           }}
-          className="z-9999 overflow-hidden rounded-lg border border-[#1C2A44]/10 bg-white/98 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.10)] animate-in fade-in slide-in-from-top-1 duration-200"
+          className="z-[9999] overflow-hidden rounded-[4px] border border-[#1C2A44]/10 bg-white/95 shadow-sm backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-200"
         >
           <ul className="custom-scrollbar max-h-48 overflow-y-auto p-1">
-            {/* Reset / placeholder option */}
             <li>
               <button
                 type="button"
                 onClick={() => handleSelect('')}
-                className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs transition-colors duration-150 ${!value
-                  ? 'bg-[#1C2A44]/5 font-semibold text-[#1C2A44]'
-                  : 'text-[#1C2A44]/50 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
-                  }`}
+                className={`flex w-full items-center gap-2 rounded-[4px] px-2 py-1.5 text-[12px] transition-colors duration-150 ${
+                  !value
+                    ? 'bg-gradient-to-r from-[#1C2A44]/5 to-transparent font-medium text-[#1C2A44]'
+                    : 'text-[#1C2A44]/60 hover:bg-gradient-to-r hover:from-[#1C2A44]/5 hover:to-transparent hover:text-[#1C2A44]'
+                }`}
               >
                 <span className="w-3" />
                 {placeholder}
               </button>
             </li>
 
-            {/* Options */}
             {options.map((option) => {
               const isActive = option.value === value
               return (
@@ -115,14 +113,16 @@ export function StyledSelect({ value, onChange, placeholder, options }) {
                   <button
                     type="button"
                     onClick={() => handleSelect(option.value)}
-                    className={`flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-150 ${isActive
-                      ? 'bg-[#1C2A44]/10 text-[#1C2A44] shadow-sm'
-                      : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44]'
-                      }`}
+                    className={`flex w-full items-center gap-2 rounded-[4px] px-2 py-1.5 text-[12px] font-medium transition-colors duration-150 ${
+                      isActive
+                        ? 'bg-gradient-to-r from-[#1C2A44]/10 to-transparent text-[#1C2A44]'
+                        : 'text-[#1C2A44]/60 hover:bg-gradient-to-r hover:from-[#1C2A44]/5 hover:to-transparent hover:text-[#1C2A44]'
+                    }`}
                   >
                     <span
-                      className={`shrink-0 text-[13px] leading-none transition-opacity duration-200 ${isActive ? 'opacity-100 text-[#1C2A44]' : 'opacity-0'
-                        }`}
+                      className={`shrink-0 text-[10px] leading-none transition-opacity duration-200 ${
+                        isActive ? 'opacity-100 text-[#1C2A44]' : 'opacity-0'
+                      }`}
                     >✓</span>
                     {option.label}
                   </button>
@@ -153,33 +153,33 @@ export default function BudgetFilter({
   const activeOptions = mode === 'overall' ? overallOptions ?? options : perOptions ?? options
 
   return (
-    <div className="pt-2">
-      {/* Segmented Control */}
-      <div className="mb-3 inline-flex items-center gap-1 rounded-[5px] border border-[#1C2A44]/10 bg-[#1C2A44]/3 p-1 shadow-sm">
+    <div className="pt-1.5 pb-1">
+      <div className="mb-2.5 inline-flex items-center gap-0.5 rounded-[4px] border border-[#1C2A44]/10 bg-gradient-to-br from-[#1C2A44]/5 to-[#1C2A44]/5 p-0.5 shadow-sm">
         <button
           type="button"
           onClick={() => onModeChange('per')}
-          className={`rounded-[4px] px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${mode === 'per'
-            ? 'bg-[#1C2A44] text-white shadow-sm'
-            : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/6 hover:text-[#1C2A44]'
-            }`}
+          className={`rounded-[3px] px-2.5 py-1 text-[11px] font-semibold tracking-wide transition-all duration-200 ${
+            mode === 'per'
+              ? 'bg-gradient-to-br from-[#1C2A44] to-[#253755] text-white shadow-sm'
+              : 'text-[#1C2A44]/60 hover:bg-white/50 hover:text-[#1C2A44]'
+          }`}
         >
           {perLabel}
         </button>
         <button
           type="button"
           onClick={() => onModeChange('overall')}
-          className={`rounded-[4px] px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${mode === 'overall'
-            ? 'bg-[#1C2A44] text-white shadow-sm'
-            : 'text-[#1C2A44]/55 hover:bg-[#1C2A44]/6 hover:text-[#1C2A44]'
-            }`}
+          className={`rounded-[3px] px-2.5 py-1 text-[11px] font-semibold tracking-wide transition-all duration-200 ${
+            mode === 'overall'
+              ? 'bg-gradient-to-br from-[#1C2A44] to-[#253755] text-white shadow-sm'
+              : 'text-[#1C2A44]/60 hover:bg-white/50 hover:text-[#1C2A44]'
+          }`}
         >
           {overallLabel === 'Overall Budget' ? 'Total Investment' : overallLabel}
         </button>
       </div>
 
-      {/* Min/Max Inputs */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
         <StyledSelect
           value={min}
           onChange={onMinChange}
@@ -187,8 +187,7 @@ export default function BudgetFilter({
           options={activeOptions}
         />
 
-        {/* Softened separator line */}
-        <div className="h-px w-3 shrink-0 bg-[#1C2A44]/20 rounded-full"></div>
+        <div className="h-px w-2 shrink-0 bg-[#1C2A44]/20 rounded-full"></div>
 
         <StyledSelect
           value={max}
