@@ -139,6 +139,7 @@ export default function BuyInvestFilters({
           </div>
         </AccordionSection>
       </div>
+      
     </div>
   )
 }

@@ -269,7 +269,7 @@ export default function SearchPage() {
     const filterControls = (
       <>
         {/* Top Section with Divider */}
-        <div className="z-20 relative flex flex-wrap items-stretch overflow-visible gap-2 pb-2 ">
+        <div className="z-20 relative flex flex-wrap items-stretch overflow-visible  pb-1 ">
           <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-1.5' : 'flex min-w-0 shrink-0 gap-1.5'}`}>
             {MODE_TYPES.map((typeMode) => {
               const config = MODE_CONFIG[typeMode]
@@ -318,7 +318,7 @@ export default function SearchPage() {
 
         {/* Mobile Radius with Divider */}
         {isMobile && (
-          <div className="flex items-center gap-2 bg-white px-2 py-2 mb-2 pb-2 border-b border-gray-200">
+          <div className="flex items-center gap-2 bg-white px-1 py-1">
             <span className="text-[11px] font-semibold text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider

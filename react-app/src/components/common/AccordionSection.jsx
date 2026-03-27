@@ -17,6 +17,7 @@ export default function AccordionSection({
   const sectionEmoji = SECTION_EMOJIS[title] || '🧩'
 
   return (
+    
     <section className={`group rounded-[4px] transition-all duration-200 ${sectionClassName}`}>
       <div className={`flex w-full items-center justify-between px-1.5 py-1.5 text-left outline-none ${headerClassName}`}>
         <div className="flex items-center gap-2.5">
@@ -47,6 +48,7 @@ export default function AccordionSection({
           </div>
         </div>
       </div>
+    
     </section>
   )
 }
