@@ -295,8 +295,8 @@ export default function SearchPage() {
                     ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-lg p-2 text-xs' : 'flex shrink-0 flex-col items-center justify-center gap-1 rounded-[4px] px-2 py-2 text-xs min-w-25'}
                     font-semibold tracking-wide transition-all duration-200 border
                     ${isActive
-                      ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.24)]'
-                      : 'bg-white text-[#1C2A44]/50 border-[#1C2A44]/10 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44] hover:border-[#1C2A44]/16'
+                      ? 'bg-[#1C2A44] text-white border-transparent shadow-[0_4px_16px_rgba(28,42,68,0.24)] glassmorphic-royalblue'
+                      : 'bg-white text-[#1C2A44]/50 border-[#1C2A44]/10 hover:bg-[#1C2A44]/4 hover:text-[#1C2A44] hover:border-[#1C2A44]/16 glassmorphic'
                     }
                   `}
                 >

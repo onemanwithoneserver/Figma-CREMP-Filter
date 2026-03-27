@@ -245,3 +245,30 @@ select:focus {
   box-shadow: var(--shadow-focus-ring);
   outline: none;
 }
+
+/* === Glassmorphism Utility === */
+.glassmorphic {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-top: 1.5px solid rgba(255,255,255,0.32);
+  border-left: 1.5px solid rgba(255,255,255,0.18);
+  padding: 0.5rem;
+}
+
+/* Selected State */
+.glassmorphic-royalblue {
+  background: #1C2A44; 
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid #4169e166;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
