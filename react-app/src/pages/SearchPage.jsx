@@ -24,7 +24,7 @@ function SearchRow({ label, showFavorite = true, showRemove = true }) {
         {label}
       </span>
       {showFavorite && showRemove && (
-        <div className="flex items-center gap-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        <div className="flex items-center gap-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <button className="flex items-center justify-center rounded-[4px] p-1 text-[#1C2A44]/40 transition-colors hover:bg-[#1C2A44]/10 hover:text-[#1C2A44]">
             <span className="text-[14px] leading-none" role="img" aria-label="save">🤍</span>
           </button>
@@ -269,7 +269,7 @@ export default function SearchPage() {
     const filterControls = (
       <>
         {/* Top Section with Divider */}
-        <div className="z-20 relative flex flex-wrap items-stretch overflow-visible gap-2 pb-3 mb-1 border-b border-gray-200">
+        <div className="z-20 relative flex flex-wrap items-stretch overflow-visible gap-2 pb-2 mb-1 border-b border-gray-200">
           <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-1.5' : 'flex min-w-0 shrink-0 gap-1.5'}`}>
             {MODE_TYPES.map((typeMode) => {
               const config = MODE_CONFIG[typeMode]
@@ -297,7 +297,7 @@ export default function SearchPage() {
           </div>
 
           {!isMobile && (
-            <div className="z-30 relative flex flex-1 items-center gap-3 overflow-visible px-3 py-1">
+            <div className="z-30 relative flex flex-1 items-center gap-2 overflow-visible px-3 py-1">
               <span className="text-[12px] font-semibold text-[#1C2A44]">Radius</span>
               <div className="min-w-40 flex-1 w-full">
                 <RadiusSlider
@@ -318,7 +318,7 @@ export default function SearchPage() {
 
         {/* Mobile Radius with Divider */}
         {isMobile && (
-          <div className="flex items-center gap-3 bg-white px-2 py-2 mb-2 pb-3 border-b border-gray-200">
+          <div className="flex items-center gap-2 bg-white px-2 py-2 mb-2 pb-2 border-b border-gray-200">
             <span className="text-[11px] font-semibold text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
@@ -370,10 +370,10 @@ export default function SearchPage() {
 
     if (isDesktop) {
       return (
-        <div className="z-10 relative grid grid-cols-[minmax(0,1fr)_300px] gap-3 overflow-visible">
+        <div className="z-10 relative grid grid-cols-[minmax(0,1fr)_300px] gap-2 overflow-visible">
           <div className="z-20 relative flex min-w-0 flex-col overflow-visible">{filterControls}</div>
 
-          <aside className="flex h-full flex-col items-center rounded-[4px] border border-[#1C2A44]/10 p-3 text-white shadow-sm">
+          <aside className="flex h-full flex-col items-center rounded-[4px] border border-[#1C2A44]/10 p-2 text-white shadow-sm">
             <div className="inline-flex self-start rounded-[4px] bg-white/10 px-1.5 py-0.5">
               <p className="text-[10px] font-bold tracking-widest text-[#1C2A44]">Sample AD</p>
             </div>
@@ -429,7 +429,7 @@ export default function SearchPage() {
                   : mode === 'tablet'
                     ? 'w-full max-w-205'
                     : 'w-full max-w-100'
-              } rounded-[4px] bg-white ${mode === 'mobile' ? 'p-1.5' : 'p-3'} overflow-visible shadow-sm border border-[#1C2A44]/10`}
+              } rounded-[4px] bg-white ${mode === 'mobile' ? 'p-1.5' : 'p-2'} overflow-visible shadow-sm border border-[#1C2A44]/10`}
             >
               {showModeFilters ? renderFilterBody(mode) : null}
             </div>
@@ -447,7 +447,7 @@ export default function SearchPage() {
           onPreviewModeChange={setPreviewMode}
         />
       </div>
-      <div className="mx-auto flex w-full flex-col gap-3 pb-12 pt-3 overflow-visible">
+      <div className="mx-auto flex w-full flex-col gap-2 pb-12 pt-3 overflow-visible">
         {renderPreview(previewMode)}
       </div>
     </div>

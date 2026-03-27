@@ -26,7 +26,7 @@ export default function RadiusSlider({ value, onChange }) {
   }, [percentage])
 
   return (
-    <div className="flex w-full items-center gap-3">
+    <div className="flex w-full items-center gap-2">
       <div
         ref={sliderRef}
         className="relative flex-1 py-2"
