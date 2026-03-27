@@ -270,7 +270,7 @@ export default function SearchPage() {
       <>
         {/* Top Section with Divider */}
         <div className="z-20 relative flex flex-wrap items-stretch overflow-visible  pb-1 ">
-          <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-1.5' : 'flex min-w-0 shrink-0 gap-1.5'}`}>
+          <div className={`${isMobile ? 'grid min-w-0 flex-1 grid-cols-3 gap-0.5' : 'flex min-w-0 shrink-0 gap-1.5'}`}>
             {MODE_TYPES.map((typeMode) => {
               const config = MODE_CONFIG[typeMode]
               const isActive = activeType === typeMode
@@ -281,7 +281,7 @@ export default function SearchPage() {
                   type="button"
                   onClick={() => setActiveType(typeMode)}
                   className={`
-                    ${isMobile ? 'flex w-full flex-col items-center justify-center gap-1 rounded-[4px] p-1.5 text-[11px]' : 'flex min-w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-[4px] px-2 py-1.5 text-[11px]'}
+                    ${isMobile ? 'flex w-[100px] flex-row items-center justify-center  rounded-[4px] px-1 py-1 text-[10px]' : 'flex min-w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-[4px] px-2 py-1.5 text-[11px]'}
                     border font-medium tracking-wide transition-all duration-200
                     ${isActive
                       ? 'border-transparent bg-gradient-to-br from-[#1C2A44] to-[#154eb1] text-white shadow-sm'
@@ -289,7 +289,9 @@ export default function SearchPage() {
                     }
                   `}
                 >
-                  <span className={`text-[14px] leading-none ${isActive ? 'opacity-100' : 'opacity-60 grayscale'}`} role="img" aria-hidden="true">{config.emoji}</span>
+                  {/* <span className={`text-[12px] leading-none ${isActive ? 'opacity-100' : 'opacity-60 grayscale'}`} role="img" aria-hidden="true"></span> */}
+                  {config.emoji}
+                  
                   {config.label}
                 </button>
               )

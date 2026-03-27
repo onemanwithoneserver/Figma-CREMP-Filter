@@ -120,7 +120,7 @@ export default function BusinessFilters({
             />
           </AccordionSection>
         </div>
-        <div class="h-px bg-gray-200 my-[2px]"></div>
+        {/* <div class="h-px bg-gray-200 my-[2px]"></div> */}
       </div>
     )
 }
