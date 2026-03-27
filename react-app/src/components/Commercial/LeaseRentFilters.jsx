@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import AccordionSection from '../common/AccordionSection'
 import { BudgetTabs, StyledSelect } from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
@@ -6,7 +7,7 @@ import {
   COMMERCIAL_RENT_OVERALL_OPTIONS,
 } from '../common/filterOptions'
 import PropertyTypeFilter from './PropertyTypeFilter'
-import SizeFilter from './SizeFilter'
+import SizeFilter, { SizeTabs } from './SizeFilter'
 import SubleaseToggle from './SubleaseToggle'
 
 export default function LeaseRentFilters({
@@ -19,6 +20,7 @@ export default function LeaseRentFilters({
   isDesktopView = false,
 }) {
   const isOpen = (id) => openSections.includes(id)
+  const [sizeUnit, setSizeUnit] = useState('sqft')
 
   return (
     <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
@@ -55,6 +57,7 @@ export default function LeaseRentFilters({
           collapsible
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
+          rightControl={<SizeTabs unit={sizeUnit} onUnitChange={setSizeUnit} />}
         >
           <SizeFilter
             landMin={filterState.landMin}
@@ -68,6 +71,7 @@ export default function LeaseRentFilters({
             selectedTypes={filterState.propertyTypes}
             isMobile={isMobile}
             isDesktopView={isDesktopView}
+            unit={sizeUnit}
           />
         </AccordionSection>
       </div>

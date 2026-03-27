@@ -1,5 +1,22 @@
-﻿
-import { useState } from 'react'
+﻿export function SizeTabs({ unit, onUnitChange }) {
+  const btn = (value) =>
+    `px-3 py-1 rounded-[3px] text-[11px] font-semibold transition-all duration-200 ${
+      unit === value
+        ? 'bg-[#1C2A44] text-white shadow-sm'
+        : 'text-[#1C2A44]/60 hover:text-[#1C2A44]'
+    }`
+
+  return (
+    <div className="inline-flex items-center gap-0.5 rounded-[4px] border border-[#1C2A44]/10 bg-[#1C2A44]/5 p-0.5 shadow-sm">
+      <button type="button" onClick={() => onUnitChange('sqft')} className={btn('sqft')}>
+        Sq.ft
+      </button>
+      <button type="button" onClick={() => onUnitChange('acre')} className={btn('acre')}>
+        Acres
+      </button>
+    </div>
+  )
+}
 
 export default function SizeFilter({
   landMin,
@@ -13,9 +30,8 @@ export default function SizeFilter({
   selectedTypes = [],  // drives which fields show
   isMobile = false,
   isDesktopView = false,
+  unit = 'sqft',
 }) {
-
-  const [landUnit, setLandUnit] = useState('sqyd')  // 'sqyd' | 'acre'
 
   // Only show Land Area for 'Land', Built-up Area for others
   const isLand = selectedTypes && selectedTypes.length === 1 && selectedTypes[0] === 'Land';
@@ -31,41 +47,14 @@ export default function SizeFilter({
       ? 'grid grid-cols-1 gap-2'
       : 'grid gap-2 lg:grid-cols-2'
 
-  const unitBtn = (unit, label) =>
-    `px-2 py-1 rounded-sm text-[11px] font-semibold border transition-all ${landUnit === unit
-      ? 'bg-[#C89B3C] border-[#C89B3C] text-white'
-      : 'bg-white border-[#1C2A44]/15 text-[#1C2A44]/50 hover:border-[#1C2A44]/25 hover:text-[#1C2A44]'
-    }`
-
-  const landPlaceholder = landUnit === 'acre'
+  const landPlaceholder = unit === 'acre'
     ? { min: 'Min (acres)', max: 'Max (acres)' }
-    : { min: 'Min (sq yd)', max: 'Max (sq yd)' }
+    : { min: 'Min (sq ft)', max: 'Max (sq ft)' }
 
   return (
     <div className={layoutClass}>
       {showLand && (
         <div>
-          <div className="px-2 flex items-center justify-start gap-16">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#1C2A44]">
-              📌 Land Area
-            </div>
-            <div className="flex gap-0.5">
-              <button
-                type="button"
-                onClick={() => setLandUnit('sqyd')}
-                className={unitBtn('sqyd', 'Sq Yd')}
-              >
-                Sq Yd
-              </button>
-              <button
-                type="button"
-                onClick={() => setLandUnit('acre')}
-                className={unitBtn('acre', 'Acre')}
-              >
-                Acre
-              </button>
-            </div>
-          </div>
           <div className="flex flex-row gap-2 px-2 pt-1">
             <input
               value={landMin}
@@ -89,9 +78,6 @@ export default function SizeFilter({
 
       {showBua && (
         <div>
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-[#1C2A44]">
-            ⚖️ Built-up Area (sq ft)
-          </div>
           <div className="flex flex-row gap-2 px-2 pt-1">
             <input
               value={buaMin}
