@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AccordionSection from '../common/AccordionSection'
 import { BudgetTabs, StyledSelect } from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
@@ -22,8 +22,15 @@ export default function BuyInvestFilters({
   const isOpen = (id) => openSections.includes(id)
   const [sizeUnit, setSizeUnit] = useState('sqft')
 
+  // Reset to 'sqft' whenever the filter is opened
+  useEffect(() => {
+    if (isOpen('size')) {
+      setSizeUnit('sqft')
+    }
+  }, [isOpen('size')])
+
   return (
-    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
+    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-y-1.5 lg:grid-cols-2'}>
       <div className="flex flex-col gap-1.5">
         {showRadiusInAccordion && (
           <AccordionSection

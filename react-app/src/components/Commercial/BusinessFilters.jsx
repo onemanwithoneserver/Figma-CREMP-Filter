@@ -44,7 +44,7 @@ export default function BusinessFilters({
   }
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-x-4 gap-y-1.5 lg:grid-cols-2'}>
+    <div className={isMobile ? 'flex flex-col gap-1.5' : 'grid grid-cols-1 gap-y-1.5 lg:grid-cols-2'}>
       <div className="flex flex-col gap-1.5">
         {showRadiusInAccordion && (
           <AccordionSection
