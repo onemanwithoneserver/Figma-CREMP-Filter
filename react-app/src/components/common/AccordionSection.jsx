@@ -23,7 +23,7 @@ export default function AccordionSection({
         <div className="flex items-center gap-2.5">
           {Icon && (
             <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] bg-gradient-to-br from-[#1C2A44]/10 to-[#1C2A44]/5 border border-[#1C2A44]/10 shadow-sm">
-              <span className="text-[13px] leading-none grayscale opacity-80" role="img" aria-hidden="true">
+              <span className="text-[13px]" role="img" aria-hidden="true">
                 {sectionEmoji}
               </span>
             </div>

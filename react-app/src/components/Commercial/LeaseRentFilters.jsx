@@ -79,6 +79,7 @@ export default function LeaseRentFilters({
             unit={sizeUnit}
           />
         </AccordionSection>
+        <div className="h-px bg-gray-200 my-[2px]" />
       </div>
 
       {/* Vertical divider for desktop */}

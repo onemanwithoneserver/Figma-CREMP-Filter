@@ -47,8 +47,6 @@ export default function PropertyTypeFilter({ selected, onChange }) {
         </button>
       </div>
 
-      <div className="mx-1 h-5 w-px shrink-0 bg-gray-200" />
-
       <div className="flex flex-col gap-1.5">
         <div className="flex flex-wrap gap-1.5">
           {BUILT_UP_TYPES.map((type) => {

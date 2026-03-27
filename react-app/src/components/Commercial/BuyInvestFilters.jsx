@@ -30,9 +30,9 @@ export default function BuyInvestFilters({
   }, [isOpen('size')])
 
   return (
-    <div className={isMobile ? 'flex flex-col gap-[2px]' : 'grid grid-cols-[1fr_auto_1fr] gap-y-[2px]'}>
+    <div className={isMobile ? 'flex flex-col gap-0.5' : 'grid grid-cols-[1fr_auto_1fr] gap-y-0.5'}>
       {/* Left column */}
-      <div className="flex flex-col gap-[2px]">
+      <div className="flex flex-col gap-0.5">
         {showRadiusInAccordion && (
           <>
             <AccordionSection
@@ -45,7 +45,7 @@ export default function BuyInvestFilters({
             >
               <RadiusSlider value={filterState.radius} onChange={(value) => onUpdate('radius', value)} />
             </AccordionSection>
-            <div className="h-px bg-gray-200 my-[2px]" />
+            <div className="h-px bg-gray-200 my-0.5" />
           </>
         )}
 
@@ -61,7 +61,7 @@ export default function BuyInvestFilters({
             onChange={(newTypes) => onUpdate('propertyTypes', newTypes)}
           />
         </AccordionSection>
-        <div className="h-px bg-gray-200 my-[2px]" />
+        <div className="h-px bg-gray-200 my-0.5" />
 
         <AccordionSection
           title="Sale Type"
@@ -75,13 +75,15 @@ export default function BuyInvestFilters({
             onToggle={(value) => onUpdate('saleTypes', value, true)}
           />
         </AccordionSection>
+        {/* Divider between Sale Type and Size & Area for mobile view only */}
+        {isMobile && <div className="h-px bg-gray-200 my-0.5" />}
       </div>
 
       {/* Vertical divider for desktop */}
-      <div className="hidden lg:block w-px bg-gray-200 mx-[2px]" />
+      <div className="hidden lg:block w-px bg-gray-200 mx-0.5" />
 
       {/* Right column */}
-      <div className="flex flex-col gap-[2px]">
+      <div className="flex flex-col gap-0.5">
         <AccordionSection
           title="Size & Area"
           icon={true}
@@ -105,7 +107,7 @@ export default function BuyInvestFilters({
             unit={sizeUnit}
           />
         </AccordionSection>
-        <div className="h-px bg-gray-200 my-[2px]" />
+        <div className="h-px bg-gray-200 my-0.5" />
 
         <AccordionSection
           title="Investment Range"
@@ -121,6 +123,7 @@ export default function BuyInvestFilters({
               overallLabel="Total Investment"
             />
           }
+           class="h-px bg-gray-200 my-[2px]"
         >
           <div className="flex items-center gap-2 pt-2">
             <StyledSelect
