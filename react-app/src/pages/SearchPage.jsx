@@ -331,7 +331,7 @@ export default function SearchPage() {
 
         {/* Mobile Radius Slider */}
         {isMobile && (
-          <div className="mt-2 flex items-center gap-4 bg-white px-4 py-2 ">
+          <div className=" flex items-center gap-4 bg-white px-2 py-2 ">
             <span className="text-xs font-semibold text-[#1C2A44]">Radius</span>
             <div className="flex-1 w-full">
               <RadiusSlider
@@ -343,7 +343,7 @@ export default function SearchPage() {
         )}
 
         {/* Filter Grids Area */}
-        <div className={isMobile ? 'm-2.5' : 'm-2'}>
+        <div className={isMobile ? 'm-' : 'm-2'}>
           {ActiveFilters && (
             <ActiveFilters
               filterState={activeFilterState}

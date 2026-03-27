@@ -22,7 +22,6 @@ export default function BuyInvestFilters({
 
   return (
     <div className={isMobile ? 'flex flex-col gap-y-1' : 'grid grid-cols-1 gap-x-2 gap-y-1 lg:grid-cols-2'}>
-      {/* Left Column */}
       <div className="flex flex-col gap-y-1">
         {showRadiusInAccordion && (
           <AccordionSection
