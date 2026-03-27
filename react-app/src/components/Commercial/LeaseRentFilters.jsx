@@ -1,5 +1,5 @@
 import AccordionSection from '../common/AccordionSection'
-import BudgetFilter from '../common/BudgetFilter'
+import { BudgetTabs, StyledSelect } from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
 import {
   COMMERCIAL_RENT_PER_SFT_OPTIONS,
@@ -79,19 +79,30 @@ export default function LeaseRentFilters({
           collapsible
           open={isOpen('budget')}
           onToggle={() => onToggleSection('budget')}
+          rightControl={
+            <BudgetTabs
+              mode={filterState.budgetMode}
+              onModeChange={(val) => onUpdate('budgetMode', val)}
+              perLabel="Per Sft"
+              overallLabel="Overall"
+            />
+          }
         >
-          <BudgetFilter
-            mode={filterState.budgetMode}
-            min={filterState.budgetMin}
-            max={filterState.budgetMax}
-            onModeChange={(value) => onUpdate('budgetMode', value)}
-            onMinChange={(value) => onUpdate('budgetMin', value)}
-            onMaxChange={(value) => onUpdate('budgetMax', value)}
-            perLabel="Per Sft"
-            overallLabel="Overall"
-            perOptions={COMMERCIAL_RENT_PER_SFT_OPTIONS}
-            overallOptions={COMMERCIAL_RENT_OVERALL_OPTIONS}
-          />
+          <div className="flex items-center gap-2 pt-2">
+            <StyledSelect
+              value={filterState.budgetMin}
+              onChange={(val) => onUpdate('budgetMin', val)}
+              placeholder="Min"
+              options={filterState.budgetMode === 'per' ? COMMERCIAL_RENT_PER_SFT_OPTIONS : COMMERCIAL_RENT_OVERALL_OPTIONS}
+            />
+            <span className="text-gray-300">—</span>
+            <StyledSelect
+              value={filterState.budgetMax}
+              onChange={(val) => onUpdate('budgetMax', val)}
+              placeholder="Max"
+              options={filterState.budgetMode === 'per' ? COMMERCIAL_RENT_PER_SFT_OPTIONS : COMMERCIAL_RENT_OVERALL_OPTIONS}
+            />
+          </div>
         </AccordionSection>
 
         <div className="px-1.5 pt-1">

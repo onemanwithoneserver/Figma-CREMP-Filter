@@ -1,4 +1,33 @@
-﻿import { useState, useRef, useEffect, useCallback } from 'react'
+﻿// BudgetTabs component for budget mode switching
+export function BudgetTabs({ mode, onModeChange, perLabel, overallLabel }) {
+  return (
+    <div className="inline-flex items-center gap-0.5 rounded-[4px] border border-[#1C2A44]/10 bg-[#1C2A44]/5 p-0.5 shadow-sm">
+      <button
+        type="button"
+        onClick={() => onModeChange('per')}
+        className={`rounded-[3px] px-3 py-1 text-[11px] font-semibold transition-all duration-200 ${
+          mode === 'per'
+            ? 'bg-[#1C2A44] text-white shadow-sm'
+            : 'text-[#1C2A44]/60 hover:text-[#1C2A44]'
+        }`}
+      >
+        {perLabel}
+      </button>
+      <button
+        type="button"
+        onClick={() => onModeChange('overall')}
+        className={`rounded-[3px] px-3 py-1 text-[11px] font-semibold transition-all duration-200 ${
+          mode === 'overall'
+            ? 'bg-[#1C2A44] text-white shadow-sm'
+            : 'text-[#1C2A44]/60 hover:text-[#1C2A44]'
+        }`}
+      >
+        {overallLabel}
+      </button>
+    </div>
+  )
+}
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 
 const DEFAULT_BUDGET_OPTIONS = [
