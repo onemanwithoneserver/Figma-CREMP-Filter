@@ -7,22 +7,7 @@
     }`;
 
   return (
-    <div className="inline-flex items-center gap-0.5 rounded-[4px] border border-[#1C2A44]/10 bg-[#1C2A44]/5 p-0.5 shadow-sm">
-      {isLand ? (
-        <>
-          <button type="button" onClick={() => onUnitChange('sqyards')} className={btn('sqyards')}>
-            Sq. yards
-          </button>
-          <button type="button" onClick={() => onUnitChange('acre')} className={btn('acre')}>
-            Acres
-          </button>
-        </>
-      ) : (
-        <button type="button" onClick={() => onUnitChange('sqft')} className={btn('sqft')}>
-          Sq.ft
-        </button>
-      )}
-    </div>
+    <div></div>
   );
 }
 
@@ -55,13 +40,9 @@ export default function SizeFilter({
       ? 'grid grid-cols-1 gap-[2px]'
       : 'grid gap-[2px] lg:grid-cols-2'
 
-  let landPlaceholder;
-  if (unit === 'acre') {
-    landPlaceholder = { min: 'Min (acres)', max: 'Max (acres)' };
-  } else if (unit === 'sqyards') {
+  let landPlaceholder = { min: 'Min', max: 'Max' };
+  if (isLand) {
     landPlaceholder = { min: 'Min (sq yards)', max: 'Max (sq yards)' };
-  } else {
-    landPlaceholder = { min: 'Min', max: 'Max' };
   }
 
   return (
