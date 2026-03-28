@@ -1,9 +1,8 @@
 // ─── Commercial Property Categories ───
 export const COMMERCIAL_PROPERTY_CATEGORY_OPTIONS = [
   'Land',
-  'Retail Space',
-  'Office Space',
-  'Coworking',
+  'Retail',
+  'Office',
   'Full Building',
 ]
 

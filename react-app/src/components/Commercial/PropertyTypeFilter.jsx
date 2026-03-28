@@ -1,7 +1,7 @@
 ﻿import TagButton from '../common/TagButton'
 
 const LAND = 'Land'
-const BUILT_UP_TYPES = ['Retail Space', 'Office Space', 'Coworking', 'Full Building']
+const BUILT_UP_TYPES = ['Retail', 'Office', 'Full Building']
 
 export default function PropertyTypeFilter({ selected, onChange }) {
   const isLandSelected = selected.includes(LAND)
@@ -16,9 +16,14 @@ export default function PropertyTypeFilter({ selected, onChange }) {
 
   const handleBuiltUpClick = (type) => {
     if (selected.includes(type)) {
-      onChange([])
+      // Remove the type from selected
+      onChange(selected.filter((t) => t !== type))
     } else {
-      onChange([type])
+      // Add the type to selected, but remove LAND if present
+      onChange([
+        ...selected.filter((t) => t !== LAND),
+        type
+      ])
     }
   }
 
