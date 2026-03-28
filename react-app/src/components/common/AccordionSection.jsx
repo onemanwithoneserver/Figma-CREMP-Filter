@@ -1,5 +1,5 @@
 const SECTION_EMOJIS = {
-  'Investment Range': '💰',
+  ' Budget': '💰',
   // ... other emojis
 };
 

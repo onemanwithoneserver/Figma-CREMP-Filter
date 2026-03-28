@@ -20,14 +20,33 @@ export default function BuyInvestFilters({
   isDesktopView = false,
 }) {
   const isOpen = (id) => openSections.includes(id)
+  // Default to sqft for built-up, sqyards for land
   const [sizeUnit, setSizeUnit] = useState('sqft')
 
-  // Reset to 'sqft' whenever the filter is opened
+  // If only built-up types are selected, force unit to 'sqft' and hide switcher
+  const BUILT_UP_TYPES = ['Retail', 'Office', 'Full Building'];
+  const propertyTypes = filterState.propertyTypes || [];
+  const onlyBuiltUpSelected =
+    propertyTypes.length > 0 &&
+    propertyTypes.every((t) => BUILT_UP_TYPES.includes(t));
+
   useEffect(() => {
     if (isOpen('size')) {
-      setSizeUnit('sqft')
+      if (onlyBuiltUpSelected) {
+        setSizeUnit('sqft');
+      } else if (propertyTypes.length === 1 && propertyTypes[0] === 'Land') {
+        setSizeUnit('sqyards');
+      }
     }
-  }, [isOpen('size')])
+  }, [isOpen('size')]);
+
+  useEffect(() => {
+    if (onlyBuiltUpSelected && sizeUnit !== 'sqft') {
+      setSizeUnit('sqft');
+    } else if (propertyTypes.length === 1 && propertyTypes[0] === 'Land' && sizeUnit !== 'sqyards' && sizeUnit !== 'acre') {
+      setSizeUnit('sqyards');
+    }
+  }, [onlyBuiltUpSelected, propertyTypes, sizeUnit]);
 
   return (
     <div className={isMobile ? 'flex flex-col gap-0.5' : 'grid grid-cols-[1fr_auto_1fr] gap-y-0.5'}>
@@ -104,7 +123,11 @@ export default function BuyInvestFilters({
           collapsible
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
-          rightControl={<SizeTabs unit={sizeUnit} onUnitChange={setSizeUnit} />}
+          rightControl={
+            onlyBuiltUpSelected
+              ? null
+              : <SizeTabs unit={sizeUnit} onUnitChange={setSizeUnit} isLand={propertyTypes.length === 1 && propertyTypes[0] === 'Land'} />
+          }
         >
           <SizeFilter
             landMin={filterState.landMin}
@@ -124,7 +147,7 @@ export default function BuyInvestFilters({
         <div className="h-px bg-gray-200 my-0.5" />
 
         <AccordionSection
-          title="Investment Range"
+          title=" Budget"
           icon={true}
           collapsible
           open={isOpen('budget')}

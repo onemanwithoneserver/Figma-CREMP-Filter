@@ -78,7 +78,7 @@ export default function BusinessFilters({
           <div className="h-px bg-gray-200 my-[2px]" />
 
           <AccordionSection
-            title="Investment Range"
+            title=" Budget"
             icon={true}
             collapsible
             open={isOpen('budget')}

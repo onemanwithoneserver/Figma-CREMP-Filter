@@ -25,6 +25,7 @@ export const SALE_TYPE_OPTIONS = [
 export const OPPORTUNITY_OPTIONS = [
   'Sale',
   'Lease',
+  'Franchise',
 ]
 
 // ─── Business Categories (placeholder — multi select from backend) ───

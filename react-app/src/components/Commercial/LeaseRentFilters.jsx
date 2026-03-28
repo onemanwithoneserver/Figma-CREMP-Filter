@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AccordionSection from '../common/AccordionSection'
 import { BudgetTabs, StyledSelect } from '../common/BudgetFilter'
 import RadiusSlider from '../common/RadiusSlider'
@@ -20,7 +20,31 @@ export default function LeaseRentFilters({
   isDesktopView = false,
 }) {
   const isOpen = (id) => openSections.includes(id)
-  const [sizeUnit, setSizeUnit] = useState('sqft')
+  // Default to sqft for built-up, sqyards for land
+  const [sizeUnit, setSizeUnit] = useState('sqft');
+  const BUILT_UP_TYPES = ['Retail', 'Office', 'Full Building'];
+  const propertyTypes = filterState.propertyTypes || [];
+  const onlyBuiltUpSelected =
+    propertyTypes.length > 0 &&
+    propertyTypes.every((t) => BUILT_UP_TYPES.includes(t));
+
+  useEffect(() => {
+    if (isOpen('size')) {
+      if (onlyBuiltUpSelected) {
+        setSizeUnit('sqft');
+      } else if (propertyTypes.length === 1 && propertyTypes[0] === 'Land') {
+        setSizeUnit('sqyards');
+      }
+    }
+  }, [isOpen('size')]);
+
+  useEffect(() => {
+    if (onlyBuiltUpSelected && sizeUnit !== 'sqft') {
+      setSizeUnit('sqft');
+    } else if (propertyTypes.length === 1 && propertyTypes[0] === 'Land' && sizeUnit !== 'sqyards' && sizeUnit !== 'acre') {
+      setSizeUnit('sqyards');
+    }
+  }, [onlyBuiltUpSelected, propertyTypes, sizeUnit]);
 
   return (
     <div className={isMobile ? 'flex flex-col gap-[2px]' : 'grid grid-cols-[1fr_auto_1fr] gap-y-[2px]'}>
@@ -62,7 +86,11 @@ export default function LeaseRentFilters({
           collapsible
           open={isOpen('size')}
           onToggle={() => onToggleSection('size')}
-          rightControl={<SizeTabs unit={sizeUnit} onUnitChange={setSizeUnit} />}
+          rightControl={
+            onlyBuiltUpSelected
+              ? null
+              : <SizeTabs unit={sizeUnit} onUnitChange={setSizeUnit} isLand={propertyTypes.length === 1 && propertyTypes[0] === 'Land'} />
+          }
         >
           <SizeFilter
             landMin={filterState.landMin}
