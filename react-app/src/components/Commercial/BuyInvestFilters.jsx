@@ -70,10 +70,24 @@ export default function BuyInvestFilters({
           open={isOpen('saleType')}
           onToggle={() => onToggleSection('saleType')}
         >
-          <SaleTypeFilter
-            selected={filterState.saleTypes}
-            onToggle={(value) => onUpdate('saleTypes', value, true)}
-          />
+          {(() => {
+            const propertyTypes = filterState.propertyTypes || [];
+            const isLandSelected = propertyTypes.includes('Land');
+            // Only show Vacant and Pre-Leased if Land is selected
+            const saleTypeOptions = isLandSelected
+              ? [
+                  { label: 'Vacant', tooltip: 'Ready for immediate  possession or new tenants' },
+                  { label: 'Pre-Leased', tooltip: 'Comes with existing tenants and immediate rental income' }
+                ]
+              : undefined;
+            return (
+              <SaleTypeFilter
+                selected={filterState.saleTypes}
+                onToggle={(value) => onUpdate('saleTypes', value, true)}
+                options={saleTypeOptions}
+              />
+            );
+          })()}
         </AccordionSection>
         {/* Divider between Sale Type and Size & Area for mobile view only */}
         {isMobile && <div className="h-px bg-gray-200 my-0.5" />}

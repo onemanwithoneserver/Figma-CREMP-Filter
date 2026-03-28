@@ -17,7 +17,7 @@ export const SALE_TYPE_OPTIONS = [
     tooltip: 'Comes with existing tenants and immediate rental income'
   },
   {
-    label: 'Fractional Investment',
+    label: 'Fractional',
     tooltip: 'Own a fraction of a high-value commercial asset'
   },
 ]
