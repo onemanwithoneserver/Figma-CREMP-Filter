@@ -311,9 +311,9 @@ export default function SearchPage() {
           )}
 
           {!isMobile && (
-            <div className="flex flex-col items-center justify-center rounded-[4px] bg-gradient-to-r from-[#5c4018] to-[#8c6828] px-2 py-1 text-white shadow-sm">
+            <div className="flex flex-col items-center justify-center rounded-[4px] bg-[#c89c3ce3] text-[#1C2A44] shadow-sm px-2 py-1">
               <span className="text-[18px] font-bold leading-none">0</span>
-              <span className="text-[12px] font-semibold tracking-wider text-white">Projects Found</span>
+              <span className="text-[12px] font-semibold tracking-wider text-[#7a5a1f] ">Projects</span>
             </div>
           )}
         </div>
