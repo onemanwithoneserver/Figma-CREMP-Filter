@@ -173,8 +173,8 @@ export default function BudgetFilter({
   onModeChange,
   onMinChange,
   onMaxChange,
-  perLabel = 'Price per sq.ft',
-  overallLabel = 'Total Investment',
+  perLabel = 'Per sq.ft',
+  overallLabel = 'Total',
   options = DEFAULT_BUDGET_OPTIONS,
   perOptions,
   overallOptions,
@@ -204,7 +204,7 @@ export default function BudgetFilter({
               : 'text-[#1C2A44]/60 hover:bg-white/50 hover:text-[#1C2A44]'
           }`}
         >
-          {overallLabel === 'Overall Budget' ? 'Total Investment' : overallLabel}
+          {overallLabel === 'Overall Budget' ? 'Investment' : overallLabel}
         </button>
       </div>
 

@@ -119,8 +119,8 @@ export default function BuyInvestFilters({
             <BudgetTabs
               mode={filterState.budgetMode}
               onModeChange={(val) => onUpdate('budgetMode', val)}
-              perLabel="Price per sq.ft"
-              overallLabel="Total Investment"
+              perLabel="Per sq.ft"
+              overallLabel="Total"
             />
           }
            class="h-px bg-gray-200 my-[2px]"
